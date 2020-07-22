@@ -9,6 +9,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from './interceptor/jwt.interceptor';
 import {LoginComponent} from './component/login/login.component';
+import { SongComponent } from './component/song/song.component';
+import { NewSongComponent } from './component/new-song/new-song.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import {LoginComponent} from './component/login/login.component';
     MainViewComponent,
     RegistrationComponent,
     LoginComponent,
+    SongComponent,
+    NewSongComponent,
   ],
   imports: [
     BrowserModule,

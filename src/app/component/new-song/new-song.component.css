@@ -1,0 +1,11 @@
+img {
+  border: 1px solid black;
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+}
+
+.uploadImage {
+  width: 100px;
+  margin: 0 auto;
+}
