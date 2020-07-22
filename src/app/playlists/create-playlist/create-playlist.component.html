@@ -1,5 +1,9 @@
-<form>
+<form [formGroup]="createPlaylist">
   <div class="form-group">
-    <input class="form-control" type="text" placeholder="Playlist Name">  </div>
+    <input class="form-control" type="text" placeholder="Playlist Name" formControlName="namePlaylist">
+    <p style="color: red" *ngIf="createPlaylist.get('namePlaylist').invalid && createPlaylist.get('namePlaylist').touched">
+      name playlist not blank
+    </p>
+  </div>
   <button type="submit" class="btn btn-primary">Create Playlist</button>
 </form>
