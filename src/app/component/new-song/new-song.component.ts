@@ -8,16 +8,24 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class NewSongComponent implements OnInit {
   createSongForm: FormGroup;
-  url = '';
+  url: string | ArrayBuffer = '';
 
   constructor() { }
 
   ngOnInit(): void {
     this.createSongForm = new FormGroup({
       songName: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      singer: ['', Validators.required],
-      category: ['', Validators.required],
-      uploadFile: ['', Validators.required]
+      singer: new FormControl('', [Validators.required]),
+      category: new FormControl('', [Validators.required]),
+      uploadFile: new FormControl('', [Validators.required]),
+      songImage: new FormControl(),
+      songId: new FormControl(),
+      userId: new FormControl(),
+      likes: new FormControl(),
+      views: new FormControl(),
+      createDate: new FormControl(),
+      status: new FormControl(),
+      description: new FormControl()
     });
   }
 
