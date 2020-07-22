@@ -11,6 +11,7 @@ import {JwtInterceptor} from './interceptor/jwt.interceptor';
 import {LoginComponent} from './component/login/login.component';
 import { SongComponent } from './component/song/song.component';
 import { NewSongComponent } from './component/new-song/new-song.component';
+import {CKEditorModule} from 'ngx-ckeditor';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NewSongComponent } from './component/new-song/new-song.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CKEditorModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
