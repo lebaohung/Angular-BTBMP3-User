@@ -10,6 +10,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from './interceptor/jwt.interceptor';
 import {LoginComponent} from './component/login/login.component';
 import { PlaylistComponent } from './playlists/playlist/playlist.component';
+import { CreatePlaylistComponent } from './playlists/create-playlist/create-playlist.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PlaylistComponent } from './playlists/playlist/playlist.component';
     RegistrationComponent,
     LoginComponent,
     PlaylistComponent,
+    CreatePlaylistComponent,
   ],
   imports: [
     BrowserModule,
