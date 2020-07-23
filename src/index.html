@@ -36,5 +36,13 @@
 <script src="assets/js/active.js"></script>
 <!-- CKEditor -->
 <script src="https://cdn.ckeditor.com/ckeditor5/19.1.1/classic/ckeditor.js"></script>
+
+<script>
+  ClassicEditor
+    .create(document.querySelector('#description'))
+    .catch(error => {
+      console.error(error);
+    });
+</script>
 </body>
 </html>

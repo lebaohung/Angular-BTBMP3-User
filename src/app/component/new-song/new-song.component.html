@@ -14,49 +14,61 @@
         <div class="login-content">
           <!-- Create Song Form -->
           <div class="create-song-form">
-            <form [formGroup]="createSongForm" >
-              <input type="hidden" formControlName="songId"/>
-              <input type="hidden" formControlName="likes"/>
-              <input type="hidden" formControlName="views"/>
-              <input type="hidden" formControlName="createDate"/>
-              <input type="hidden" formControlName="status"/>
-              <input type="hidden" formControlName="userId"/>
+            <form [formGroup]="createSongForm" (ngSubmit)="onSubmit()" >
+              <input type="hidden" formControlName="id"/>
               <div class="form-group">
                 <img [src]="url" alt="">
                 <br>
                 <br>
                 <div class="uploadImage">
                   <label style="cursor: pointer; margin: auto" for="image"><i class="fa fa-upload" aria-hidden="true"></i> Tải lên ảnh</label>
-                  <input type="file" id="image" formControlName="songImage" (change)="displayImage($event)" accept="image/*" hidden>
+                  <input type="file" id="image" (change)="displayImage($event)" accept="image/*" hidden>
                 </div>
               </div>
               <div class="form-group">
                 <label for="songName">Tên bài hát:</label>
-                <input type="text" class="form-control" id="songName" placeholder="Nhập tên bài hát..." formControlName="songName">
-                <p style="color:red;" *ngIf="createSongForm.get('songName').invalid && createSongForm.get('songName').touched">Tên bài hát cần có ít nhất 6 ký tự.</p>
+                <input type="text" class="form-control" id="songName" placeholder="Nhập tên bài hát..." formControlName="name">
+                <p style="color:red;" *ngIf="createSongForm.get('name').invalid && createSongForm.get('name').touched">Tên bài hát cần có ít nhất 6 ký tự.</p>
               </div>
               <div class="form-group">
-                <label for="singer">Ca sĩ, diễn viên trình diễn:</label>
-                <input type="text" class="form-control" id="singer" formControlName="singer">
-                <p style="color:red;" *ngIf="createSongForm.get('singer').invalid && createSongForm.get('singer').touched">Tên ca sĩ không được để trống.</p>
+                <label for="author">Tên tác giả:</label>
+                <input type="text" class="form-control" id="author" formControlName="song_author">
+                <p style="color:red;" *ngIf="createSongForm.get('song_author').invalid && createSongForm.get('song_author').touched">Bạn cần nhập tên tác giả.</p>
               </div>
               <div class="form-group">
-                <label for="category">Thể loại</label>
-                <select class="form-control" id="category" formControlName="category">
-<!--                  <option *ngFor="let cate of categoryList" [value]="cate">{{cate}}</option>-->
+                <label>Ca sĩ, diễn viên trình diễn:</label>
+                <select class="form-control" [(ngModel)]="selectedSingerId">
+<!--                  <option *ngFor="let singer of singerList" [value]="singer.id">{{singer.name}}</option>-->
+                  <option>Sơn Tùng MTP</option>
                 </select>
-                <p style="color:red;" *ngIf="createSongForm.get('category').invalid && createSongForm.get('category').touched">Xin hãy chọn thể loại.</p>
+              </div>
+              <div class="form-group">
+                <label for="category_id">Thể loại</label>
+                <select class="form-control" id="category_id" formControlName="category_id">
+<!--                  <option *ngFor="let cate of categoryList" [value]="cate.id">{{cate.name}}</option>-->
+                  <option>Nhạc trẻ</option>
+                </select>
+                <p style="color:red;" *ngIf="createSongForm.get('category_id').invalid && createSongForm.get('category_id').touched">Xin hãy chọn thể loại.</p>
               </div>
               <div class="form-group">
                 <label for="file">Tải lên bài hát:</label>
-                <input type="file" id="file" formControlName="uploadFile">
-                <p style="color:red;" *ngIf="createSongForm.get('uploadFile').invalid && createSongForm.get('uploadFile').touched">Bạn cần Upload File</p>
+                <input type="file" id="file" (change)="selectFile($event)">
+                <!--<p style="color:red;" *ngIf="createSongForm.get('uploadFile').invalid && createSongForm.get('uploadFile').touched">Bạn cần Upload File</p>
+                <button class="btn btn-success" [disabled]="!selectedFile" (click)="upload()">Upload</button>-->
               </div>
               <div class="form-group">
                 <label for="description">Mô tả:</label>
-                <textarea type="text" class="form-control" id="description" formControlName="description"></textarea>
+                <input type="text" class="form-control" id="description" formControlName="description">
               </div>
-              <button type="submit" class="btn oneMusic-btn mt-30">Login</button>
+              <div *ngIf="currentFileUpload" class="progress">
+                <div class="progress-bar progress-bar-info progress-bar-striped"
+                     role="progressbar" attr.aria-valuenow="{{percentage}}"
+                     aria-valuemin="0" aria-valuemax="100"
+                     [ngStyle]="{width:percentage+'%'}">
+                  {{percentage}}%
+                </div>
+              </div>
+              <button type="submit" [disabled]="!selectedFile" class="btn oneMusic-btn mt-30">Login</button>
             </form>
           </div>
         </div>
