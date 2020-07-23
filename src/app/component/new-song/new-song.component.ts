@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
+import {FileUpload} from '../../model/file-upload';
+import {SongsService} from '../../service/song/songs.service';
+import {UploadFileService} from '../../service/upload-file/upload-file.service';
+import {Song} from '../../model/song';
 
 @Component({
   selector: 'app-new-song',
@@ -8,12 +12,17 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./new-song.component.css']
 })
 export class NewSongComponent implements OnInit {
-  selectedFile: File = null;
+  song: Song;
+  selectedFile: FileList;
+  currentFileUpload: FileUpload;
+  percentage: number;
   createSongForm: FormGroup;
   url: string | ArrayBuffer = '';
 
   constructor(private fb: FormBuilder,
-              private http: HttpClient) { }
+              private http: HttpClient,
+              private songsService: SongsService,
+              private uploadFileService: UploadFileService) { }
 
   ngOnInit(): void {
     this.createSongForm = this.fb.group({
@@ -46,9 +55,35 @@ export class NewSongComponent implements OnInit {
   }
 
   onSubmit(): void {
+    /*const file = this.selectedFile.item(0);
+    console.log(file.name);
+    this.selectedFile = undefined;
+    this.currentFileUpload = new FileUpload(file);
+    this.uploadFileService.pushFileToStorage(this.currentFileUpload).subscribe(
+      percentage => {
+        this.percentage = Math.round(percentage);
+      },
+      error => {
+        console.log(error);
+      }
+    );*/
   }
 
-  onFileSelected(event): void {
-    this.selectedFile = event.target.files[0];
+  selectFile(event): void {
+    this.selectedFile = event.target.files;
+  }
+  upload(): void {
+    const file = this.selectedFile.item(0);
+    console.log(file);
+    this.selectedFile = undefined;
+    this.currentFileUpload = new FileUpload(file);
+    this.uploadFileService.pushFileToStorage(this.currentFileUpload).subscribe(
+      percentage => {
+        this.percentage = Math.round(percentage);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }
