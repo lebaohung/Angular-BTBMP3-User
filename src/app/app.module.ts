@@ -16,6 +16,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
+import { EditSongComponent } from './component/edit-song/edit-song.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {environment} from '../environments/environment';
     LoginComponent,
     SongComponent,
     NewSongComponent,
+    EditSongComponent,
   ],
   imports: [
     BrowserModule,

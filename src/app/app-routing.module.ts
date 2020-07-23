@@ -5,12 +5,14 @@ import {MainViewComponent} from './component/main-view/main-view.component';
 import {RegistrationComponent} from './component/registration/registration.component';
 import {LoginComponent} from './component/login/login.component';
 import { NewSongComponent } from './component/new-song/new-song.component';
+import {EditSongComponent} from './component/edit-song/edit-song.component';
 
 const routes: Routes = [
   { path: '', component: MainViewComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'newSong', component: NewSongComponent}
+  { path: 'newSong', component: NewSongComponent},
+  { path: 'updateSong', component: EditSongComponent}
 ];
 
 @NgModule({
