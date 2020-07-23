@@ -1,14 +1,14 @@
 export interface Song {
-  songId: number;
-  songName: string;
-  singer: string;
-  category: string;
-  userId: number;
+  id: number;
+  name: string;
+  category_id: number;
+  user_id: number;
   likes: number;
   views: number;
-  createDate: string;
-  songImage: string;
+  creat_date: string;
+  song_image: string;
   status: number;
-  description: string;
-  uploadFile: string;
+  description?: string;
+  song_link: string;
+  song_author: string;
 }
