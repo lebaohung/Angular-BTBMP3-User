@@ -13,6 +13,7 @@ import { SongComponent } from './component/song/song.component';
 import { NewSongComponent } from './component/new-song/new-song.component';
 import { PlaylistComponent } from './playlists/playlist/playlist.component';
 import { CreatePlaylistComponent } from './playlists/create-playlist/create-playlist.component';
+import { DashboardAdminComponent } from './component/dashboard-admin/dashboard-admin.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,14 @@ import { CreatePlaylistComponent } from './playlists/create-playlist/create-play
     NewSongComponent,
     PlaylistComponent,
     CreatePlaylistComponent,
+    DashboardAdminComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

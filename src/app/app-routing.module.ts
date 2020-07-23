@@ -6,13 +6,15 @@ import {RegistrationComponent} from './component/registration/registration.compo
 import {LoginComponent} from './component/login/login.component';
 import { NewSongComponent } from './component/new-song/new-song.component';
 import {PlaylistComponent} from './playlists/playlist/playlist.component';
+import {DashboardAdminComponent} from './component/dashboard-admin/dashboard-admin.component';
 
 const routes: Routes = [
   { path: '', component: MainViewComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'newSong', component: NewSongComponent}
+  { path: 'newSong', component: NewSongComponent},
   { path: 'playlist', component: PlaylistComponent},
+  { path: 'dashboard', component: DashboardAdminComponent}
 ];
 
 @NgModule({
