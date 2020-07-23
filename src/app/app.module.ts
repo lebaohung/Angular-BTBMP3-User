@@ -14,6 +14,7 @@ import { NewSongComponent } from './component/new-song/new-song.component';
 import { PlaylistComponent } from './playlists/playlist/playlist.component';
 import { CreatePlaylistComponent } from './playlists/create-playlist/create-playlist.component';
 import { MyPlaylistComponent } from './playlists/my-playlist/my-playlist.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MyPlaylistComponent } from './playlists/my-playlist/my-playlist.compone
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule
