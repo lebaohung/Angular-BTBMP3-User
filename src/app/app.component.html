@@ -51,11 +51,21 @@
               <!-- Login/Register & Cart Button -->
               <div class="login-register-cart-button d-flex align-items-center">
                 <!-- Login/Register -->
-                <div class="login-register-btn mr-50">
-                  <a routerLink="/login" id="loginBtn">Login</a>
+
+                <div class="ogin-register-btn mr-50">
+                  <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="/user">{{ username }}</a>
                 </div>
+
                 <div class="login-register-btn mr-50">
-                  <a routerLink="/registration" id="registerBtn">Register</a>
+                  <a *ngIf="!isLoggedIn" routerLink="/login" id="loginBtn">Login</a>
+                </div>
+
+                <div class="login-register-btn mr-50">
+                  <button *ngIf="isLoggedIn" (click)="logOut()">Logout</button>
+                </div>
+
+                <div class="login-register-btn mr-50">
+                  <a *ngIf="!isLoggedIn" routerLink="/registration" id="registerBtn">Register</a>
                 </div>
 
               </div>
