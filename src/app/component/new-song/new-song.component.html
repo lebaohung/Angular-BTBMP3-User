@@ -14,7 +14,7 @@
         <div class="login-content">
           <!-- Create Song Form -->
           <div class="create-song-form">
-            <form [formGroup]="createSongForm" >
+            <form [formGroup]="createSongForm" (ngSubmit)="onSubmit()" >
               <input type="hidden" formControlName="songId"/>
               <input type="hidden" formControlName="likes"/>
               <input type="hidden" formControlName="views"/>
@@ -49,7 +49,7 @@
               </div>
               <div class="form-group">
                 <label for="file">Tải lên bài hát:</label>
-                <input type="file" id="file" formControlName="uploadFile">
+                <input type="file" id="file" formControlName="uploadFile" (change)="onFileSelected($event)">
                 <p style="color:red;" *ngIf="createSongForm.get('uploadFile').invalid && createSongForm.get('uploadFile').touched">Bạn cần Upload File</p>
               </div>
               <div class="form-group">

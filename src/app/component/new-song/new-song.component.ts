@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-new-song',
@@ -7,10 +8,12 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./new-song.component.css']
 })
 export class NewSongComponent implements OnInit {
+  selectedFile: File = null;
   createSongForm: FormGroup;
   url: string | ArrayBuffer = '';
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private http: HttpClient) { }
 
   ngOnInit(): void {
     this.createSongForm = this.fb.group({
@@ -40,5 +43,12 @@ export class NewSongComponent implements OnInit {
       };
       console.log(this.url);
     }
+  }
+
+  onSubmit(): void {
+  }
+
+  onFileSelected(event): void {
+    this.selectedFile = event.target.files[0];
   }
 }

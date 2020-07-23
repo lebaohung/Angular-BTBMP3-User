@@ -12,6 +12,10 @@ import {LoginComponent} from './component/login/login.component';
 import { SongComponent } from './component/song/song.component';
 import { NewSongComponent } from './component/new-song/new-song.component';
 import {CKEditorModule} from 'ngx-ckeditor';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,10 @@ import {CKEditorModule} from 'ngx-ckeditor';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    CKEditorModule
+    CKEditorModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
