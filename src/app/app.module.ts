@@ -16,6 +16,9 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
+import { PlaylistComponent } from './playlists/playlist/playlist.component';
+import { CreatePlaylistComponent } from './playlists/create-playlist/create-playlist.component';
+import { LogoutComponent } from './component/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import {environment} from '../environments/environment';
     LoginComponent,
     SongComponent,
     NewSongComponent,
+    PlaylistComponent,
+    CreatePlaylistComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

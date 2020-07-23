@@ -6,5 +6,5 @@ export interface Users {
   confirmpassword: string;
   fullname: string;
   phonenumber: string;
-  avatar: string;
+  status: boolean;
 }

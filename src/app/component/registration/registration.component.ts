@@ -29,8 +29,7 @@ export class RegistrationComponent implements OnInit {
         confirmpassword: ['']
       }, {validators: comparePassword}),
       fullname: ['', [Validators.required]],
-      phonenumber: ['', [Validators.required]],
-      avatar: ['', [Validators.required]],
+      phonenumber: ['', [Validators.required]]
     });
     this.userFormData = new FormData();
   }
@@ -47,7 +46,7 @@ export class RegistrationComponent implements OnInit {
     this.usersService.registration(this.userFormData).subscribe(() => alert('OK'));
   }
 
-  onChangeAvatar(event): void {
-    this.userFormData.append('avatar', event.target.files[0]);
-  }
+  // onChangeAvatar(event): void {
+  //   this.userFormData.append('avatar', event.target.files[0]);
+  // }
 }
