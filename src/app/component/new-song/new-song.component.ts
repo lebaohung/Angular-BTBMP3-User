@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {FileUpload} from '../../model/file-upload';
@@ -9,6 +9,7 @@ import {Category} from '../../model/category';
 
 const FRONT_LINK = 'https://firebasestorage.googleapis.com/v0/b/project-module-5.appspot.com/o/uploads%2F';
 const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
+
 @Component({
   selector: 'app-new-song',
   templateUrl: './new-song.component.html',
@@ -27,6 +28,8 @@ export class NewSongComponent implements OnInit {
     }
   ];
   categoryList: Category[] = [];
+  file: any;
+  imageFile: any;
   selectedSingerId: any;
   selectedFile: FileList;
   selectedImage: FileList;
@@ -39,7 +42,8 @@ export class NewSongComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private http: HttpClient,
               private songsService: SongsService,
-              private uploadFileService: UploadFileService) { }
+              private uploadFileService: UploadFileService) {
+  }
 
   ngOnInit(): void {
     this.createSongForm = this.fb.group({
@@ -63,7 +67,9 @@ export class NewSongComponent implements OnInit {
     this.createSongForm.get('views').setValue(0);
     this.createSongForm.get('creat_date').setValue(new Date());
     this.createSongForm.get('status').setValue(1);
-    this.createSongForm.get('song_link').setValue(FRONT_LINK + this.currentFileUpload.name + BACK_LINK);
+    this.createSongForm.get('song_link').setValue(FRONT_LINK + this.file.name + BACK_LINK);
+    this.createSongForm.get('song_image').setValue(FRONT_LINK + this.imageFile.name + BACK_LINK);
+    this.createSongForm.get('user_id').setValue(localStorage.getItem('Authorization'));
   }
 
   displayImage(event): void {
@@ -82,7 +88,6 @@ export class NewSongComponent implements OnInit {
 
   onSubmit(): void {
     this.upload();
-    console.log(this.currentFileUpload.name);
     this.setDefaultValue();
     console.log(this.createSongForm.value);
   }
@@ -92,12 +97,12 @@ export class NewSongComponent implements OnInit {
   }
 
   upload(): void {
-    const file = this.selectedFile.item(0);
-    const imageFile = this.selectedImage.item(0);
+    this.file = this.selectedFile.item(0);
+    this.imageFile = this.selectedImage.item(0);
     this.selectedFile = undefined;
     this.selectedImage = undefined;
-    this.currentFileUpload = new FileUpload(file);
-    this.currentImageUpload = new FileUpload(imageFile);
+    this.currentFileUpload = new FileUpload(this.file);
+    this.currentImageUpload = new FileUpload(this.imageFile);
     this.uploadFileService.pushFileToStorage(this.currentFileUpload).subscribe(
       percentage => {
         this.percentage = Math.round(percentage);
