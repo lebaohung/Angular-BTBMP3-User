@@ -13,6 +13,6 @@ export class SongsService {
     return this.httpClient.post<Song>(this.API_URL, song);
   }
   update(song: Song): Observable<Song>{
-    return this.httpClient.put<Song>(this.API_URL + '/' + song.songId, song);
+    return this.httpClient.put<Song>(this.API_URL + '/' + song.id, song);
   }
 }

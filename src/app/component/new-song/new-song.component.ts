@@ -4,17 +4,34 @@ import {HttpClient} from '@angular/common/http';
 import {FileUpload} from '../../model/file-upload';
 import {SongsService} from '../../service/song/songs.service';
 import {UploadFileService} from '../../service/upload-file/upload-file.service';
-import {Song} from '../../model/song';
+import {Singer} from '../../model/singer';
+import {Category} from '../../model/category';
 
+const FRONT_LINK = 'https://firebasestorage.googleapis.com/v0/b/project-module-5.appspot.com/o/uploads%2F';
+const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
 @Component({
   selector: 'app-new-song',
   templateUrl: './new-song.component.html',
   styleUrls: ['./new-song.component.css']
 })
 export class NewSongComponent implements OnInit {
-  song: Song;
+  singerList: Singer[] = [{
+    id: 1,
+    name: 'a',
+    create_date: 'aaa'
+  },
+    {
+      id: 2,
+      name: 'b',
+      create_date: 'bbb'
+    }
+  ];
+  categoryList: Category[] = [];
+  selectedSingerId: any;
   selectedFile: FileList;
+  selectedImage: FileList;
   currentFileUpload: FileUpload;
+  currentImageUpload: FileUpload;
   percentage: number;
   createSongForm: FormGroup;
   url: string | ArrayBuffer = '';
@@ -26,19 +43,27 @@ export class NewSongComponent implements OnInit {
 
   ngOnInit(): void {
     this.createSongForm = this.fb.group({
-      songName: ['', [Validators.required, Validators.minLength(6)]],
-      singer: ['', [Validators.required]],
-      category: ['', [Validators.required]],
-      uploadFile: ['', [Validators.required]],
-      songImage: [''],
-      songId: [''],
-      userId: [''],
+      name: ['', [Validators.required, Validators.minLength(6)]],
+      category_id: ['', [Validators.required]],
+      song_image: [''],
+      id: [''],
+      user_id: [''],
       likes: [''],
       views: [''],
-      createDate: [''],
+      creat_date: [''],
       status: [''],
-      description: ['']
+      description: [''],
+      song_link: [''],
+      song_author: ['', [Validators.required]]
     });
+  }
+
+  setDefaultValue(): void {
+    this.createSongForm.get('likes').setValue(0);
+    this.createSongForm.get('views').setValue(0);
+    this.createSongForm.get('creat_date').setValue(new Date());
+    this.createSongForm.get('status').setValue(1);
+    this.createSongForm.get('song_link').setValue(FRONT_LINK + this.currentFileUpload.name + BACK_LINK);
   }
 
   displayImage(event): void {
@@ -52,13 +77,27 @@ export class NewSongComponent implements OnInit {
       };
       console.log(this.url);
     }
+    this.selectedImage = event.target.files;
   }
 
   onSubmit(): void {
-    /*const file = this.selectedFile.item(0);
-    console.log(file.name);
+    this.upload();
+    console.log(this.currentFileUpload.name);
+    this.setDefaultValue();
+    console.log(this.createSongForm.value);
+  }
+
+  selectFile(event): void {
+    this.selectedFile = event.target.files;
+  }
+
+  upload(): void {
+    const file = this.selectedFile.item(0);
+    const imageFile = this.selectedImage.item(0);
     this.selectedFile = undefined;
+    this.selectedImage = undefined;
     this.currentFileUpload = new FileUpload(file);
+    this.currentImageUpload = new FileUpload(imageFile);
     this.uploadFileService.pushFileToStorage(this.currentFileUpload).subscribe(
       percentage => {
         this.percentage = Math.round(percentage);
@@ -66,18 +105,8 @@ export class NewSongComponent implements OnInit {
       error => {
         console.log(error);
       }
-    );*/
-  }
-
-  selectFile(event): void {
-    this.selectedFile = event.target.files;
-  }
-  upload(): void {
-    const file = this.selectedFile.item(0);
-    console.log(file);
-    this.selectedFile = undefined;
-    this.currentFileUpload = new FileUpload(file);
-    this.uploadFileService.pushFileToStorage(this.currentFileUpload).subscribe(
+    );
+    this.uploadFileService.pushFileToStorage(this.currentImageUpload).subscribe(
       percentage => {
         this.percentage = Math.round(percentage);
       },
