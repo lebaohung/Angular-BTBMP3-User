@@ -6,6 +6,7 @@ import {RegistrationComponent} from './component/registration/registration.compo
 import {LoginComponent} from './component/login/login.component';
 import { NewSongComponent } from './component/new-song/new-song.component';
 import {PlaylistComponent} from './playlists/playlist/playlist.component';
+import {MyPlaylistComponent} from './playlists/my-playlist/my-playlist.component';
 import {DashboardAdminComponent} from './component/dashboard-admin/dashboard-admin.component';
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'newSong', component: NewSongComponent},
   { path: 'playlist', component: PlaylistComponent},
+  { path: 'myPlaylist', component: MyPlaylistComponent},
   { path: 'dashboard', component: DashboardAdminComponent}
 ];
 
