@@ -18,6 +18,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
 import { PlaylistComponent } from './playlists/playlist/playlist.component';
 import { CreatePlaylistComponent } from './playlists/create-playlist/create-playlist.component';
+import { DashboardAdminComponent } from './component/dashboard-admin/dashboard-admin.component';
 import { LogoutComponent } from './component/logout/logout.component';
 
 @NgModule({
@@ -30,6 +31,7 @@ import { LogoutComponent } from './component/logout/logout.component';
     NewSongComponent,
     PlaylistComponent,
     CreatePlaylistComponent,
+    DashboardAdminComponent,
     LogoutComponent,
   ],
   imports: [
