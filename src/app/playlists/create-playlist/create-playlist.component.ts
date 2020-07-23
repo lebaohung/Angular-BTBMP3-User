@@ -13,7 +13,8 @@ export class CreatePlaylistComponent implements OnInit {
 
   ngOnInit(): void {
     this.createPlaylist = new  FormGroup({
-      namePlaylist: new FormControl('', [Validators.required])
+      namePlaylist: new FormControl('', [Validators.required]),
+      uploadFile: new FormControl('', [Validators.required]),
     });
   }
 

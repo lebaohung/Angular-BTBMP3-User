@@ -6,17 +6,24 @@
   </div>
 </section>
 
-<section class="oneMusic-buy-now-area has-fluid bg-gray section-padding-100">
+<section class="oneMusic-buy-now-area has-fluid  section-padding-100">
   <div class="container-fluid">
-
+    <div class="createPlayList">
+    <app-create-playlist></app-create-playlist>
+    </div>
     <div class="row">
 
       <!-- Single Album Area -->
       <div class="col-12 col-sm-6 col-md-4 col-lg-2">
         <div class="single-album-area wow fadeInUp" data-wow-delay="100ms">
+
           <div class="album-thumb">
+            <div class="album-price" style="position: absolute">
+              <button class="btn"><i class="fa fa-trash" ></i></button>
+              <button class="btn"><img style="width: 15px; height: 15px" src="assets/img/edit.png"></button>
+            </div>
             <img src="assets/img/bg-img/b1.jpg" alt="">
-            <!-- Play Icon -->
+
           </div>
           <div class="album-info">
             <a href="#">
