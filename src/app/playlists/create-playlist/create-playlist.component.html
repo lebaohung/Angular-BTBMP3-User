@@ -1,0 +1,14 @@
+<form [formGroup]="createPlaylist">
+  <div class="form-group">
+    <input class="form-control" type="text" placeholder="Playlist Name" formControlName="namePlaylist">
+    <p style="color: red" *ngIf="createPlaylist.get('namePlaylist').invalid && createPlaylist.get('namePlaylist').touched">
+      name playlist not blank
+    </p>
+  </div>
+  <div class="form-group">
+    <label for="file">Upload playlist images:</label>
+    <input type="file" id="file" formControlName="uploadFile">
+    <p style="color:red;" *ngIf="createPlaylist.get('uploadFile').invalid && createPlaylist.get('uploadFile').touched">You need to Upload File</p>
+  </div>
+  <button type="submit" class="btn btn-primary">Create Playlist</button>
+</form>

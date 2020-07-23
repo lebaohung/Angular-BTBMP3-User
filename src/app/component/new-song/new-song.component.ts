@@ -28,6 +28,8 @@ export class NewSongComponent implements OnInit {
     }
   ];
   categoryList: Category[] = [];
+  isShowSuccess = false;
+  message: string;
   file: any;
   imageFile: any;
   selectedSingerId: any;
@@ -89,7 +91,11 @@ export class NewSongComponent implements OnInit {
   onSubmit(): void {
     this.upload();
     this.setDefaultValue();
-    console.log(this.createSongForm.value);
+    this.songsService.create(this.createSongForm.value, this.selectedSingerId).subscribe( result => {
+      this.isShowSuccess = true;
+      this.message = 'Song was created successfully!';
+      this.songsService.shouldRefresh.next();
+    });
   }
 
   selectFile(event): void {

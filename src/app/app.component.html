@@ -37,10 +37,9 @@
             <div class="classynav">
               <ul>
                 <li><a routerLink="/">Home</a></li>
-                <li><a routerLink="/test-jwt">Albums</a></li>
-
-                <li><a href="event.html">Events</a></li>
-                <li><a routerLink="/newSong">Test New Song</a></li>
+                <li><a routerLink="/myPlaylist">Albums</a></li>
+                <li><a routerLink="/playlist">Playlist</a></li>
+                <li><a href="blog.html">News</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li>
                   <a routerLink="/newSong" class="btn btn-info btn-lg">
@@ -52,17 +51,23 @@
               <!-- Login/Register & Cart Button -->
               <div class="login-register-cart-button d-flex align-items-center">
                 <!-- Login/Register -->
-                <div class="login-register-btn mr-50">
-                  <a routerLink="/login" id="loginBtn">Login</a>
-                </div>
-                <div class="login-register-btn mr-50">
-                  <a routerLink="/registration" id="registerBtn">Register</a>
+
+                <div class="ogin-register-btn mr-50">
+                  <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="/user">{{ username }}</a>
                 </div>
 
-                <!--                &lt;!&ndash; Cart Button &ndash;&gt;-->
-                <!--                <div class="cart-btn">-->
-                <!--                  <p><span class="icon-shopping-cart"></span> <span class="quantity">1</span></p>-->
-                <!--                </div>-->
+                <div class="login-register-btn mr-50">
+                  <a *ngIf="!isLoggedIn" routerLink="/login" id="loginBtn">Login</a>
+                </div>
+
+                <div class="login-register-btn mr-50">
+                  <button *ngIf="isLoggedIn" (click)="logOut()">Logout</button>
+                </div>
+
+                <div class="login-register-btn mr-50">
+                  <a *ngIf="!isLoggedIn" routerLink="/registration" id="registerBtn">Register</a>
+                </div>
+
               </div>
             </div>
             <!-- Nav End -->
@@ -75,9 +80,7 @@
 </header>
 <!-- ##### Header Area End ##### -->
 
-
 <router-outlet></router-outlet>
-
 
 <!-- ##### Footer Area Start ##### -->
 <footer class="footer-area">
@@ -88,7 +91,7 @@
           <ul>
             <li><a routerLink="/">Home</a></li>
             <li><a href="#">Albums</a></li>
-            <li><a href="#">Events</a></li>
+            <li><a routerLink="/playlist">Playlist</a></li>
             <li><a href="#">News</a></li>
             <li><a href="#">Contact</a></li>
           </ul>

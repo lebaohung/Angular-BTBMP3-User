@@ -17,6 +17,12 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
 import { EditSongComponent } from './component/edit-song/edit-song.component';
+import { PlaylistComponent } from './playlists/playlist/playlist.component';
+import { CreatePlaylistComponent } from './playlists/create-playlist/create-playlist.component';
+import { MyPlaylistComponent } from './playlists/my-playlist/my-playlist.component';
+import {RouterModule} from '@angular/router';
+import { DashboardAdminComponent } from './component/dashboard-admin/dashboard-admin.component';
+import { LogoutComponent } from './component/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +33,16 @@ import { EditSongComponent } from './component/edit-song/edit-song.component';
     SongComponent,
     NewSongComponent,
     EditSongComponent,
+    PlaylistComponent,
+    CreatePlaylistComponent,
+    MyPlaylistComponent,
+    DashboardAdminComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,

@@ -1,0 +1,24 @@
+.createPlayList {
+  width: 50%;
+  margin: 0 auto 30px auto;
+}
+
+/* Style buttons */
+.btn {
+  background-color: rgba(30, 144, 255, 0); /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+
+.iconEditPL {
+  width: 15px;
+  height: 15px;
+}
