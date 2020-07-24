@@ -46,12 +46,12 @@ export class NewSongComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(6)]],
       category: ['', [Validators.required]],
       song_image: [''],
-      id: [''],
+      // id: [''],
       user: [''],
-      likes: [''],
-      views: [''],
-      creat_date: [''],
-      status: [''],
+      // likes: [''],
+      // views: [''],
+      // creat_date: [''],
+      // status: [''],
       description: [''],
       song_link: [''],
       song_author: ['', [Validators.required]]
@@ -61,10 +61,10 @@ export class NewSongComponent implements OnInit {
   }
 
   setDefaultValue(): void {
-    this.createSongForm.get('likes').setValue(0);
+    /*this.createSongForm.get('likes').setValue(0);
     this.createSongForm.get('views').setValue(0);
     this.createSongForm.get('creat_date').setValue(new Date());
-    this.createSongForm.get('status').setValue(1);
+    this.createSongForm.get('status').setValue(1);*/
     this.createSongForm.get('song_link').setValue(FRONT_LINK + this.file.name + BACK_LINK);
     this.createSongForm.get('song_image').setValue(FRONT_LINK + this.imageFile.name + BACK_LINK);
     this.createSongForm.get('user').setValue(localStorage.getItem('user'));
@@ -87,6 +87,7 @@ export class NewSongComponent implements OnInit {
   onSubmit(): void {
     this.upload();
     this.setDefaultValue();
+    console.log(this.createSongForm.value);
     this.songsService.create(this.createSongForm.value, this.selectedSingerId).subscribe( result => {
       this.isShowSuccess = true;
       this.message = 'Song was created successfully!';

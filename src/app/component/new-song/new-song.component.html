@@ -47,7 +47,10 @@
               <div class="form-group">
                 <label for="category_id">Thể loại</label>
                 <select class="form-control rounded" id="category_id" formControlName="category">
-                  <option *ngFor="let cate of categoryList" [value]="cate">{{cate.name}}</option>
+                  <option *ngFor="let cate of categoryList" [(ngModel)]="cate.name">
+                    {{cate.name}}
+                    <input type="hidden" [(ngModel)]="cate.id"/>
+                  </option>
                 </select>
                 <p style="color:red;" *ngIf="createSongForm.get('category').invalid && createSongForm.get('category').touched">Xin hãy chọn thể loại.</p>
               </div>
