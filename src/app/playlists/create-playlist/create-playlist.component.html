@@ -1,4 +1,11 @@
-<form [formGroup]="createPlaylist">
+<div *ngIf="successMessage" class="alert alert-success">
+  <p style="color: green">{{successMessage}}</p>
+</div>
+
+<div *ngIf="failMessage" class="alert alert-danger">
+  <p style="color: red">{{failMessage}}</p>
+</div>
+<form [formGroup]="createPlaylist" #playlist = "ngForm" (ngSubmit)="create(playlist)">
   <div class="form-group">
     <input class="form-control" type="text" placeholder="Playlist Name" formControlName="namePlaylist">
     <p style="color: red" *ngIf="createPlaylist.get('namePlaylist').invalid && createPlaylist.get('namePlaylist').touched">
@@ -6,8 +13,11 @@
     </p>
   </div>
   <div class="form-group">
-    <label for="file">Upload playlist images:</label>
-    <input type="file" id="file" formControlName="uploadFile">
+    <label for="image">Upload playlist images:</label>
+    <input type="file" id="image" (change)="displayImage($event)">
+
+<!--    <label style="cursor: pointer; margin: auto" for="image"><i class="fa fa-upload" aria-hidden="true"></i> Upload playlist images</label>-->
+<!--    <input type="file" id="image" (change)="displayImage($event)" accept="image/*" hidden>-->
     <p style="color:red;" *ngIf="createPlaylist.get('uploadFile').invalid && createPlaylist.get('uploadFile').touched">You need to Upload File</p>
   </div>
   <button type="submit" class="btn btn-primary">Create Playlist</button>
