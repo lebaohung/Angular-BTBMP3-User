@@ -16,6 +16,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
+import { EditSongComponent } from './component/edit-song/edit-song.component';
 import { PlaylistComponent } from './playlists/playlist/playlist.component';
 import { CreatePlaylistComponent } from './playlists/create-playlist/create-playlist.component';
 import { MyPlaylistComponent } from './playlists/my-playlist/my-playlist.component';
@@ -31,6 +32,7 @@ import { LogoutComponent } from './component/logout/logout.component';
     LoginComponent,
     SongComponent,
     NewSongComponent,
+    EditSongComponent,
     PlaylistComponent,
     CreatePlaylistComponent,
     MyPlaylistComponent,
