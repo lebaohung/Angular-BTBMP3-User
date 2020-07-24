@@ -6,6 +6,7 @@ import {SongsService} from '../../service/song/songs.service';
 import {UploadFileService} from '../../service/upload-file/upload-file.service';
 import {Singer} from '../../model/singer';
 import {Category} from '../../model/category';
+import {SingerService} from '../../service/singer/singer.service';
 
 const FRONT_LINK = 'https://firebasestorage.googleapis.com/v0/b/project-module-5.appspot.com/o/uploads%2F';
 const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
@@ -16,17 +17,7 @@ const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
   styleUrls: ['./new-song.component.css']
 })
 export class NewSongComponent implements OnInit {
-  singerList: Singer[] = [{
-    id: 1,
-    name: 'a',
-    create_date: 'aaa'
-  },
-    {
-      id: 2,
-      name: 'b',
-      create_date: 'bbb'
-    }
-  ];
+  singerList: Singer[] = [];
   categoryList: Category[] = [];
   isShowSuccess = false;
   message: string;
@@ -44,7 +35,8 @@ export class NewSongComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private http: HttpClient,
               private songsService: SongsService,
-              private uploadFileService: UploadFileService) {
+              private uploadFileService: UploadFileService,
+              private singerService: SingerService) {
   }
 
   ngOnInit(): void {
@@ -62,6 +54,7 @@ export class NewSongComponent implements OnInit {
       song_link: [''],
       song_author: ['', [Validators.required]]
     });
+    this.singerService.getAllSinger().subscribe(value => this.singerList = value);
   }
 
   setDefaultValue(): void {
