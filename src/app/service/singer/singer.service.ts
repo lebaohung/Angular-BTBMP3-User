@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class SingerService {
-  private readonly API_URL = '10.30.0.90:8080/api/singer';
+  private readonly API_URL = 'http://localhost:8080/api/singer';
   shouldRefresh = new Subject<any>();
   constructor(private httpClient: HttpClient) {
   }

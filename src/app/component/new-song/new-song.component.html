@@ -7,6 +7,9 @@
 <!-- ##### Breadcumb Area End ##### -->
 
 <!-- ##### Login Area Start ##### -->
+<div class="alert alert-success" role="alert" *ngIf="isShowSuccess">
+  {{ message }}
+</div>
 <section class="login-area section-padding-100">
   <div class="container">
     <div class="row justify-content-center">
@@ -14,7 +17,7 @@
         <div class="login-content">
           <!-- Create Song Form -->
           <div class="create-song-form">
-<!--            <form [formGroup]="createSongForm" (ngSubmit)="onSubmit()" >
+            <form [formGroup]="createSongForm" (ngSubmit)="onSubmit()" >
               <input type="hidden" formControlName="id"/>
               <div class="form-group">
                 <img [src]="url" alt="">
@@ -27,38 +30,36 @@
               </div>
               <div class="form-group">
                 <label for="songName">Tên bài hát:</label>
-                <input type="text" class="form-control" id="songName" placeholder="Nhập tên bài hát..." formControlName="name">
+                <input type="text" class="form-control rounded" id="songName" placeholder="Nhập tên bài hát..." formControlName="name">
                 <p style="color:red;" *ngIf="createSongForm.get('name').invalid && createSongForm.get('name').touched">Tên bài hát cần có ít nhất 6 ký tự.</p>
               </div>
               <div class="form-group">
                 <label for="author">Tên tác giả:</label>
-                <input type="text" class="form-control" id="author" formControlName="song_author">
+                <input type="text" class="form-control rounded" id="author" formControlName="song_author">
                 <p style="color:red;" *ngIf="createSongForm.get('song_author').invalid && createSongForm.get('song_author').touched">Bạn cần nhập tên tác giả.</p>
-              </div>-->
+              </div>
               <div class="form-group">
                 <label>Ca sĩ, diễn viên trình diễn:</label>
-                <select class="form-control">
+                <select class="form-control rounded">
                   <option *ngFor="let singer of singerList" [value]="singer.id">{{singer.name}}</option>
-<!--                  <option>Sơn Tùng MTP</option>-->
                 </select>
               </div>
-              <!--<div class="form-group">
+              <div class="form-group">
                 <label for="category_id">Thể loại</label>
-                <select class="form-control" id="category_id" formControlName="category_id">
-&lt;!&ndash;                  <option *ngFor="let cate of categoryList" [value]="cate.id">{{cate.name}}</option>&ndash;&gt;
-                  <option>Nhạc trẻ</option>
+                <select class="form-control rounded" id="category_id" formControlName="category">
+                  <option *ngFor="let cate of categoryList" [value]="cate">{{cate.name}}</option>
                 </select>
                 <p style="color:red;" *ngIf="createSongForm.get('category_id').invalid && createSongForm.get('category_id').touched">Xin hãy chọn thể loại.</p>
               </div>
               <div class="form-group">
                 <label for="file">Tải lên bài hát:</label>
                 <input type="file" id="file" (change)="selectFile($event)">
-                &lt;!&ndash;<p style="color:red;" *ngIf="createSongForm.get('uploadFile').invalid && createSongForm.get('uploadFile').touched">Bạn cần Upload File</p>
-                <button class="btn btn-success" [disabled]="!selectedFile" (click)="upload()">Upload</button>&ndash;&gt;
+                <!--<p style="color:red;" *ngIf="createSongForm.get('uploadFile').invalid && createSongForm.get('uploadFile').touched">Bạn cần Upload File</p>
+                <button class="btn btn-success" [disabled]="!selectedFile" (click)="upload()">Upload</button>-->
               </div>
               <div class="form-group">
                 <label for="description">Mô tả:</label>
-                <input type="text" class="form-control" id="description" formControlName="description">
+                <input type="text" class="form-control rounded" id="description" formControlName="description">
               </div>
               <div *ngIf="currentFileUpload" class="progress">
                 <div class="progress-bar progress-bar-info progress-bar-striped"
@@ -68,8 +69,8 @@
                   {{percentage}}%
                 </div>
               </div>
-              <button type="submit" [disabled]="!selectedFile" class="btn oneMusic-btn mt-30">Login</button>
-            </form>-->
+              <button type="submit" [disabled]="!selectedFile" class="btn oneMusic-btn mt-30">Create New Song</button>
+            </form>
           </div>
         </div>
       </div>

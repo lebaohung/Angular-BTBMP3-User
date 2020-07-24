@@ -7,6 +7,7 @@ import {UploadFileService} from '../../service/upload-file/upload-file.service';
 import {Singer} from '../../model/singer';
 import {Category} from '../../model/category';
 import {SingerService} from '../../service/singer/singer.service';
+import {CategoryService} from '../../service/category/category.service';
 
 const FRONT_LINK = 'https://firebasestorage.googleapis.com/v0/b/project-module-5.appspot.com/o/uploads%2F';
 const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
@@ -36,16 +37,17 @@ export class NewSongComponent implements OnInit {
               private http: HttpClient,
               private songsService: SongsService,
               private uploadFileService: UploadFileService,
-              private singerService: SingerService) {
+              private singerService: SingerService,
+              private categoryService: CategoryService) {
   }
 
   ngOnInit(): void {
     this.createSongForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(6)]],
-      category_id: ['', [Validators.required]],
+      category: ['', [Validators.required]],
       song_image: [''],
       id: [''],
-      user_id: [''],
+      user: [''],
       likes: [''],
       views: [''],
       creat_date: [''],
@@ -55,6 +57,7 @@ export class NewSongComponent implements OnInit {
       song_author: ['', [Validators.required]]
     });
     this.singerService.getAllSinger().subscribe(value => this.singerList = value);
+    this.categoryService.getAllCategory().subscribe(value => this.categoryList = value);
   }
 
   setDefaultValue(): void {
@@ -64,7 +67,7 @@ export class NewSongComponent implements OnInit {
     this.createSongForm.get('status').setValue(1);
     this.createSongForm.get('song_link').setValue(FRONT_LINK + this.file.name + BACK_LINK);
     this.createSongForm.get('song_image').setValue(FRONT_LINK + this.imageFile.name + BACK_LINK);
-    this.createSongForm.get('user_id').setValue(localStorage.getItem('Authorization'));
+    this.createSongForm.get('user').setValue(localStorage.getItem('user'));
   }
 
   displayImage(event): void {
