@@ -9,8 +9,7 @@ import {UserLogin} from '../model/user-login';
 })
 export class UsersService {
 
-  private readonly API_REGISTRATION_USER = 'http://localhost:8080/registration';
-  // private readonly API_LOGIN_GET_JWT = 'http://localhost:8080/login';
+  private readonly API_REGISTRATION_USER = 'http://localhost:8080/api/auth/signup';
   private readonly API_LOGIN_GET_JWT = 'http://localhost:8080/api/auth/signin';
 
   constructor(private http: HttpClient) { }

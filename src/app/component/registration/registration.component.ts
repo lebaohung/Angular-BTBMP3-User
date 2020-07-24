@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Users} from '../../model/users';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UsersService} from '../../service/users.service';
 
 function comparePassword(c: AbstractControl): any {
@@ -15,38 +14,30 @@ function comparePassword(c: AbstractControl): any {
 })
 export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
-  userFormData: FormData;
+  userJson: FormGroup = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+    email: new FormControl('')
+  });
 
   constructor(private formBuilder: FormBuilder, private usersService: UsersService) { }
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
-      idUsers: ['', [Validators.required]],
       username : ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       pw: this.formBuilder.group({
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmpassword: ['']
       }, {validators: comparePassword}),
-      fullname: ['', [Validators.required]],
-      phonenumber: ['', [Validators.required]]
     });
-    this.userFormData = new FormData();
   }
 
   onSubmitRegister(): void{
-    const user: Users = this.registrationForm.value;
-    this.userFormData.append('idUsers', '1');
-    this.userFormData.append('username', user.username);
-    this.userFormData.append('email', user.email);
-    this.userFormData.append('password', this.registrationForm.getRawValue().pw.password);
-    this.userFormData.append('confirmpassword', this.registrationForm.getRawValue().pw.confirmpassword);
-    this.userFormData.append('fullname', user.fullname);
-    this.userFormData.append('phonenumber', user.phonenumber);
-    this.usersService.registration(this.userFormData).subscribe(() => alert('OK'));
+    this.userJson.value.username = this.registrationForm.value.username;
+    this.userJson.value.password = this.registrationForm.getRawValue().pw.password;
+    this.userJson.value.email = this.registrationForm.value.email;
+    this.usersService.registration(this.userJson.value).subscribe(() => alert('OK'));
   }
 
-  // onChangeAvatar(event): void {
-  //   this.userFormData.append('avatar', event.target.files[0]);
-  // }
 }
