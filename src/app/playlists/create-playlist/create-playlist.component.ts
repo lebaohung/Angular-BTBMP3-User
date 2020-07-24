@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {FileUpload} from '../../model/file-upload';
 import {UploadFileService} from '../../service/upload-file/upload-file.service';
@@ -19,11 +19,12 @@ export class CreatePlaylistComponent implements OnInit {
   createPlaylist: FormGroup;
 
   imageFile: any;
+  isShowSuccess = false;
+  message: string;
   percentage: number;
   selectedImage: FileList;
   currentImageUpload: FileUpload;
   url: string | ArrayBuffer = '';
-  successMessage: string;
   failMessage: string;
 
   constructor(private uploadFileService: UploadFileService,
@@ -34,23 +35,27 @@ export class CreatePlaylistComponent implements OnInit {
   ngOnInit(): void {
     this.createPlaylist = new FormGroup({
       namePlaylist: new FormControl('', [Validators.required]),
-      uploadFile: new FormControl('', [Validators.required]),
+      image: new FormControl(''),
+      user: new FormControl(''),
     });
   }
 
   setDefaultValue(): void {
-    this.createPlaylist.get('likes').setValue(0);
-    this.createPlaylist.get('views').setValue(0);
-    this.createPlaylist.get('creat_date').setValue(new Date());
-    this.createPlaylist.get('song_image').setValue(FRONT_LINK + this.imageFile.name + BACK_LINK);
-    this.createPlaylist.get('user_id').setValue(localStorage.getItem('Authorization'));
+    console.log(this.createPlaylist.get('image'));
+    this.createPlaylist.get('image').setValue(FRONT_LINK + this.imageFile.name + BACK_LINK);
+    this.createPlaylist.get('user').setValue(localStorage.getItem('user'));
+    console.log(this.createPlaylist.get('user'));
   }
 
-  create(playlist){
-    this.playlistService.create(playlist.value).subscribe(() => {
-      this.successMessage = 'Create new Success';
+  create(): void {
+    this.upload();
+    this.setDefaultValue();
+    this.playlistService.create(this.createPlaylist.value).subscribe(result => {
+      this.isShowSuccess = true;
+      this.message = 'Playlist has been created successfully!';
+      this.playlistService.shouldRefresh.next();
     }, () => {
-      this.failMessage = 'New creation failed';
+      this.failMessage = 'Failed to create new playlist';
     });
   }
 
