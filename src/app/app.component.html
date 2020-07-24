@@ -57,11 +57,11 @@
                 </div>
 
                 <div class="login-register-btn mr-50">
-                  <a *ngIf="!isLoggedIn" routerLink="/login" id="loginBtn">Login</a>
+                  <a *ngIf="isLoggedIn" (click)="logOut()">Logout</a>
                 </div>
 
                 <div class="login-register-btn mr-50">
-                  <button *ngIf="isLoggedIn" (click)="logOut()">Logout</button>
+                  <a *ngIf="!isLoggedIn" routerLink="/login" id="loginBtn">Login</a>
                 </div>
 
                 <div class="login-register-btn mr-50">
