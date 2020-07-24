@@ -36,17 +36,10 @@ export class RegistrationComponent implements OnInit {
 
   onSubmitRegister(): void{
     const user: Users = this.registrationForm.value;
-    this.userFormData.append('idUsers', '1');
     this.userFormData.append('username', user.username);
     this.userFormData.append('email', user.email);
     this.userFormData.append('password', this.registrationForm.getRawValue().pw.password);
-    this.userFormData.append('confirmpassword', this.registrationForm.getRawValue().pw.confirmpassword);
-    this.userFormData.append('fullname', user.fullname);
-    this.userFormData.append('phonenumber', user.phonenumber);
     this.usersService.registration(this.userFormData).subscribe(() => alert('OK'));
   }
 
-  // onChangeAvatar(event): void {
-  //   this.userFormData.append('avatar', event.target.files[0]);
-  // }
 }
