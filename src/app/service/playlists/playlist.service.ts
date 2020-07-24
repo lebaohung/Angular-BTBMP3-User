@@ -1,17 +1,29 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Iplaylist} from '../playlists/create-playlist/playlist';
+import {Iplaylist} from '../../playlists/create-playlist/playlist';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlaylistService {
-  private readonly API_URL = 'http://localhost:8080/';
+  private readonly API_URL = 'http://localhost:8080/playlist';
   constructor(private httpClient: HttpClient) { }
 
   getAll(): Observable<any>{
     return this.httpClient.get(this.API_URL);
+  }
+
+  getTopView(): Observable<Iplaylist[]>{
+    return this.httpClient.get<Iplaylist[]>(this.API_URL + '/topView');
+  }
+
+  getTopLike(): Observable<Iplaylist[]>{
+    return this.httpClient.get<Iplaylist[]>(this.API_URL + '/topLike');
+  }
+
+  getTopDate(): Observable<Iplaylist[]>{
+    return this.httpClient.get<Iplaylist[]>(this.API_URL + '/topDate');
   }
 
   getById(id: number): Observable<any>{
@@ -19,7 +31,7 @@ export class PlaylistService {
   }
 
   create(playlist: Iplaylist): Observable<Iplaylist>{
-    return this.httpClient.post<Iplaylist>(this.API_URL, playlist);
+    return this.httpClient.post<Iplaylist>(this.API_URL + '/creates', playlist);
   }
 
   update(playlist: Iplaylist): Observable<Iplaylist>{
