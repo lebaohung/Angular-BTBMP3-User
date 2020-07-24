@@ -16,40 +16,34 @@
           <!-- Login Form -->
           <div class="login-form">
             <form [formGroup]="registrationForm" (ngSubmit)="onSubmitRegister()">
-              <input type="hidden" formControlName="idUsers" value="1">
+
               <div class="form-group">
                 <label for="exampleInputEmail1">Username</label>
-                <input formControlName="username" type="text" class="form-control">
+                <input formControlName="username" type="text" class="form-control rounded">
                 <small style="color:red; font-style: italic" *ngIf="registrationForm.get('username').invalid && registrationForm.get('username').touched">Username is required</small>
               </div>
+
               <ng-container formGroupName="pw">
               <div class="form-group">
                 <label for="password">Password</label>
-                <input formControlName="password" type="password" class="form-control" id="password">
+                <input formControlName="password" type="password" class="form-control rounded" id="password">
                 <small style="color:red; font-style: italic" *ngIf="registrationForm.get('pw').get('password').invalid && registrationForm.get('pw').get('password').touched">Password must include at least 6 character</small>
               </div>
+
               <div class="form-group">
                 <label for="confirmPass">Confirm Password</label>
-                <input formControlName="confirmpassword" type="password" class="form-control" id="confirmPass">
+                <input formControlName="confirmpassword" type="password" class="form-control rounded" id="confirmPass">
                 <small style="color:red; font-style: italic" *ngIf="registrationForm.hasError('passwordnotmatch', ['pw']) && registrationForm.get('pw').touched">Password not match</small>
               </div>
               </ng-container>
+
               <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="example@btbmp3.com">
+                <input formControlName="email" type="email" class="form-control rounded" id="exampleInputEmail1" placeholder="example@btbmp3.com">
                 <small style="color:red; font-style: italic" *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched">Email is invalid</small>
               </div>
-              <div class="form-group">
-                <label for="fullname">Full name</label>
-                <input formControlName="fullname" type="text" class="form-control" id="fullname">
-                <small style="color:red; font-style: italic" *ngIf="registrationForm.get('fullname').invalid && registrationForm.get('fullname').touched">Full Name is required</small>
-              </div>
-              <div class="form-group">
-                <label for="phonenumber">Phone Number</label>
-                <input formControlName="phonenumber" type="text" class="form-control" id="phonenumber">
-                <small style="color:red; font-style: italic" *ngIf="registrationForm.get('phonenumber').invalid && registrationForm.get('phonenumber').touched">Phone number is required</small>
-              </div>
-              <button class="btn oneMusic-btn mt-30">Register</button>
+
+              <button class="btn oneMusic-btn mt-30 rounded">Register</button>
             </form>
           </div>
         </div>

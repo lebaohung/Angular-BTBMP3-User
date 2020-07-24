@@ -2,7 +2,7 @@ export interface Song {
   id: number;
   name: string;
   category_id: number;
-  user_id: number;
+  user: number;
   likes: number;
   views: number;
   creat_date: string;
