@@ -20,6 +20,10 @@ const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
 export class NewSongComponent implements OnInit {
   singerList: Singer[] = [];
   categoryList: Category[] = [];
+  selectedCategory: Category = {
+    id: 1,
+    name: 'Yeah'
+  };
   isShowSuccess = false;
   message: string;
   file: any;
@@ -65,9 +69,10 @@ export class NewSongComponent implements OnInit {
     this.createSongForm.get('views').setValue(0);
     this.createSongForm.get('creat_date').setValue(new Date());
     this.createSongForm.get('status').setValue(1);*/
-    this.createSongForm.get('song_link').setValue(FRONT_LINK + this.file.name + BACK_LINK);
-    this.createSongForm.get('song_image').setValue(FRONT_LINK + this.imageFile.name + BACK_LINK);
-    this.createSongForm.get('user').setValue(localStorage.getItem('user'));
+    // this.createSongForm.get('song_link').setValue(FRONT_LINK + this.file.name + BACK_LINK);
+    // this.createSongForm.get('song_image').setValue(FRONT_LINK + this.imageFile.name + BACK_LINK);
+    // this.createSongForm.get('user').setValue(localStorage.getItem('user'));
+    this.createSongForm.get('category').setValue(this.selectedCategory);
   }
 
   displayImage(event): void {
@@ -122,5 +127,14 @@ export class NewSongComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  test(a): void {
+    this.setDefaultValue();
+    // console.log(a);
+    // this.categoryService.getCategoryById(a).subscribe( result => {
+    //   this.selectedCategory = result;
+    // });
+    console.log(this.createSongForm);
   }
 }
