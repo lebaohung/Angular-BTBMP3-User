@@ -4,5 +4,6 @@ export interface Iplaylist {
   views: number;
   likes: number;
   image: string;
-  createDate: string;
+  create_date: string;
+  user_id: number;
 }
