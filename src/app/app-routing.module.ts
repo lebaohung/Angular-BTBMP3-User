@@ -9,7 +9,6 @@ import {EditSongComponent} from './component/edit-song/edit-song.component';
 import {PlaylistComponent} from './playlists/playlist/playlist.component';
 import {MyPlaylistComponent} from './playlists/my-playlist/my-playlist.component';
 import {DashboardAdminComponent} from './component/dashboard-admin/dashboard-admin.component';
-import {EditPlaylistComponent} from './playlists/edit-playlist/edit-playlist.component';
 
 const routes: Routes = [
   { path: '', component: MainViewComponent },
@@ -18,7 +17,6 @@ const routes: Routes = [
   { path: 'newSong', component: NewSongComponent},
   { path: 'updateSong', component: EditSongComponent},
   { path: 'playlist', component: PlaylistComponent},
-  { path: 'editPlaylist', component: EditPlaylistComponent},
   { path: 'myPlaylist', component: MyPlaylistComponent},
   { path: 'dashboard', component: DashboardAdminComponent},
   {path: 'edit/:id', component: EditSongComponent}
