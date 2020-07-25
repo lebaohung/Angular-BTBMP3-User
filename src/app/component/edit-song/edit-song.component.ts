@@ -7,6 +7,7 @@ import {Singer} from '../../model/singer';
 import {Category} from '../../model/category';
 import {FileUpload} from '../../model/file-upload';
 import {CategoryService} from '../../service/category/category.service';
+import {UploadFileService} from '../../service/upload-file/upload-file.service';
 
 const FRONT_LINK = 'https://firebasestorage.googleapis.com/v0/b/project-module-5.appspot.com/o/uploads%2F';
 const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
@@ -36,33 +37,88 @@ export class EditSongComponent implements OnInit {
   selectingSinger: Singer;
   songId: number;
   url: string | ArrayBuffer = '';
+  editSongForm: FormGroup;
 
   constructor(private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
               private songsService: SongsService,
               private singerService: SingerService,
-              private categoryService: CategoryService) { }
-
-  editSongForm: FormGroup = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(6)]],
-    category: ['', [Validators.required]],
-    songImage: [''],
-    user: [''],
-    description: [''],
-    songLink: [''],
-    songAuthor: ['', [Validators.required]]
-  });
+              private categoryService: CategoryService,
+              private uploadFileService: UploadFileService) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe( params => {
-      this.songId = params.id;
-      this.singerService.getSingerById(1).subscribe(value => this.selectingSinger = value);
-      this.songsService.getSongById(this.songId).subscribe( result => {
-        this.editSongForm.setValue(result);
-      });
+    this.editSongForm = this.fb.group({
+      id: [''],
+      name: ['', [Validators.required, Validators.minLength(6)]],
+      category: ['', [Validators.required]],
+      songImage: [''],
+      user: [''],
+      description: [''],
+      songLink: [''],
+      songAuthor: ['', [Validators.required]]
     });
+    // this.activatedRoute.params.subscribe( params => {
+    //   this.songId = params.id;
+    this.singerService.getSingerById(1).subscribe(value => this.selectingSinger = value);
+    console.log(this.selectingSinger)
+    this.songsService.getSongById(1).subscribe( result => {this.editSongForm.setValue(result);});
+    console.log(this.editSongForm);
+    // });
     this.singerService.getAllSinger().subscribe(value => this.singerList = value);
     this.categoryService.getAllCategory().subscribe(value => this.categoryList = value);
+    this.url = this.editSongForm.get('songImage').value;
+    console.log(this.url);
+  }
+
+  displayImage(event): void {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.url = event.target.result;
+      };
+      console.log(this.url);
+    }
+    this.selectedImage = event.target.files;
+  }
+
+  selectFile(event): void {
+    this.selectedFile = event.target.files;
+  }
+
+  upload(): void {
+    this.file = this.selectedFile.item(0);
+    this.imageFile = this.selectedImage.item(0);
+    this.selectedFile = undefined;
+    this.selectedImage = undefined;
+    this.currentFileUpload = new FileUpload(this.file);
+    this.currentImageUpload = new FileUpload(this.imageFile);
+    this.uploadFileService.pushFileToStorage(this.currentFileUpload).subscribe(
+      percentage => {
+        this.percentage = Math.round(percentage);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    this.uploadFileService.pushFileToStorage(this.currentImageUpload).subscribe(
+      percentage => {
+        this.percentage = Math.round(percentage);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  changeCategory(value): void {
+    this.categoryService.getCategoryById(value).subscribe(result => {this.selectedCategory = result; console.log(this.selectedCategory); });
+  }
+
+  changeSingerId(value): void {
+    this.selectedSingerId = value;
   }
 
   onSubmit(): void {

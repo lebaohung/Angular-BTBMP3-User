@@ -1,13 +1,9 @@
-<!--
- ##### Breadcumb Area Start #####
 <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(assets/img/bg-img/breadcumb.jpg);">
   <div class="bradcumbContent">
     <h2>Edit Song</h2>
   </div>
 </section>
- ##### Breadcumb Area End #####
 
- ##### Login Area Start #####
 <div class="alert alert-success" role="alert" *ngIf="isShowSuccess">
   {{ message }}
 </div>
@@ -16,10 +12,9 @@
     <div class="row justify-content-center">
       <div class="col-12 col-lg-8">
         <div class="login-content">
-           Create Song Form
           <div class="create-song-form">
             <form [formGroup]="editSongForm" (ngSubmit)="onSubmit()" >
-                            <input type="hidden" formControlName="id"/>
+              <input type="hidden" formControlName="id"/>
               <div class="form-group">
                 <img [src]="url" alt="">
                 <br>
@@ -54,13 +49,13 @@
                     {{cate.name}}
                   </option>
                 </select>
-                                <button (click)="test()">Test</button>
+<!--                <button (click)="test()">Test</button>-->
                 <p style="color:red;" *ngIf="editSongForm.get('category').invalid && editSongForm.get('category').touched">Xin hãy chọn thể loại.</p>
               </div>
               <div class="form-group">
                 <label for="file">Tải lên bài hát:</label>
                 <input type="file" id="file" (change)="selectFile($event)">
-                <p style="color:red;" *ngIf="createSongForm.get('uploadFile').invalid && createSongForm.get('uploadFile').touched">Bạn cần Upload File</p>
+                <p style="color:red;" *ngIf="editSongForm.get('uploadFile').invalid && editSongForm.get('uploadFile').touched">Bạn cần Upload File</p>
                 <button class="btn btn-success" [disabled]="!selectedFile" (click)="upload()">Upload</button>
               </div>
               <div class="form-group">
@@ -75,7 +70,7 @@
                   {{percentage}}%
                 </div>
               </div>
-              <button type="submit" [disabled]="!selectedFile" class="btn oneMusic-btn mt-30">Create New Song</button>
+              <button type="submit" [disabled]="!selectedFile" class="btn oneMusic-btn mt-30">Update Song</button>
             </form>
           </div>
         </div>
@@ -83,6 +78,4 @@
     </div>
   </div>
 </section>
- ##### Login Area End #####
 
--->
