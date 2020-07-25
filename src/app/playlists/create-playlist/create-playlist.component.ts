@@ -5,6 +5,7 @@ import {UploadFileService} from '../../service/upload-file/upload-file.service';
 import {SongsService} from '../../service/song/songs.service';
 import {PlaylistService} from '../../service/playlists/playlist.service';
 import {Iplaylist} from './playlist';
+import {Users} from '../../model/users';
 
 const FRONT_LINK = 'https://firebasestorage.googleapis.com/v0/b/project-module-5.appspot.com/o/uploads%2F';
 const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
@@ -17,7 +18,15 @@ const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
 export class CreatePlaylistComponent implements OnInit {
 
   createPlaylist: FormGroup;
-
+  user: Users = {
+    username: '',
+    email: '',
+    password: '',
+    roles: {
+      id: 0,
+      name: ''
+    }
+  };
   imageFile: any;
   isShowSuccess = false;
   message: string;
@@ -38,12 +47,13 @@ export class CreatePlaylistComponent implements OnInit {
       image: new FormControl(''),
       user: new FormControl(''),
     });
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   setDefaultValue(): void {
     console.log(this.createPlaylist.get('image'));
     this.createPlaylist.get('image').setValue(FRONT_LINK + this.imageFile.name + BACK_LINK);
-    this.createPlaylist.get('user').setValue(localStorage.getItem('user'));
+    this.createPlaylist.get('user').setValue(this.user);
     console.log(this.createPlaylist.get('user'));
   }
 
