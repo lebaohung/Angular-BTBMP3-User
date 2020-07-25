@@ -1,10 +1,11 @@
 import {Category} from './category';
+import {Users} from './users';
 
 export interface Song {
   id: number;
   name: string;
   category: Category;
-  user: number;
+  user: Users;
   likes: number;
   views: number;
   creat_date: string;

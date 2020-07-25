@@ -8,6 +8,7 @@ import {Category} from '../../model/category';
 import {FileUpload} from '../../model/file-upload';
 import {CategoryService} from '../../service/category/category.service';
 import {UploadFileService} from '../../service/upload-file/upload-file.service';
+import {Users} from '../../model/users';
 
 const FRONT_LINK = 'https://firebasestorage.googleapis.com/v0/b/project-module-5.appspot.com/o/uploads%2F';
 const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
@@ -20,6 +21,15 @@ const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
 export class EditSongComponent implements OnInit {
   singerList: Singer[] = [];
   categoryList: Category[] = [];
+  user: Users = {
+    username: '',
+    email: '',
+    password: '',
+    roles: {
+      id: 0,
+      name: ''
+    }
+  };
   selectedCategory: Category = {
     id: 0,
     name: ''
@@ -53,15 +63,19 @@ export class EditSongComponent implements OnInit {
       category: ['', [Validators.required]],
       songImage: [''],
       user: [''],
+      likes: [''],
+      views: [''],
+      creatDate: [''],
+      status: [''],
       description: [''],
       songLink: [''],
       songAuthor: ['', [Validators.required]]
     });
     // this.activatedRoute.params.subscribe( params => {
     //   this.songId = params.id;
-    this.singerService.getSingerById(1).subscribe(value => this.selectingSinger = value);
-    console.log(this.selectingSinger)
-    this.songsService.getSongById(1).subscribe( result => {this.editSongForm.setValue(result);});
+    // this.singerService.getSingerById(1).subscribe(value => this.selectingSinger = value);
+    // console.log(this.selectingSinger);
+    this.songsService.getSongById(29).subscribe( result => {this.editSongForm.setValue(result); });
     console.log(this.editSongForm);
     // });
     this.singerService.getAllSinger().subscribe(value => this.singerList = value);

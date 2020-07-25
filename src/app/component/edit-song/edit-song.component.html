@@ -49,14 +49,12 @@
                     {{cate.name}}
                   </option>
                 </select>
-<!--                <button (click)="test()">Test</button>-->
                 <p style="color:red;" *ngIf="editSongForm.get('category').invalid && editSongForm.get('category').touched">Xin hãy chọn thể loại.</p>
               </div>
               <div class="form-group">
                 <label for="file">Tải lên bài hát:</label>
                 <input type="file" id="file" (change)="selectFile($event)">
                 <p style="color:red;" *ngIf="editSongForm.get('uploadFile').invalid && editSongForm.get('uploadFile').touched">Bạn cần Upload File</p>
-                <button class="btn btn-success" [disabled]="!selectedFile" (click)="upload()">Upload</button>
               </div>
               <div class="form-group">
                 <label for="description">Mô tả:</label>
