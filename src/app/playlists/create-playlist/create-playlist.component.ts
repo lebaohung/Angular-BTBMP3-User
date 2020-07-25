@@ -34,7 +34,7 @@ export class CreatePlaylistComponent implements OnInit {
 
   ngOnInit(): void {
     this.createPlaylist = new FormGroup({
-      namePlaylist: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
       image: new FormControl(''),
       user: new FormControl(''),
     });

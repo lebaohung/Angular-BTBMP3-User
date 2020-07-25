@@ -10,8 +10,8 @@
 
 <form [formGroup]="createPlaylist"  (ngSubmit)="create()">
   <div class="form-group">
-    <input type="text" class="form-control rounded"  placeholder="Playlist Name" formControlName="namePlaylist">
-    <p style="color: red" *ngIf="createPlaylist.get('namePlaylist').invalid && createPlaylist.get('namePlaylist').touched">
+    <input type="text" class="form-control rounded"  placeholder="Playlist Name" formControlName="name">
+    <p style="color: red" *ngIf="createPlaylist.get('name').invalid && createPlaylist.get('name').touched">
       name playlist not blank
     </p>
   </div>
