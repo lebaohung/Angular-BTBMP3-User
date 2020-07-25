@@ -1,7 +1,9 @@
+import {Category} from './category';
+
 export interface Song {
   id: number;
   name: string;
-  category_id: number;
+  category: Category;
   user: number;
   likes: number;
   views: number;

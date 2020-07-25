@@ -18,7 +18,7 @@
           <!-- Create Song Form -->
           <div class="create-song-form">
             <form [formGroup]="createSongForm" (ngSubmit)="onSubmit()" >
-              <input type="hidden" formControlName="id"/>
+<!--              <input type="hidden" formControlName="id"/>-->
               <div class="form-group">
                 <img [src]="url" alt="">
                 <br>
@@ -46,9 +46,12 @@
               </div>
               <div class="form-group">
                 <label for="category_id">Thể loại</label>
-                <select class="form-control rounded" id="category_id" formControlName="category">
-                  <option *ngFor="let cate of categoryList" [value]="cate">{{cate.name}}</option>
+                <select class="form-control rounded" id="category_id" #option (change)="test(option.value)">
+                  <option *ngFor="let cate of categoryList" [value]="cate.id">
+                    {{cate.name}}
+                  </option>
                 </select>
+<!--                <button (click)="test()">Test</button>-->
                 <p style="color:red;" *ngIf="createSongForm.get('category').invalid && createSongForm.get('category').touched">Xin hãy chọn thể loại.</p>
               </div>
               <div class="form-group">
