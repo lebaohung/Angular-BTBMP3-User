@@ -674,6 +674,11 @@ img {
       text-transform: uppercase;
       -webkit-transition-duration: 500ms;
       transition-duration: 500ms; }
+.single-event-area .event-text h5 {
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms; }
     .single-event-area .event-text .event-meta-data {
       position: relative;
       margin-bottom: 30px; }
@@ -714,6 +719,10 @@ img {
       .single-event-area:hover .event-text .event-meta-data a, .single-event-area:focus .event-text h4,
       .single-event-area:focus .event-text .event-meta-data a {
         color: #000000; }
+.single-event-area:hover .event-text h5,
+.single-event-area:hover .event-text .event-meta-data a, .single-event-area:focus .event-text h5,
+.single-event-area:focus .event-text .event-meta-data a {
+  color: #000000; }
       .single-event-area:hover .event-text .see-more-btn, .single-event-area:focus .event-text .see-more-btn {
         border-bottom-color: #000000;
         color: #000000; }

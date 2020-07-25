@@ -11,12 +11,19 @@ export class MainViewComponent implements OnInit {
 
 
   constructor(private playlistService: PlaylistService) { }
-
+  playListTopView: Iplaylist[] = [];
   playListTopDate: Iplaylist[] = [];
 
   ngOnInit(): void {
     this.playlistService.getTopDate().subscribe((result) => {
       this.playListTopDate = result;
+      console.log(result);
+    },error => {
+      console.log(error);
+    });
+
+    this.playlistService.getTopView().subscribe((result) => {
+      this.playListTopView = result;
       console.log(result);
     },error => {
       console.log(error);
