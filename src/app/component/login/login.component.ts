@@ -31,8 +31,6 @@ export class LoginComponent implements OnInit {
   onSubmitLogin(): void {
     const userLogin: UserLogin = this.loginForm.value;
     this.usersService.login(userLogin).subscribe(result => {
-      /*localStorage.setItem('access_token', result.access_token);*/
-     /* localStorage.setItem('access_token', result.token);*/
       localStorage.removeItem('token');
       localStorage.setItem('token', result.token);
       localStorage.removeItem('user');
