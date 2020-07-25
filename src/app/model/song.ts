@@ -8,10 +8,10 @@ export interface Song {
   user: Users;
   likes: number;
   views: number;
-  creat_date: string;
-  song_image: string;
+  creatDate: string;
+  songImage: string;
   status: number;
-  description?: string;
-  song_link: string;
-  song_author: string;
+  description: string;
+  songLink: string;
+  songAuthor: string;
 }

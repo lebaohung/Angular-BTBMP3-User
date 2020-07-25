@@ -20,4 +20,8 @@ export class SongsService {
   getSongById(id: number): Observable<any>{
     return this.httpClient.get(this.API_URL + '/' + id);
   }
+
+  getSingerOfThisSong(id: number): Observable<any>{
+    return this.httpClient.get(this.API_URL + '/singerandsong/' + id);
+  }
 }
