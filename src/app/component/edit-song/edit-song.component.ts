@@ -9,8 +9,6 @@ import {FileUpload} from '../../model/file-upload';
 import {CategoryService} from '../../service/category/category.service';
 import {UploadFileService} from '../../service/upload-file/upload-file.service';
 import {Users} from '../../model/users';
-import {forEachToken} from 'tslint';
-import {of} from 'rxjs';
 
 const FRONT_LINK = 'https://firebasestorage.googleapis.com/v0/b/project-module-5.appspot.com/o/uploads%2F';
 const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
@@ -21,6 +19,7 @@ const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
   styleUrls: ['./edit-song.component.css']
 })
 export class EditSongComponent implements OnInit {
+  imageStatus = false;
   singerList: Singer[] = [];
   categoryList: Category[] = [];
   user: Users = {
@@ -104,6 +103,7 @@ export class EditSongComponent implements OnInit {
   }
 
   displayImage(event): void {
+    this.imageStatus = true;
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
 
@@ -131,15 +131,24 @@ export class EditSongComponent implements OnInit {
     );
   }
 
-  /*changeCategory(value): void {
+  changeCategory(value): void {
     this.categoryService.getCategoryById(value).subscribe(result => {this.selectedCategory = result; console.log(this.selectedCategory); });
   }
 
   changeSingerId(value): void {
     this.selectedSingerId = value;
-  }*/
+  }
 
   onSubmit(): void {
+    if (this.imageStatus === true) {
+      this.upload();
+    }
+    console.log(this.editSongForm.value);
+    this.songsService.update(this.editSongForm.value, this.selectedSingerId).subscribe( result => {
+      this.isShowSuccess = true;
+      this.message = 'Song was updated successfully!';
+      this.songsService.shouldRefresh.next();
+    });
   }
 }
 
