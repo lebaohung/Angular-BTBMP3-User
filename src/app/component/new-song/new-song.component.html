@@ -35,18 +35,20 @@
               </div>
               <div class="form-group">
                 <label for="author">Tên tác giả:</label>
-                <input type="text" class="form-control rounded" id="author" formControlName="song_author">
-                <p style="color:red;" *ngIf="createSongForm.get('song_author').invalid && createSongForm.get('song_author').touched">Bạn cần nhập tên tác giả.</p>
+                <input type="text" class="form-control rounded" id="author" formControlName="songAuthor">
+                <p style="color:red;" *ngIf="createSongForm.get('songAuthor').invalid && createSongForm.get('songAuthor').touched">Bạn cần nhập tên tác giả.</p>
               </div>
               <div class="form-group">
                 <label>Ca sĩ, diễn viên trình diễn:</label>
-                <select class="form-control rounded">
+                <select class="form-control rounded" #singerId (change)="changeSingerId(singerId.value)">
+                  <option selected>. . .</option>
                   <option *ngFor="let singer of singerList" [value]="singer.id">{{singer.name}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="category_id">Thể loại</label>
-                <select class="form-control rounded" id="category_id" #option (change)="test(option.value)">
+                <select class="form-control rounded" id="category_id" #option (change)="changeCategory(option.value)">
+                  <option selected>. . .</option>
                   <option *ngFor="let cate of categoryList" [value]="cate.id">
                     {{cate.name}}
                   </option>
