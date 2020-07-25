@@ -23,6 +23,7 @@ import { MyPlaylistComponent } from './playlists/my-playlist/my-playlist.compone
 import {RouterModule} from '@angular/router';
 import { DashboardAdminComponent } from './component/dashboard-admin/dashboard-admin.component';
 import { LogoutComponent } from './component/logout/logout.component';
+import { EditPlaylistComponent } from './playlists/edit-playlist/edit-playlist.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { LogoutComponent } from './component/logout/logout.component';
     MyPlaylistComponent,
     DashboardAdminComponent,
     LogoutComponent,
+    EditPlaylistComponent,
   ],
   imports: [
     BrowserModule,
