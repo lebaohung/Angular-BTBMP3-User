@@ -7,10 +7,10 @@ import {Observable, Subject} from 'rxjs';
   providedIn: 'root'
 })
 export class SongsService {
-  private readonly API_URL = 'http://localhost:8080/song';
+  private readonly API_URL = 'http://localhost:8080/api/song';
   shouldRefresh = new Subject<any>();
   constructor(private httpClient: HttpClient) { }
-  create(song: Song, singerId: number): Observable<Song>{
+  create(song: Song, singerId: string): Observable<Song>{
     return this.httpClient.post<Song>(this.API_URL + '/' + singerId , song);
   }
   update(song: Song): Observable<Song>{
