@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'updateSong', component: EditSongComponent},
   { path: 'playlist', component: PlaylistComponent},
   { path: 'myPlaylist', component: MyPlaylistComponent},
-  { path: 'dashboard', component: DashboardAdminComponent}
+  { path: 'dashboard', component: DashboardAdminComponent},
+  {path: 'edit/:id', component: EditSongComponent}
 ];
 
 @NgModule({

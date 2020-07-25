@@ -8,6 +8,8 @@ import {Singer} from '../../model/singer';
 import {Category} from '../../model/category';
 import {SingerService} from '../../service/singer/singer.service';
 import {CategoryService} from '../../service/category/category.service';
+import {Users} from '../../model/users';
+import {Role} from '../../model/role';
 
 const FRONT_LINK = 'https://firebasestorage.googleapis.com/v0/b/project-module-5.appspot.com/o/uploads%2F';
 const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
@@ -20,15 +22,24 @@ const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
 export class NewSongComponent implements OnInit {
   singerList: Singer[] = [];
   categoryList: Category[] = [];
+  user: Users = {
+    username: '',
+    email: '',
+    password: '',
+    roles: {
+      id: 0,
+      name: ''
+    }
+  };
   selectedCategory: Category = {
-    id: 1,
-    name: 'Yeah'
+    id: 0,
+    name: ''
   };
   isShowSuccess = false;
   message: string;
   file: any;
   imageFile: any;
-  selectedSingerId: any;
+  selectedSingerId: string;
   selectedFile: FileList;
   selectedImage: FileList;
   currentFileUpload: FileUpload;
@@ -49,29 +60,22 @@ export class NewSongComponent implements OnInit {
     this.createSongForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(6)]],
       category: ['', [Validators.required]],
-      song_image: [''],
-      // id: [''],
+      songImage: [''],
       user: [''],
-      // likes: [''],
-      // views: [''],
-      // creat_date: [''],
-      // status: [''],
       description: [''],
-      song_link: [''],
-      song_author: ['', [Validators.required]]
+      songLink: [''],
+      songAuthor: ['', [Validators.required]]
     });
     this.singerService.getAllSinger().subscribe(value => this.singerList = value);
     this.categoryService.getAllCategory().subscribe(value => this.categoryList = value);
+    this.user = JSON.parse(localStorage.getItem('user'));
+    console.log(this.user);
   }
 
   setDefaultValue(): void {
-    /*this.createSongForm.get('likes').setValue(0);
-    this.createSongForm.get('views').setValue(0);
-    this.createSongForm.get('creat_date').setValue(new Date());
-    this.createSongForm.get('status').setValue(1);*/
-    // this.createSongForm.get('song_link').setValue(FRONT_LINK + this.file.name + BACK_LINK);
-    // this.createSongForm.get('song_image').setValue(FRONT_LINK + this.imageFile.name + BACK_LINK);
-    // this.createSongForm.get('user').setValue(localStorage.getItem('user'));
+    this.createSongForm.get('songLink').setValue(FRONT_LINK + this.file.name + BACK_LINK);
+    this.createSongForm.get('songImage').setValue(FRONT_LINK + this.imageFile.name + BACK_LINK);
+    this.createSongForm.get('user').setValue(this.user);
     this.createSongForm.get('category').setValue(this.selectedCategory);
   }
 
@@ -129,12 +133,11 @@ export class NewSongComponent implements OnInit {
     );
   }
 
-  test(a): void {
-    this.setDefaultValue();
-    // console.log(a);
-    // this.categoryService.getCategoryById(a).subscribe( result => {
-    //   this.selectedCategory = result;
-    // });
-    console.log(this.createSongForm);
+  changeCategory(value): void {
+    this.categoryService.getCategoryById(value).subscribe(result => {this.selectedCategory = result; console.log(this.selectedCategory); });
+  }
+
+  changeSingerId(value): void {
+    this.selectedSingerId = value;
   }
 }
