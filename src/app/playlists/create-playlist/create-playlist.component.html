@@ -9,8 +9,16 @@
 </div>
 
 <form [formGroup]="createPlaylist"  (ngSubmit)="create()">
+<!--  <div *ngIf="createPlaylist" class="progress">-->
+<!--    <div class="progress-bar progress-bar-info progress-bar-striped"-->
+<!--         role="progressbar" attr.aria-valuenow="{{percentage}}"-->
+<!--         aria-valuemin="0" aria-valuemax="100"-->
+<!--         [ngStyle]="{width:percentage+'%'}">-->
+<!--      {{percentage}}%-->
+<!--    </div>-->
+<!--  </div>-->
   <div class="form-group">
-    <input type="text" class="form-control rounded"  placeholder="Playlist Name" formControlName="name">
+    <input style="margin-top: 20px" type="text" class="form-control rounded"  placeholder="Playlist Name" formControlName="name">
     <p style="color: red" *ngIf="createPlaylist.get('name').invalid && createPlaylist.get('name').touched">
       name playlist not blank
     </p>
@@ -18,10 +26,6 @@
   <div class="form-group">
     <label for="image">Upload playlist images:</label>
     <input type="file" id="image" (change)="displayImage($event)">
-
-<!--    <label style="cursor: pointer; margin: auto" for="image"><i class="fa fa-upload" aria-hidden="true"></i> Upload playlist images</label>-->
-<!--    <input type="file" id="image" (change)="displayImage($event)" accept="image/*" hidden>-->
-<!--    <p style="color:red;" *ngIf="createPlaylist.get('uploadFile').invalid && createPlaylist.get('uploadFile').touched">You need to Upload File</p>-->
   </div>
-  <button type="submit" class="btn btn-primary">Create Playlist</button>
+  <button  type="submit" class="btn btn-primary">Create Playlist</button>
 </form>
