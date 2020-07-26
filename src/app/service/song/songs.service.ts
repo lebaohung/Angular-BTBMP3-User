@@ -13,11 +13,15 @@ export class SongsService {
   create(song: Song, singerId: string): Observable<Song>{
     return this.httpClient.post<Song>(this.API_URL + '/' + singerId , song);
   }
-  update(song: Song): Observable<Song>{
-    return this.httpClient.put<Song>(this.API_URL + '/' + song.id, song
+  update(song: Song, singerId: string): Observable<Song>{
+    return this.httpClient.put<Song>(this.API_URL + '/edit/' + singerId , song
     );
   }
   getSongById(id: number): Observable<any>{
     return this.httpClient.get(this.API_URL + '/' + id);
+  }
+
+  getSingerOfThisSong(id: number): Observable<any>{
+    return this.httpClient.get(this.API_URL + '/singerandsong/' + id);
   }
 }
