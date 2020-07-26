@@ -1,16 +1,40 @@
-<!-- Single Top Item -->
-<div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="100ms">
-  <div class="first-part d-flex align-items-center">
-    <div class="thumbnail">
-      <img src="../../../assets/img/bg-img/wt7.jpg" alt="">
-    </div>
-    <div class="content-">
-      <h6>Sam Smith</h6>
-      <p>Underground</p>
-    </div>
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(assets/img/bg-img/breadcumb3.jpg);">
+  <div class="bradcumbContent">
+    <h2>{{song.name}}</h2>
   </div>
-  <audio preload="auto" controls>
-    <source src="../../../assets/audio/dummy-audio.mp3">
-  </audio>
-</div>
-
+</section>
+<img [src]="song.songImage" alt="">
+<table>
+  <tr>
+    <td>Tên bài hát</td>
+    <td>{{song.name}}</td>
+  </tr>
+  <tr>
+    <td>Tác giả</td>
+    <td>{{song.songAuthor}}</td>
+  </tr>
+  <tr>
+    <td>Ca sĩ</td>
+    <td>{{singer.name}}</td>
+  </tr>
+  <tr>
+    <td>Likes</td>
+    <td>{{song.likes}}</td>
+  </tr>
+  <tr>
+    <td>Views</td>
+    <td>{{song.views}}</td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td>{{song.description}}</td>
+  </tr>
+  <tr>
+    <td>Nghe nhạc</td>
+    <td>
+      <audio preload="auto" controls>
+        <source [src]="song.songLink">
+      </audio>
+    </td>
+  </tr>
+</table>

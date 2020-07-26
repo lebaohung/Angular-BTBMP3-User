@@ -51,7 +51,7 @@
               <img [src]="item.song.songImage" alt="No">
             </div>
             <div class="content-">
-              <h6>{{item.song.name}}</h6>
+              <h6><a [routerLink]="['/song', item.song.id]">{{item.song.name}}</a></h6>
               <p>{{item.singer.name}}</p>
             </div>
           </div>
