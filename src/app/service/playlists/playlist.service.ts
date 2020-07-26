@@ -48,4 +48,8 @@ export class PlaylistService {
   delete(id: number): Observable<any> {
     return this.httpClient.delete(this.API_URL + '/delete/' + id);
   }
+
+  playSong(id: number): Observable<any> {
+    return  this.httpClient.get(this.API_URL + '/playlistsong/' + id);
+  }
 }
