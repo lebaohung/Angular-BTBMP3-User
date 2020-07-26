@@ -38,7 +38,7 @@
                 <label>Ca sĩ, diễn viên trình diễn:</label>
 <!--                <select class="form-control rounded" #singerId (change)="changeSingerId(singerId.value)">-->
                 <select class="form-control rounded" #singerId (change)="changeSingerId(singerId.value)" >
-<!--                  <option selected>{{selectingSinger.name}}</option>-->
+                  <option selected [value]="selectingSinger.id">{{selectingSinger.name}}</option>
                   <option *ngFor="let singer of singerList" [value]="singer.id">{{singer.name}}</option>
                 </select>
               </div>

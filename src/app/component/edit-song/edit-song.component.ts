@@ -74,6 +74,7 @@ export class EditSongComponent implements OnInit {
     //   this.songId = params.id;
     this.songsService.getSongById(29).subscribe(result => {
       this.editSongForm.setValue(result);
+      console.log(this.editSongForm);
       this.url = this.editSongForm.get('songImage').value;
       this.selectedCategory = this.editSongForm.get('category').value;
       this.categoryService.getAllCategory().subscribe(value => {
@@ -137,6 +138,7 @@ export class EditSongComponent implements OnInit {
 
   changeSingerId(value): void {
     this.selectedSingerId = value;
+    console.log(this.selectedSingerId);
   }
 
   onSubmit(): void {
