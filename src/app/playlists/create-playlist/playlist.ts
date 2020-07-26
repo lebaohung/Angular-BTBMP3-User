@@ -1,3 +1,5 @@
+import {Users} from '../../model/users';
+
 export interface Iplaylist {
   id: number;
   name: string;
@@ -5,5 +7,5 @@ export interface Iplaylist {
   likes: number;
   image: string;
   create_date: string;
-  user_id: number;
+  user: Users;
 }

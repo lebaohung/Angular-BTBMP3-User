@@ -19,8 +19,15 @@
 
           <div class="album-thumb">
             <div class="album-price" style="position: absolute">
-              <button (click)="deletePlaylist(playlist.id)" class="btn"><i class="fa fa-trash" ></i></button>
-              <button class="btn"><img class="iconEditPL" src="assets/img/edit.png"></button>
+              <button type="button" class="btn btn-primary"
+                      data-toggle="modal" data-target="#exampleModal1" (click)="delete(playlist.id)">
+                <i class="fa fa-trash" ></i>
+              </button>
+
+              <button class="btn btn-primary" data-toggle="modal"
+                      data-target="#exampleModal" data-whatever="PlayList name" (click)="editPlaylist(playlist.id)">
+                <img class="iconEditPL" src="assets/img/edit.png">
+              </button>
             </div>
             <img  src="{{playlist.image}}" alt="">
           </div>
@@ -30,11 +37,82 @@
             </a>
           </div>
         </div>
+
+
       </div>
     </div>
 
   </div>
 </section>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Playlist</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div  *ngIf="message" class="alert alert-success">
+        <p style="color: green">{{message}}</p>
+      </div>
+
+      <div  *ngIf="failMessage" class="alert alert-danger">
+        <p style="color: red;">{{failMessage}}</p>
+      </div>
+
+      <div class="modal-body">
+
+        <form [formGroup]="playlistEdit" (ngSubmit)="edit()">
+
+          <div class="form-group">
+            <input style="margin-top: 20px" type="text" class="form-control rounded"
+                   placeholder="Playlist Name" formControlName="name">
+            <p style="color: red" *ngIf="playlistEdit.get('name').invalid && playlistEdit.get('name').touched">
+              name playlist not blank
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="image">Edit images:</label>
+            <input type="file" id="image" (change)="displayImage($event)" >
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Delete -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">Delete Playlist</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete playlist?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click)="deletePlaylist(idPlaylist)"  type="button" data-dismiss="modal" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 
