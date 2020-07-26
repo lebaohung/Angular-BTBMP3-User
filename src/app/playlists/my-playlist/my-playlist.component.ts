@@ -19,7 +19,7 @@ const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
 
 
 export class MyPlaylistComponent implements OnInit {
-
+  imageStatus = false;
   user: UserInterface = {
     id: 0,
     username: '',
@@ -91,8 +91,10 @@ export class MyPlaylistComponent implements OnInit {
   }
 
   edit(): void {
-    this.upload();
-    this.setDefaultValue();
+    if (this.imageStatus === true) {
+      this.upload();
+      this.setDefaultValue();
+    }
     this.playlistService.update(this.playlistEdit.value).subscribe(value => {
       this.isShowSuccess = true;
       this.message = 'Playlist has been edit successfully!';
@@ -107,6 +109,7 @@ export class MyPlaylistComponent implements OnInit {
   }
 
   displayImage(event): void {
+    this.imageStatus = true;
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
 

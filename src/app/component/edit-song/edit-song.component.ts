@@ -20,6 +20,7 @@ const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
 })
 export class EditSongComponent implements OnInit {
   imageStatus = false;
+  singerStatus = false;
   singerList: Singer[] = [];
   categoryList: Category[] = [];
   user: Users = {
@@ -38,7 +39,7 @@ export class EditSongComponent implements OnInit {
   isShowSuccess = false;
   message: string;
   imageFile: any;
-  selectedSingerId: string;
+  selectedSingerId: number;
   selectedImage: FileList;
   currentImageUpload: FileUpload;
   percentage: number;
@@ -72,7 +73,7 @@ export class EditSongComponent implements OnInit {
     });
     // this.activatedRoute.params.subscribe( params => {
     //   this.songId = params.id;
-    this.songsService.getSongById(29).subscribe(result => {
+    this.songsService.getSongById(6).subscribe(result => {
       this.editSongForm.setValue(result);
       console.log(this.editSongForm);
       this.url = this.editSongForm.get('songImage').value;
@@ -88,7 +89,7 @@ export class EditSongComponent implements OnInit {
       });
     });
     // });
-    this.songsService.getSingerOfThisSong(29).subscribe(value => {
+    this.songsService.getSingerOfThisSong(6).subscribe(value => {
       this.selectingSinger = value;
       console.log(this.selectingSinger);
       this.singerService.getAllSinger().subscribe(result => {
@@ -137,6 +138,7 @@ export class EditSongComponent implements OnInit {
   }
 
   changeSingerId(value): void {
+    this.singerStatus = true;
     this.selectedSingerId = value;
     console.log(this.selectedSingerId);
   }
@@ -145,7 +147,9 @@ export class EditSongComponent implements OnInit {
     if (this.imageStatus === true) {
       this.upload();
     }
-    console.log(this.editSongForm.value);
+    if (this.singerStatus === false){
+      this.selectedSingerId = this.selectingSinger.id;
+    }
     this.songsService.update(this.editSongForm.value, this.selectedSingerId).subscribe( result => {
       this.isShowSuccess = true;
       this.message = 'Song was updated successfully!';

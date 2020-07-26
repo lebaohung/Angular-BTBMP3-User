@@ -13,7 +13,7 @@ export class SongsService {
   create(song: Song, singerId: string): Observable<Song>{
     return this.httpClient.post<Song>(this.API_URL + '/' + singerId , song);
   }
-  update(song: Song, singerId: string): Observable<Song>{
+  update(song: Song, singerId: number): Observable<Song>{
     return this.httpClient.put<Song>(this.API_URL + '/edit/' + singerId , song
     );
   }
