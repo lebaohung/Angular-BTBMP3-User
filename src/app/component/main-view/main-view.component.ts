@@ -18,14 +18,14 @@ export class MainViewComponent implements OnInit {
     this.playlistService.getTopDate().subscribe((result) => {
       this.playListTopDate = result;
       console.log(result);
-    },error => {
+    }, error => {
       console.log(error);
     });
 
     this.playlistService.getTopView().subscribe((result) => {
       this.playListTopView = result;
       console.log(result);
-    },error => {
+    }, error => {
       console.log(error);
     });
   }

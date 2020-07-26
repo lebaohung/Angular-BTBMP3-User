@@ -43,10 +43,15 @@ export class EditSongComponent implements OnInit {
   selectedImage: FileList;
   currentImageUpload: FileUpload;
   percentage: number;
-  selectingSinger: Singer;
+  selectingSinger: Singer = {
+    id: 0,
+    name: '',
+    create_date: ''
+  };
   songId: number;
   url: string | ArrayBuffer = '';
   editSongForm: FormGroup;
+  progressBarStatus = false;
 
   constructor(private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
@@ -71,25 +76,25 @@ export class EditSongComponent implements OnInit {
       songLink: [''],
       songAuthor: ['', [Validators.required]]
     });
-    // this.activatedRoute.params.subscribe( params => {
-    //   this.songId = params.id;
-    this.songsService.getSongById(6).subscribe(result => {
-      this.editSongForm.setValue(result);
-      console.log(this.editSongForm);
-      this.url = this.editSongForm.get('songImage').value;
-      this.selectedCategory = this.editSongForm.get('category').value;
-      this.categoryService.getAllCategory().subscribe(value => {
-        this.categoryList = value;
-        for (let i = 0; i < this.categoryList.length; i++) {
-          if (this.selectedCategory.id === this.categoryList[i].id) {
-            this.categoryList.splice(i, 1);
-            break;
+    this.activatedRoute.params.subscribe(params => {
+      this.songId = params.id;
+      this.songsService.getSongById(this.songId).subscribe(result => {
+        this.editSongForm.setValue(result);
+        console.log(this.editSongForm);
+        this.url = this.editSongForm.get('songImage').value;
+        this.selectedCategory = this.editSongForm.get('category').value;
+        this.categoryService.getAllCategory().subscribe(value => {
+          this.categoryList = value;
+          for (let i = 0; i < this.categoryList.length; i++) {
+            if (this.selectedCategory.id === this.categoryList[i].id) {
+              this.categoryList.splice(i, 1);
+              break;
+            }
           }
-        }
+        });
       });
     });
-    // });
-    this.songsService.getSingerOfThisSong(6).subscribe(value => {
+    this.songsService.getSingerOfThisSong(this.songId).subscribe(value => {
       this.selectingSinger = value;
       console.log(this.selectingSinger);
       this.singerService.getAllSinger().subscribe(result => {
@@ -117,6 +122,7 @@ export class EditSongComponent implements OnInit {
       console.log(this.url);
     }
     this.selectedImage = event.target.files;
+    this.isShowSuccess = false;
   }
 
   upload(): void {
@@ -126,6 +132,13 @@ export class EditSongComponent implements OnInit {
     this.uploadFileService.pushFileToStorage(this.currentImageUpload).subscribe(
       percentage => {
         this.percentage = Math.round(percentage);
+        if (this.percentage !== 100) {
+          this.progressBarStatus = true;
+        } else {
+          setTimeout(() => {
+            this.progressBarStatus = false;
+          }, 2000);
+        }
       },
       error => {
         console.log(error);
@@ -133,28 +146,45 @@ export class EditSongComponent implements OnInit {
     );
   }
 
+  setDefaultValue(): void {
+    this.editSongForm.get('songImage').setValue(FRONT_LINK + this.imageFile.name + BACK_LINK);
+  }
+
   changeCategory(value): void {
-    this.categoryService.getCategoryById(value).subscribe(result => {this.selectedCategory = result; console.log(this.selectedCategory); });
+    this.categoryService.getCategoryById(value).subscribe(result => {
+      this.selectedCategory = result;
+      console.log(this.selectedCategory);
+      this.isShowSuccess = false;
+    });
   }
 
   changeSingerId(value): void {
     this.singerStatus = true;
     this.selectedSingerId = value;
+    this.isShowSuccess = false;
     console.log(this.selectedSingerId);
   }
 
   onSubmit(): void {
     if (this.imageStatus === true) {
       this.upload();
+      this.setDefaultValue();
+      this.imageStatus = false;
     }
-    if (this.singerStatus === false){
+    if (this.singerStatus === false) {
       this.selectedSingerId = this.selectingSinger.id;
     }
-    this.songsService.update(this.editSongForm.value, this.selectedSingerId).subscribe( result => {
-      this.isShowSuccess = true;
-      this.message = 'Song was updated successfully!';
+    this.songsService.update(this.editSongForm.value, this.selectedSingerId).subscribe(result => {
       this.songsService.shouldRefresh.next();
     });
+    setTimeout(() => {
+      this.isShowSuccess = true;
+      this.message = 'Song was updated successfully!';
+    }, 2000);
+  }
+
+  turnSuccessOff(): void {
+    this.isShowSuccess = false;
   }
 }
 
