@@ -42,88 +42,42 @@
         <div class="weeks-top-area mb-100">
           <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
             <p>See what’s new</p>
-            <h2>This week’s top</h2>
+            <h2>Hear what’s newest </h2>
           </div>
 
           <!-- Single Top Item -->
-          <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms">
+          <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms" *ngFor="let item of singerAndSongTopDate">
             <div class="thumbnail">
-              <img src="../../../assets/img/bg-img/wt1.jpg" alt="">
+              <img [src]="item.song.songImage" alt="No">
             </div>
             <div class="content-">
-              <h6>Sam Smith</h6>
-              <p>Underground</p>
+              <h6>{{item.song.name}}</h6>
+              <p>{{item.singer.name}}</p>
             </div>
           </div>
-
-          <!-- Single Top Item -->
-          <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="150ms">
-            <div class="thumbnail">
-              <img src="../../../assets/img/bg-img/wt2.jpg" alt="">
-            </div>
-            <div class="content-">
-              <h6>Power Play</h6>
-              <p>In my mind</p>
-            </div>
-          </div>
-
-          <!-- Single Top Item -->
-          <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="200ms">
-            <div class="thumbnail">
-              <img src="../../../assets/img/bg-img/wt3.jpg" alt="">
-            </div>
-            <div class="content-">
-              <h6>Cristinne Smith</h6>
-              <p>My Music</p>
-            </div>
-          </div>
-
-          <!-- Single Top Item -->
-          <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="250ms">
-            <div class="thumbnail">
-              <img src="../../../assets/img/bg-img/wt4.jpg" alt="">
-            </div>
-            <div class="content-">
-              <h6>The Music Band</h6>
-              <p>Underground</p>
-            </div>
-          </div>
-
-          <!-- Single Top Item -->
-          <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="300ms">
-            <div class="thumbnail">
-              <img src="../../../assets/img/bg-img/wt5.jpg" alt="">
-            </div>
-            <div class="content-">
-              <h6>Creative Lyrics</h6>
-              <p>Songs and stuff</p>
-            </div>
-          </div>
-
-          <!-- Single Top Item -->
-          <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="350ms">
-            <div class="thumbnail">
-              <img src="../../../assets/img/bg-img/wt6.jpg" alt="">
-            </div>
-            <div class="content-">
-              <h6>The Culture</h6>
-              <p>Pop Songs</p>
-            </div>
-          </div>
-
         </div>
       </div>
 
       <!-- ***** New Hits Songs ***** -->
       <div class="col-12 col-lg-4">
-        <div class="new-hits-area mb-100">
+<!--        <div class="new-hits-area mb-100">-->
+        <div class="weeks-top-area mb-100">
           <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
             <p>See what’s new</p>
-            <h2>New Hits</h2>
+            <h2>Most viewed Song</h2>
           </div>
 
           <!-- Single Top Item -->
-          <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
+          <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms" *ngFor="let item of singerAndSongTopView">
+            <div class="thumbnail">
+              <img [src]="item.song.songImage" alt="No">
+            </div>
+            <div class="content-">
+              <h6>{{item.song.name}}</h6>
+              <p>{{item.singer.name}}</p>
+            </div>
+          </div>
+          <!--<div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
                data-wow-delay="100ms">
             <div class="first-part d-flex align-items-center">
               <div class="thumbnail">
@@ -137,92 +91,7 @@
             <audio preload="auto" controls>
               <source src="../../../assets/audio/dummy-audio.mp3">
             </audio>
-          </div>
-
-          <!-- Single Top Item -->
-          <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
-               data-wow-delay="150ms">
-            <div class="first-part d-flex align-items-center">
-              <div class="thumbnail">
-                <img src="../../../assets/img/bg-img/wt8.jpg" alt="">
-              </div>
-              <div class="content-">
-                <h6>Power Play</h6>
-                <p>In my mind</p>
-              </div>
-            </div>
-            <audio preload="auto" controls>
-              <source src="../../../assets/audio/dummy-audio.mp3">
-            </audio>
-          </div>
-
-          <!-- Single Top Item -->
-          <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
-               data-wow-delay="200ms">
-            <div class="first-part d-flex align-items-center">
-              <div class="thumbnail">
-                <img src="../../../assets/img/bg-img/wt9.jpg" alt="">
-              </div>
-              <div class="content-">
-                <h6>Cristinne Smith</h6>
-                <p>My Music</p>
-              </div>
-            </div>
-            <audio preload="auto" controls>
-              <source src="../../../assets/audio/dummy-audio.mp3">
-            </audio>
-          </div>
-
-          <!-- Single Top Item -->
-          <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
-               data-wow-delay="250ms">
-            <div class="first-part d-flex align-items-center">
-              <div class="thumbnail">
-                <img src="../../../assets/img/bg-img/wt10.jpg" alt="">
-              </div>
-              <div class="content-">
-                <h6>The Music Band</h6>
-                <p>Underground</p>
-              </div>
-            </div>
-            <audio preload="auto" controls>
-              <source src="../../../assets/audio/dummy-audio.mp3">
-            </audio>
-          </div>
-
-          <!-- Single Top Item -->
-          <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
-               data-wow-delay="300ms">
-            <div class="first-part d-flex align-items-center">
-              <div class="thumbnail">
-                <img src="../../../assets/img/bg-img/wt11.jpg" alt="">
-              </div>
-              <div class="content-">
-                <h6>Creative Lyrics</h6>
-                <p>Songs and stuff</p>
-              </div>
-            </div>
-            <audio preload="auto" controls>
-              <source src="../../../assets/audio/dummy-audio.mp3">
-            </audio>
-          </div>
-
-          <!-- Single Top Item -->
-          <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
-               data-wow-delay="350ms">
-            <div class="first-part d-flex align-items-center">
-              <div class="thumbnail">
-                <img src="../../../assets/img/bg-img/wt12.jpg" alt="">
-              </div>
-              <div class="content-">
-                <h6>The Culture</h6>
-                <p>Pop Songs</p>
-              </div>
-            </div>
-            <audio preload="auto" controls>
-              <source src="../../../assets/audio/dummy-audio.mp3">
-            </audio>
-          </div>
+          </div>-->
         </div>
       </div>
 
@@ -355,7 +224,7 @@
     </div>
     <div class="row">
 
-      <div class="col-12 col-md-6 col-lg-4" *ngFor="let playlist of playListTopView">
+      <div class="col-12 col-md-6 col-lg-4" *ngFor="let playlist of songsTopView">
         <div class="single-event-area mb-30">
           <div class="event-thumbnail">
             <img src="{{playlist.image}}" alt="">
@@ -384,7 +253,7 @@
 
     <div class="row">
 
-      <div class="col-12 col-sm-6 col-md-4 col-lg-2" *ngFor="let playlist of playListTopDate">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-2" *ngFor="let playlist of songsTopDate">
         <div class="single-event-area mb-30" data-wow-delay="200ms">
           <div class="event-thumbnail">
             <img src="{{playlist.image}}" alt="">
