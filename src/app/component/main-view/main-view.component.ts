@@ -15,12 +15,6 @@ export class MainViewComponent implements OnInit {
   playListTopDate: Iplaylist[] = [];
 
   ngOnInit(): void {
-
-
-
-
-
-
     this.playlistService.getTopDate().subscribe((result) => {
       this.playListTopDate = result;
       console.log(result);
