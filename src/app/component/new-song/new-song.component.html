@@ -6,9 +6,6 @@
 </section>
 <!-- ##### Breadcumb Area End ##### -->
 
-<div class="alert alert-success" role="alert" *ngIf="isShowSuccess">
-  {{ message }}
-</div>
 <section class="login-area section-padding-100">
   <div class="container">
     <div class="row justify-content-center">
@@ -61,7 +58,7 @@
                 <label for="description">Mô tả:</label>
                 <input type="text" class="form-control rounded" id="description" formControlName="description">
               </div>
-              <div *ngIf="currentFileUpload" class="progress">
+              <div *ngIf="progressBarStatus" class="progress">
                 <div class="progress-bar progress-bar-info progress-bar-striped"
                      role="progressbar" attr.aria-valuenow="{{percentage}}"
                      aria-valuemin="0" aria-valuemax="100"
@@ -71,6 +68,9 @@
               </div>
               <button type="submit" [disabled]="!selectedFile" class="btn oneMusic-btn mt-30">Create New Song</button>
             </form>
+            <div class="alert alert-success" role="alert" *ngIf="isShowSuccess">
+              {{ message }}
+            </div>
           </div>
         </div>
       </div>

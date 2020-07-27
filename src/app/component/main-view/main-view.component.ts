@@ -4,6 +4,8 @@ import {Song} from '../../model/song';
 import {Singer} from '../../model/singer';
 import {SingerAndSong} from '../../model/singerAndSong';
 import {SingerService} from '../../service/singer/singer.service';
+import {Iplaylist} from '../../playlists/create-playlist/playlist';
+import {PlaylistService} from '../../service/playlists/playlist.service';
 
 @Component({
   selector: 'app-main-view',
@@ -13,9 +15,12 @@ import {SingerService} from '../../service/singer/singer.service';
 export class MainViewComponent implements OnInit {
 
 
-  constructor(private songsService: SongsService) {
+  constructor(private songsService: SongsService,
+              private playlistService: PlaylistService) {
   }
 
+  playListTopView: Iplaylist[] = [];
+  playListTopDate: Iplaylist[] = [];
   songsTopView: Song[] = [];
   songsTopDate: Song[] = [];
   selectedSongTopViewId = 0;
@@ -66,6 +71,20 @@ export class MainViewComponent implements OnInit {
         });
       }
       console.log(this.singerAndSongTopView);
+    }, error => {
+      console.log(error);
+    });
+
+    this.playlistService.getTopDate().subscribe((result) => {
+      this.playListTopDate = result;
+      console.log(result);
+    }, error => {
+      console.log(error);
+    });
+
+    this.playlistService.getTopView().subscribe((result) => {
+      this.playListTopView = result;
+      console.log(result);
     }, error => {
       console.log(error);
     });
