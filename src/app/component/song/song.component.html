@@ -4,6 +4,10 @@
   </div>
 </section>
 <img [src]="song.songImage" alt="">
+<button class="btn btn-primary" data-toggle="modal"
+        data-target="#exampleModal" data-whatever="PlayList name" >
+  <img class="iconEditPL" src="assets/img/edit.png">
+</button>
 <table>
   <tr>
     <td>Tên bài hát</td>
@@ -39,3 +43,30 @@
     </td>
   </tr>
 </table>
+
+
+<!--thêm 1 cài hát vào playlist-->
+<div style="height: 600px" class="modal fade " id="exampleModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add song in playlist</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="list-group overflow-auto" *ngFor="let playlist of playlistIDUser">
+            <a  class="list-group-item list-group-item-action"><h5 (click)="idPlaylist(playlist.id)">{{playlist.name}}</h5></a>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" (click)="addsong()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
