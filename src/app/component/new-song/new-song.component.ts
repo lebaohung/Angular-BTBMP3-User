@@ -47,6 +47,7 @@ export class NewSongComponent implements OnInit {
   percentage: number;
   createSongForm: FormGroup;
   url: string | ArrayBuffer = '';
+  progressBarStatus = false;
 
   constructor(private fb: FormBuilder,
               private http: HttpClient,
@@ -98,10 +99,12 @@ export class NewSongComponent implements OnInit {
     this.setDefaultValue();
     console.log(this.createSongForm.value);
     this.songsService.create(this.createSongForm.value, this.selectedSingerId).subscribe( result => {
-      this.isShowSuccess = true;
-      this.message = 'Song was created successfully!';
       this.songsService.shouldRefresh.next();
     });
+    setTimeout(() => {
+      this.isShowSuccess = true;
+      this.message = 'Song was created successfully!';
+    }, 4000);
   }
 
   selectFile(event): void {
@@ -118,6 +121,13 @@ export class NewSongComponent implements OnInit {
     this.uploadFileService.pushFileToStorage(this.currentFileUpload).subscribe(
       percentage => {
         this.percentage = Math.round(percentage);
+        if (this.percentage !== 100) {
+          this.progressBarStatus = true;
+        } else {
+          setTimeout(() => {
+            this.progressBarStatus = false;
+          }, 1000);
+        }
       },
       error => {
         console.log(error);

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Song} from '../../model/song';
 import {Observable, Subject} from 'rxjs';
+import {Iplaylist} from '../../playlists/create-playlist/playlist';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,13 @@ export class SongsService {
 
   getSingerOfThisSong(id: number): Observable<any>{
     return this.httpClient.get(this.API_URL + '/singerandsong/' + id);
+  }
+
+  getTopView(): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(this.API_URL + '/topview');
+  }
+
+  getTopDate(): Observable<Song[]> {
+      return this.httpClient.get<Song[]>(this.API_URL + '/newcreat');
   }
 }

@@ -4,9 +4,6 @@
   </div>
 </section>
 
-<div class="alert alert-success" role="alert" *ngIf="isShowSuccess">
-  {{ message }}
-</div>
 <section class="login-area section-padding-100">
   <div class="container">
     <div class="row justify-content-center">
@@ -26,25 +23,23 @@
               </div>
               <div class="form-group">
                 <label for="songName">Tên bài hát:</label>
-                <input type="text" class="form-control rounded" id="songName" placeholder="Nhập tên bài hát..." formControlName="name">
+                <input type="text" class="form-control rounded" id="songName" placeholder="Nhập tên bài hát..." formControlName="name" (change)="turnSuccessOff()">
                 <p style="color:red;" *ngIf="editSongForm.get('name').invalid && editSongForm.get('name').touched">Tên bài hát cần có ít nhất 6 ký tự.</p>
               </div>
               <div class="form-group">
                 <label for="author">Tên tác giả:</label>
-                <input type="text" class="form-control rounded" id="author" formControlName="songAuthor">
+                <input type="text" class="form-control rounded" id="author" formControlName="songAuthor" (change)="turnSuccessOff()">
                 <p style="color:red;" *ngIf="editSongForm.get('songAuthor').invalid && editSongForm.get('songAuthor').touched">Bạn cần nhập tên tác giả.</p>
               </div>
               <div class="form-group">
                 <label>Ca sĩ, diễn viên trình diễn:</label>
-<!--                <select class="form-control rounded" #singerId (change)="changeSingerId(singerId.value)">-->
                 <select class="form-control rounded" #singerId (change)="changeSingerId(singerId.value)" >
-<!--                  <option selected [value]="selectingSinger.id" >{{selectingSinger.name}}</option>-->
+                  <option selected [value]="selectingSinger.id" >{{selectingSinger.name}}</option>
                   <option *ngFor="let singer of singerList" [value]="singer.id">{{singer.name}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="category_id">Thể loại</label>
-<!--                <select class="form-control rounded" id="category_id" #option (change)="changeCategory(option.value)">-->
                 <select class="form-control rounded" id="category_id" #option (change)="changeCategory(option.value)" >
                   <option selected>{{selectedCategory.name}}</option>
                   <option *ngFor="let cate of categoryList" [value]="cate.id">
@@ -55,9 +50,9 @@
               </div>
               <div class="form-group">
                 <label for="description">Mô tả:</label>
-                <input type="text" class="form-control rounded" id="description" formControlName="description">
+                <input type="text" class="form-control rounded" id="description" formControlName="description" (change)="turnSuccessOff()">
               </div>
-              <div *ngIf="currentImageUpload" class="progress">
+              <div *ngIf="progressBarStatus" class="progress">
                 <div class="progress-bar progress-bar-info progress-bar-striped"
                      role="progressbar" attr.aria-valuenow="{{percentage}}"
                      aria-valuemin="0" aria-valuemax="100"
@@ -67,6 +62,9 @@
               </div>
               <button type="submit" class="btn oneMusic-btn mt-30">Update Song</button>
             </form>
+            <div class="alert alert-success" role="alert" *ngIf="isShowSuccess">
+              {{ message }}
+            </div>
           </div>
         </div>
       </div>
