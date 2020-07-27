@@ -1,0 +1,13 @@
+.btn {
+  background-color: rgb(255, 30, 30); /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: #e14141;
+}
