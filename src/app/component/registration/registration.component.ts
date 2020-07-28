@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UsersService} from '../../service/users.service';
+import {HttpErrorResponse} from '@angular/common/http';
 
 function comparePassword(c: AbstractControl): any {
   const v = c.value;
@@ -20,6 +21,8 @@ export class RegistrationComponent implements OnInit {
     email: new FormControl('')
   });
 
+  messageRespond: string;
+
   constructor(private formBuilder: FormBuilder, private usersService: UsersService) { }
 
   ngOnInit(): void {
@@ -37,7 +40,15 @@ export class RegistrationComponent implements OnInit {
     this.userJson.value.username = this.registrationForm.value.username;
     this.userJson.value.password = this.registrationForm.getRawValue().pw.password;
     this.userJson.value.email = this.registrationForm.value.email;
-    this.usersService.registration(this.userJson.value).subscribe(() => alert('OK'));
+    this.usersService.registration(this.userJson.value).subscribe(
+      (result) => {
+        alert('OK');
+        console.log(result);
+      },
+      (error: HttpErrorResponse) => {
+        this.messageRespond = error.error.message;
+      }
+      ) ;
   }
 
 }
