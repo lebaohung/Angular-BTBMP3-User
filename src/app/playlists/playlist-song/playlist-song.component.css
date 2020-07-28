@@ -1,0 +1,29 @@
+.btn {
+  background-color: rgb(255, 30, 30); /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: #e14141;
+}
+
+.btnComment {
+  background-color: rgb(30, 113, 255); /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  padding: 10px;
+  border-radius: 10px;
+  width: 150px;
+  margin-bottom: 30px;
+}
+
+.btnComment:hover {
+  background-color: #042eff;
+}

@@ -7,7 +7,7 @@
 </section>
 
 
-<section class="events-area section-padding-100">
+<section class="events-area">
   <div class="container">
     <table class="table" style="width: 70%; margin: 0 auto">
       <thead>
@@ -18,12 +18,66 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
+      <tr *ngFor="let songlist of songList">
         <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
+        <td>{{songlist.name}}</td>
+        <td>
+          <div class="album-price">
+          <button type="button" class="btn btn-primary"
+                    data-toggle="modal" data-target="#exampleModal1" (click)="delete(songlist.id)">
+          <i class="fa fa-trash" ></i>
+        </button>
+          </div>
+        </td>
       </tr>
       </tbody>
     </table>
   </div>
 </section>
+
+<section class="events-area">
+  <div class="container">
+    <div style="width: 70%; margin: 30px auto 0 auto">
+      <h3 style="font-weight: bold">Comment:</h3>
+      <form [formGroup]="comment"  (ngSubmit)="addCommentPlaylist()">
+      <div >
+        <textarea formControlName="content" style="width: 100%; height: 60px; border-radius: 10px"></textarea>
+      </div>
+      <button type="submit" class="btnComment btn-secondary">Comment</button>
+      </form>
+  </div>
+  </div>
+</section>
+
+<section class="events-area">
+  <div class="container">
+    <div style="width: 70%; margin: 20px auto 0 auto" *ngFor="let comment of commentPlaylist">
+      <h5>{{comment.user.username}}</h5>
+      <p>{{comment.date}}</p>
+      <p>{{comment.content}}</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">Delete Playlist</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete song?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click)="deleteSong()"  type="button" data-dismiss="modal" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -168,7 +168,7 @@
           </div>
           <div class="event-text">
             <h4>{{playlist.name}}</h4>
-            <a href="#" class="btn see-more-btn">See Event</a>
+            <a [routerLink]="['/playlist-song', playlist.id]" class="btn see-more-btn">See Event</a>
           </div>
         </div>
       </div>
@@ -198,7 +198,7 @@
           <div class="event-text">
             <h5>{{playlist.name}}</h5>
             <p style="color: white">{{playlist.user.username}}</p>
-            <a href="#" class="btn see-more-btn">See Event</a>
+            <a [routerLink]="['/playlist-song', playlist.id]" class="btn see-more-btn">See Event</a>
           </div>
         </div>
       </div>
