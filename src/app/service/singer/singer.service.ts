@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {Song} from '../../model/song';
+import {Singer} from '../../model/singer';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +17,9 @@ export class SingerService {
    }
   getSingerById(id: number): Observable<any>{
     return this.httpClient.get(this.API_URL + '/' + id);
+  }
+
+  create(singer: Singer): Observable<Singer>{
+    return this.httpClient.post<Singer>(this.API_URL + '/save', singer);
   }
 }

@@ -37,13 +37,19 @@
               </div>
               <div class="form-group">
                 <label>Ca sĩ, diễn viên trình diễn:</label>
-                <select class="form-control rounded" #singerId (change)="changeSingerId(singerId.value)">
+                <select class="form-control rounded" #singerId (change)="changeSingerId(singerId.value)" style="width: 70%; float: left">
                   <option selected>. . .</option>
                   <option *ngFor="let singer of singerList" [value]="singer.id">{{singer.name}}</option>
-<!--                  <option data-toggle="modal" data-target="#exampleModal" data-whatever="createSinger" (click)="createSinger()">+ Create New Singer</option>-->
+<!--                  <option data-toggle="modal" data-target="#exampleModal" data-whatever="createSinger">+ Create New Singer</option>-->
                 </select>
+                <div class="create-btn">
+                  <button class="button contact_form_button" data-toggle="modal"
+                          data-target="#exampleModal" data-whatever="createSinger" style="width: 25%; margin: 0 0 0 20px; height: 50px">
+                    <span>New Singer</span>
+                  </button>
+                </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="clear: left">
                 <label for="category_id">Thể loại</label>
                 <select class="form-control rounded" id="category_id" #option (change)="changeCategory(option.value)">
                   <option selected>. . .</option>
@@ -81,4 +87,17 @@
   </div>
 </section>
 
-<app-singer></app-singer>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Singer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <app-singer></app-singer>
+    </div>
+  </div>
+</div>

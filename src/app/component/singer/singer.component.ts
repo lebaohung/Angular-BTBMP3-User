@@ -4,6 +4,10 @@ import {HttpClient} from '@angular/common/http';
 import {SongsService} from '../../service/song/songs.service';
 import {UploadFileService} from '../../service/upload-file/upload-file.service';
 import {SingerService} from '../../service/singer/singer.service';
+import {FileUpload} from '../../model/file-upload';
+
+const FRONT_LINK = 'https://firebasestorage.googleapis.com/v0/b/project-module-5.appspot.com/o/uploads%2F';
+const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
 
 @Component({
   selector: 'app-singer',
@@ -12,6 +16,14 @@ import {SingerService} from '../../service/singer/singer.service';
 })
 export class SingerComponent implements OnInit {
   createSingerForm: FormGroup;
+  selectedAvatar: FileList;
+  avatarFile: any;
+  currentAvatarUpload: FileUpload;
+  percentage: number;
+  avatar: string | ArrayBuffer = '';
+  progressBarStatus = false;
+  message: string;
+  failMessage: string;
 
   constructor(private fb: FormBuilder,
               private http: HttpClient,
@@ -26,8 +38,57 @@ export class SingerComponent implements OnInit {
   onload(): void {
     this.createSingerForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(6)]],
-      image: ['']
+      image: ['', [Validators.required]]
     });
   }
 
+  setDefaultValue(): void {
+    this.createSingerForm.get('image').setValue(FRONT_LINK + this.avatarFile.name + BACK_LINK);
+  }
+
+  displayAvatar(event): void {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.avatar = event.target.result;
+      };
+    }
+    this.selectedAvatar = event.target.files;
+  }
+
+  uploadAvatar(): void {
+    this.avatarFile = this.selectedAvatar.item(0);
+    this.selectedAvatar = undefined;
+    this.currentAvatarUpload = new FileUpload(this.avatarFile);
+    this.uploadFileService.pushFileToStorage(this.currentAvatarUpload).subscribe(
+      percentage => {
+        this.percentage = Math.round(percentage);
+        if (this.percentage !== 100) {
+          this.progressBarStatus = true;
+        } else {
+          setTimeout(() => {
+            this.progressBarStatus = false;
+          }, 1000);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  create(): void {
+    this.uploadAvatar();
+    this.setDefaultValue();
+    this.singerService.create(this.createSingerForm.value).subscribe( result => {
+      this.songsService.shouldRefresh.next();
+      this.message = 'Song was created successfully!';
+    }, error => {
+        this.failMessage = 'Create Singer failed!';
+      });
+    console.log(this.createSingerForm.value);
+  }
 }
