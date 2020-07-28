@@ -16,8 +16,10 @@
                 <img [src]="url" alt="">
                 <br>
                 <br>
-                <div class="uploadImage">
-                  <label style="cursor: pointer; margin: auto" for="image"><i class="fa fa-upload" aria-hidden="true"></i> Tải lên ảnh</label>
+                <div class="uploadImage" style="width: 100%;">
+                  <label style="cursor: pointer; margin-left: 164px" for="image" class="button contact_form_button">
+                      <span><i class="fa fa-upload" aria-hidden="true"></i> Tải lên ảnh</span>
+                  </label>
                   <input type="file" id="image" (change)="displayImage($event)" accept="image/*" hidden>
                 </div>
               </div>
@@ -60,7 +62,7 @@
                   {{percentage}}%
                 </div>
               </div>
-              <button type="submit" class="btn oneMusic-btn mt-30">Update Song</button>
+              <button type="submit" class="button contact_form_button"><span>Update Song</span></button>
             </form>
             <div class="alert alert-success" role="alert" *ngIf="isShowSuccess">
               {{ message }}
