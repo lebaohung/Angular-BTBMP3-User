@@ -18,8 +18,10 @@
                 <img [src]="url" alt="">
                 <br>
                 <br>
-                <div class="uploadImage">
-                  <label style="cursor: pointer; margin: auto" for="image"><i class="fa fa-upload" aria-hidden="true"></i> Tải lên ảnh</label>
+                <div class="uploadImage" style="width: 100%;">
+                  <label style="cursor: pointer; margin-left: 164px" for="image" class="button contact_form_button">
+                    <span><i class="fa fa-upload" aria-hidden="true"></i> Tải lên ảnh</span>
+                  </label>
                   <input type="file" id="image" (change)="displayImage($event)" accept="image/*" hidden>
                 </div>
               </div>
@@ -51,7 +53,7 @@
                 <p style="color:red;" *ngIf="createSongForm.get('category').invalid && createSongForm.get('category').touched">Xin hãy chọn thể loại.</p>
               </div>
               <div class="form-group">
-                <label for="file">Tải lên bài hát:</label>
+                <label for="file">Tải lên bài hát: </label>
                 <input type="file" id="file" (change)="selectFile($event)">
               </div>
               <div class="form-group">
@@ -66,7 +68,7 @@
                   {{percentage}}%
                 </div>
               </div>
-              <button type="submit" [disabled]="!selectedFile" class="btn oneMusic-btn mt-30">Create New Song</button>
+              <button type="submit" [disabled]="!selectedFile" class="button contact_form_button"><span>Create New Song</span></button>
             </form>
             <div class="alert alert-success" role="alert" *ngIf="isShowSuccess">
               {{ message }}
