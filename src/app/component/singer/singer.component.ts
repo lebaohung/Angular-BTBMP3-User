@@ -38,7 +38,7 @@ export class SingerComponent implements OnInit {
   onload(): void {
     this.createSingerForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(6)]],
-      image: ['', [Validators.required]]
+      image: ['']
     });
   }
 
@@ -85,7 +85,9 @@ export class SingerComponent implements OnInit {
     this.setDefaultValue();
     this.singerService.create(this.createSingerForm.value).subscribe( result => {
       this.songsService.shouldRefresh.next();
-      this.message = 'Song was created successfully!';
+      setTimeout(() => {
+        this.message = 'Song was created successfully!';
+      }, 2500);
     }, error => {
         this.failMessage = 'Create Singer failed!';
       });

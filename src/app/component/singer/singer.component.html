@@ -26,7 +26,7 @@
         {{percentage}}%
       </div>
     </div>
-    <button type="submit" class="button contact_form_button" style="margin-left: 35%"><span>Create New Singer</span></button>
+    <button type="submit" [disabled]="!createSingerForm.valid" class="button contact_form_button" style="margin-left: 35%"><span>Create New Singer</span></button>
   </form>
   <div *ngIf="message" class="alert alert-success">
     <p style="color: green">{{message}}</p>

@@ -35,10 +35,16 @@
               </div>
               <div class="form-group">
                 <label>Ca sĩ, diễn viên trình diễn:</label>
-                <select class="form-control rounded" #singerId (change)="changeSingerId(singerId.value)" >
+                <select class="form-control rounded" #singerId (change)="changeSingerId(singerId.value)" style="width: 70%; float: left" >
                   <option selected [value]="selectingSinger.id" >{{selectingSinger.name}}</option>
                   <option *ngFor="let singer of singerList" [value]="singer.id">{{singer.name}}</option>
                 </select>
+                <div class="create-btn">
+                  <button class="button contact_form_button" data-toggle="modal"
+                          data-target="#exampleModal" data-whatever="createSinger" style="width: 25%; margin: 0 0 0 20px; height: 50px">
+                    <span>New Singer</span>
+                  </button>
+                </div>
               </div>
               <div class="form-group">
                 <label for="category_id">Thể loại</label>
@@ -48,7 +54,7 @@
                     {{cate.name}}
                   </option>
                 </select>
-                <p style="color:red;" *ngIf="editSongForm.get('category').invalid && editSongForm.get('category').touched">Xin hãy chọn thể loại.</p>
+<!--                <p style="color:red;" *ngIf="editSongForm.get('category').invalid && editSongForm.get('category').touched">Xin hãy chọn thể loại.</p>-->
               </div>
               <div class="form-group">
                 <label for="description">Mô tả:</label>
@@ -62,7 +68,7 @@
                   {{percentage}}%
                 </div>
               </div>
-              <button type="submit" class="button contact_form_button"><span>Update Song</span></button>
+              <button type="submit" class="button contact_form_button" [disabled]="!editSongForm.valid"><span>Update Song</span></button>
             </form>
             <div class="alert alert-success" role="alert" *ngIf="isShowSuccess">
               {{ message }}
@@ -74,3 +80,17 @@
   </div>
 </section>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Singer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <app-singer></app-singer>
+    </div>
+  </div>
+</div>
