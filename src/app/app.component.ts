@@ -13,6 +13,7 @@ export class AppComponent implements OnInit{ // chua implement DoCheck
   isLoggedIn = false;
   showAdminBoard = false;
   username: string;
+  userId: number;
   constructor(private tokenStorageService: TokenStorageService, private router: Router) {
   }
   ngOnInit(): void {
