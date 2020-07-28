@@ -18,6 +18,11 @@ export class SongsService {
     return this.httpClient.put<Song>(this.API_URL + '/edit/' + singerId , song
     );
   }
+
+  deleteSong(id: number): Observable<any>{
+    return this.httpClient.delete(this.API_URL + '/' + id );
+  }
+
   getSongById(id: number): Observable<any>{
     return this.httpClient.get(this.API_URL + '/' + id);
   }
@@ -32,6 +37,14 @@ export class SongsService {
 
   getTopDate(): Observable<Song[]> {
       return this.httpClient.get<Song[]>(this.API_URL + '/newcreat');
+  }
+
+  getTopLiked(): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(this.API_URL + '/topliked');
+  }
+
+  getSongByUser(id: number): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(this.API_URL + '/user/' + id);
   }
 
   getConment(id: number): Observable<any> {

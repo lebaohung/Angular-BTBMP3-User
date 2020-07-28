@@ -20,8 +20,10 @@ export class MainViewComponent implements OnInit {
 
   playListTopView: Iplaylist[] = [];
   playListTopDate: Iplaylist[] = [];
+  playListTopLike: Iplaylist[] = [];
   songsTopView: Song[] = [];
   songsTopDate: Song[] = [];
+  songsTopLike: Song[] = [];
   selectedSongTopViewId = 0;
   selectedSingerTopView: Singer = {
     id: 0,
@@ -34,8 +36,15 @@ export class MainViewComponent implements OnInit {
     name: '',
     create_date: ''
   };
+  selectedSongTopLikedId = 0;
+  selectedSingerTopLiked: Singer = {
+    id: 0,
+    name: '',
+    create_date: ''
+  };
   singerAndSongTopDate: SingerAndSong[] = [];
   singerAndSongTopView: SingerAndSong[] = [];
+  singerAndSongTopLiked: SingerAndSong[] = [];
 
   ngOnInit(): void {
     this.songsService.getTopDate().subscribe((result) => {
@@ -52,7 +61,6 @@ export class MainViewComponent implements OnInit {
             });
         });
       }
-      console.log(this.singerAndSongTopDate);
     }, error => {
       console.log(error);
     });
@@ -70,7 +78,23 @@ export class MainViewComponent implements OnInit {
             });
         });
       }
-      console.log(this.singerAndSongTopView);
+    }, error => {
+      console.log(error);
+    });
+
+    this.songsService.getTopLiked().subscribe((result) => {
+      this.songsTopLike = result;
+      for (let i = 0; i < this.songsTopLike.length; i++) {
+        this.selectedSongTopLikedId = this.songsTopLike[i].id;
+        this.songsService.getSingerOfThisSong(this.selectedSongTopLikedId).subscribe(value => {
+          this.selectedSingerTopLiked = value;
+          this.singerAndSongTopLiked.push(
+            {
+              song: this.songsTopLike[i],
+              singer: this.selectedSingerTopLiked
+            });
+        });
+      }
     }, error => {
       console.log(error);
     });

@@ -116,7 +116,6 @@ export class SongComponent implements OnInit {
   // lấy id playlist
   idPlaylist(id: number): void {
     this.idplaylist = id;
-
   }
 
 
