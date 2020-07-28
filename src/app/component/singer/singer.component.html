@@ -1,44 +1,38 @@
-<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document" >
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create Singer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<div class="modal-body">
+  <form [formGroup]="createSingerForm" (ngSubmit)="create()">
+    <div class="form-group">
+      <img [src]="avatar" alt="">
+      <br>
+      <br>
+      <div class="uploadImage">
+        <label style="cursor: pointer; margin-left: 164px" for="avatar" class="button contact_form_button">
+          <span><i class="fa fa-upload" aria-hidden="true"></i> Upload Avatar</span>
+        </label>
+        <input type="file" id="avatar" (change)="displayAvatar($event)" accept="image/*" hidden>
       </div>
-
-      <div  *ngIf="message" class="alert alert-success">
-        <p style="color: green">{{message}}</p>
-      </div>
-
-      <div  *ngIf="failMessage" class="alert alert-danger">
-        <p style="color: red;">{{failMessage}}</p>
-      </div>
-
-      <div class="modal-body">
-
-        <form [formGroup]="editSingerForm" (ngSubmit)="onSubmit()" >
-          <div class="form-group">
-            <img [src]="url" alt="">
-            <br>
-            <br>
-            <div class="uploadImage" style="width: 100%;">
-              <label style="cursor: pointer; margin-left: 164px" for="image" class="button contact_form_button">
-                <span><i class="fa fa-upload" aria-hidden="true"></i> Upload Avatar</span>
-              </label>
-              <input type="file" id="image" (change)="displayImage($event)" accept="image/*" hidden>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="songName">Singer's name: </label>
-            <input type="text" class="form-control rounded" id="songName" placeholder="Enter singer's name..." formControlName="name">
-            <p style="color:red;" *ngIf="editSingerForm.get('name').invalid && editSingerForm.get('name').touched">The singer's name needs to be at least 6 characters.</p>
-          </div>
-        </form>
-      </div>
-
     </div>
+    <div class="form-group">
+      <label for="songName">Singer's name: </label>
+      <input type="text" class="form-control rounded" id="songName" placeholder="Enter singer's name..."
+             formControlName="name">
+      <p style="color:red;" *ngIf="createSingerForm.get('name').invalid && createSingerForm.get('name').touched">The
+        singer's name needs to be at least 6 characters.</p>
+    </div>
+    <div *ngIf="progressBarStatus" class="progress">
+      <div class="progress-bar progress-bar-info progress-bar-striped"
+           role="progressbar" attr.aria-valuenow="{{percentage}}"
+           aria-valuemin="0" aria-valuemax="100"
+           [ngStyle]="{width:percentage+'%'}">
+        {{percentage}}%
+      </div>
+    </div>
+    <button type="submit" class="button contact_form_button" style="margin-left: 35%"><span>Create New Singer</span></button>
+  </form>
+  <div *ngIf="message" class="alert alert-success">
+    <p style="color: green">{{message}}</p>
   </div>
-</div>-->
+
+  <div *ngIf="failMessage" class="alert alert-danger">
+    <p style="color: red;">{{failMessage}}</p>
+  </div>
+</div>
