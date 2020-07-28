@@ -24,6 +24,8 @@ import {RouterModule} from '@angular/router';
 import { DashboardAdminComponent } from './component/dashboard-admin/dashboard-admin.component';
 import { LogoutComponent } from './component/logout/logout.component';
 import {PlaylistSongComponent} from './playlists/playlist-song/playlist-song.component';
+import { SongByUserComponent } from './component/song-by-user/song-by-user.component';
+import { SingerComponent } from './component/singer/singer.component';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import {PlaylistSongComponent} from './playlists/playlist-song/playlist-song.com
     DashboardAdminComponent,
     LogoutComponent,
     PlaylistSongComponent,
+    SongByUserComponent,
+    SingerComponent,
   ],
   imports: [
     BrowserModule,

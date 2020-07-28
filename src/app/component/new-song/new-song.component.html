@@ -40,6 +40,7 @@
                 <select class="form-control rounded" #singerId (change)="changeSingerId(singerId.value)">
                   <option selected>. . .</option>
                   <option *ngFor="let singer of singerList" [value]="singer.id">{{singer.name}}</option>
+<!--                  <option data-toggle="modal" data-target="#exampleModal" data-whatever="createSinger" (click)="createSinger()">+ Create New Singer</option>-->
                 </select>
               </div>
               <div class="form-group">
@@ -80,3 +81,4 @@
   </div>
 </section>
 
+<app-singer></app-singer>

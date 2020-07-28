@@ -1,0 +1,32 @@
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(assets/img/bg-img/breadcumb3.jpg);">
+  <div class="bradcumbContent">
+    <h2>{{user.username}}'s Song</h2>
+  </div>
+</section>
+<section class="miscellaneous-area section-padding-100-0">
+  <div class="container">
+    <div class="col-12">
+      <div class="weeks-top-area mb-100" style="width: 100%; height: auto">
+        <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
+          <p>Your upload</p>
+          <h2>{{user.username}}'s Song</h2>
+        </div>
+
+        <!-- Single Top Item -->
+        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms"
+             *ngFor="let item of singerAndSong" style="height: 100px">
+          <div class="thumbnail" style="display: inline-block; border-radius: 50%; overflow: hidden;">
+            <img style="width:100%; height:100%; object-fit: cover;" [src]="item.song.songImage" alt="No">
+          </div>
+          <div class="content-">
+            <h6><a [routerLink]="['/song', item.song.id]">{{item.song.name}}</a></h6>
+            <p>{{item.singer.name}}</p>
+          </div>
+          <div class="list-group-item-action">
+            <button (click)="deleteSong(item.song.id)" class="button contact_form_button"><span>Delete</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

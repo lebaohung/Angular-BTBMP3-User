@@ -1,0 +1,44 @@
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Singer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div  *ngIf="message" class="alert alert-success">
+        <p style="color: green">{{message}}</p>
+      </div>
+
+      <div  *ngIf="failMessage" class="alert alert-danger">
+        <p style="color: red;">{{failMessage}}</p>
+      </div>
+
+      <div class="modal-body">
+
+        <form [formGroup]="editSingerForm" (ngSubmit)="onSubmit()" >
+          <div class="form-group">
+            <img [src]="url" alt="">
+            <br>
+            <br>
+            <div class="uploadImage" style="width: 100%;">
+              <label style="cursor: pointer; margin-left: 164px" for="image" class="button contact_form_button">
+                <span><i class="fa fa-upload" aria-hidden="true"></i> Upload Avatar</span>
+              </label>
+              <input type="file" id="image" (change)="displayImage($event)" accept="image/*" hidden>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="songName">Singer's name: </label>
+            <input type="text" class="form-control rounded" id="songName" placeholder="Enter singer's name..." formControlName="name">
+            <p style="color:red;" *ngIf="editSingerForm.get('name').invalid && editSingerForm.get('name').touched">The singer's name needs to be at least 6 characters.</p>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>-->

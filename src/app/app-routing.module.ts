@@ -11,6 +11,7 @@ import {MyPlaylistComponent} from './playlists/my-playlist/my-playlist.component
 import {DashboardAdminComponent} from './component/dashboard-admin/dashboard-admin.component';
 import {PlaylistSongComponent} from './playlists/playlist-song/playlist-song.component';
 import {SongComponent} from './component/song/song.component';
+import {SongByUserComponent} from './component/song-by-user/song-by-user.component';
 
 const routes: Routes = [
   { path: '', component: MainViewComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'edit/:id', component: EditSongComponent},
   { path: 'playlist-song/:id', component: PlaylistSongComponent},
   { path: 'song/:id', component: SongComponent},
+  {path: 'songs/user', component: SongByUserComponent}
 ];
 
 @NgModule({
