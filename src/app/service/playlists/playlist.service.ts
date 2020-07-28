@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, Subject} from 'rxjs';
 import {Iplaylist} from '../../playlists/create-playlist/playlist';
+import {Song} from '../../model/song';
+import {ICommentPlaylist} from '../../model/comment-playlist';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,7 @@ export class PlaylistService {
 
   constructor(private httpClient: HttpClient) {
   }
+
   private readonly API_URL = 'http://localhost:8080/playlist';
   shouldRefresh = new Subject<any>();
 
@@ -30,7 +33,7 @@ export class PlaylistService {
   }
 
   getById(id: number): Observable<any> {
-    return this.httpClient.get(this.API_URL + '/' + id);
+    return this.httpClient.get(this.API_URL + '/list/' + id);
   }
 
   create(playlist: Iplaylist): Observable<Iplaylist> {
@@ -50,6 +53,22 @@ export class PlaylistService {
   }
 
   playSong(id: number): Observable<any> {
-    return  this.httpClient.get(this.API_URL + '/playlistsong/' + id);
+    return this.httpClient.get(this.API_URL + '/playlistsong/' + id);
+  }
+
+  deleteSongPlaylist(id: number): Observable<any> {
+    return this.httpClient.delete(this.API_URL + '/deleteSonginPlaylist/' + id);
+  }
+
+  addSongInPlaylist(id: number, song: Song): Observable<any> {
+    return this.httpClient.put(this.API_URL + '/addsong/' + id, song);
+  }
+
+  getConment(id: number): Observable<any> {
+    return  this.httpClient.get(this.API_URL + '/showcomment/' + id);
+  }
+
+  addComment(comment: ICommentPlaylist): Observable<ICommentPlaylist> {
+    return this.httpClient.post<ICommentPlaylist>(this.API_URL + '/savecommentPlaylist/', comment);
   }
 }

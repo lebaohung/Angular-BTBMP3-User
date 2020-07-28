@@ -40,7 +40,7 @@ import {PlaylistSongComponent} from './playlists/playlist-song/playlist-song.com
     MyPlaylistComponent,
     DashboardAdminComponent,
     LogoutComponent,
-    PlaylistSongComponent
+    PlaylistSongComponent,
   ],
   imports: [
     BrowserModule,

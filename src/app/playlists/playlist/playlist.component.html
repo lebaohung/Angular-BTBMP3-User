@@ -20,7 +20,7 @@
           </div>
           <div class="event-text">
             <h4>{{playlist.name}}</h4>
-            <a href="#" class="btn see-more-btn">See Event</a>
+            <a [routerLink]="['/playlist-song', playlist.id]" class="btn see-more-btn">See Event</a>
           </div>
         </div>
       </div>
@@ -50,12 +50,5 @@
     </div>
   </div>
 </section>
-
-<!-- ##### Events Area End ##### -->
-
-<!-- ##### Newsletter & Testimonials Area Start ##### -->
-<!-- ##### Newsletter & Testimonials Area End ##### -->
-
-<!-- ##### Contact Area Start ##### -->
 
 

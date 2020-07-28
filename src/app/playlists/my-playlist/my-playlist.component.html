@@ -32,7 +32,7 @@
             <img  src="{{playlist.image}}" alt="">
           </div>
           <div class="album-info">
-            <a href="#">
+            <a [routerLink]="['/playlist-song', playlist.id]">
               <h5>{{playlist.name}}</h5>
             </a>
           </div>

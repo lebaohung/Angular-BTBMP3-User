@@ -60,9 +60,6 @@ export class MyPlaylistComponent implements OnInit {
     user: [''],
   });
 
-
-
-
   ngOnInit(): void {
    this.user1 = localStorage.getItem('user');
    this.user = JSON.parse(this.user1);
