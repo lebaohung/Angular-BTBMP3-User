@@ -45,6 +45,7 @@ export class MainViewComponent implements OnInit {
         this.selectedSongTopDateId = this.songsTopDate[i].id;
         this.songsService.getSingerOfThisSong(this.selectedSongTopDateId).subscribe(value => {
           this.selectedSingerTopDate = value;
+          console.log(this.selectedSingerTopDate);
           this.singerAndSongTopDate.push(
             {
               song: this.songsTopDate[i],

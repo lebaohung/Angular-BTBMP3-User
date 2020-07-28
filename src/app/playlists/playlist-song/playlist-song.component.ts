@@ -65,6 +65,7 @@ export class PlaylistSongComponent implements OnInit {
   addCommentPlaylist(): void {
     this.comment.get('user').setValue(JSON.parse(localStorage.getItem('user')));
     this.comment.get('playlist').setValue(this.playlist);
+    console.log(this.comment.value);
     this.playlistService.addComment(this.comment.value).subscribe(value => this.playlistService.shouldRefresh.next());
   }
 }
