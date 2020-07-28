@@ -8,6 +8,9 @@ import {Users} from '../../model/users';
 import {PlaylistService} from '../../service/playlists/playlist.service';
 import {Iplaylist} from '../../playlists/create-playlist/playlist';
 import {UserInterface} from '../../playlists/my-playlist/user-interface';
+import {ICommentPlaylist} from '../../model/comment-playlist';
+import {ICommentSong} from '../../model/comment-song';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-song',
@@ -62,12 +65,20 @@ export class SongComponent implements OnInit {
   user1 = '';
   idplaylist: number;
 
+  commentSong: ICommentSong[] = [];
+  comment: FormGroup;
+
   constructor(private activatedRoute: ActivatedRoute,
               private songsService: SongsService,
               private playlistService: PlaylistService) {
   }
 
   ngOnInit(): void {
+    this.onload();
+    this.songsService.shouldRefresh.subscribe(value => this.onload());
+  }
+
+  onload(): void {
     this.songId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     this.songsService.getSongById(this.songId).subscribe(value => {
       this.song = value;
@@ -88,6 +99,17 @@ export class SongComponent implements OnInit {
     this.playlistService.getIdUser(this.user.id).subscribe(value => this.playlistIDUser = value
     );
 
+    this.songsService.getConment(this.songId).subscribe(value => this.commentSong = value);
+    console.log(this.songId);
+    console.log(this.commentSong);
+
+    this.comment = new FormGroup({
+      id: new FormControl(''),
+      content: new FormControl('', [Validators.required]),
+      date: new FormControl(''),
+      song: new FormControl(''),
+      user: new FormControl(''),
+    });
 
   }
 
@@ -103,4 +125,7 @@ export class SongComponent implements OnInit {
     console.log(this.song);
     this.playlistService.addSongInPlaylist(this.idplaylist, this.song).subscribe();
   }
+
+
+
 }

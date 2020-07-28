@@ -33,4 +33,8 @@ export class SongsService {
   getTopDate(): Observable<Song[]> {
       return this.httpClient.get<Song[]>(this.API_URL + '/newcreat');
   }
+
+  getConment(id: number): Observable<any> {
+    return  this.httpClient.get(this.API_URL + '/showcomment/' + id);
+  }
 }
