@@ -3,7 +3,6 @@ import {SongsService} from '../../service/song/songs.service';
 import {Song} from '../../model/song';
 import {Singer} from '../../model/singer';
 import {SingerAndSong} from '../../model/singerAndSong';
-import {SingerService} from '../../service/singer/singer.service';
 import {Iplaylist} from '../../playlists/create-playlist/playlist';
 import {PlaylistService} from '../../service/playlists/playlist.service';
 
