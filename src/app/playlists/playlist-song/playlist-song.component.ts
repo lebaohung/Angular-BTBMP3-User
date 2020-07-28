@@ -37,6 +37,7 @@ export class PlaylistSongComponent implements OnInit {
       this.playlistService.playSong(this.idPlayList).subscribe(value1 => this.songList = value1);
     } );
     this.activatedRoute.params.subscribe(result => this.idPlayList = result.id);
+
     this.playlistService.playSong(this.idPlayList).subscribe(value => this.songList = value);
 
     this.playlistService.getConment(this.idPlayList).subscribe(value => this.commentPlaylist = value);
@@ -58,13 +59,14 @@ export class PlaylistSongComponent implements OnInit {
   }
 
   deleteSong(): void {
-    this.playlistService.deleteSongPlaylist(this.idPlaylistSong).subscribe(value => {this.playlistService.shouldRefresh.next(); });
+    this.playlistService.deleteSongPlaylist(this.idPlaylistSong).subscribe(value => {this.playlistService.shouldRefresh.next();});
   }
 
 
   addCommentPlaylist(): void {
     this.comment.get('user').setValue(JSON.parse(localStorage.getItem('user')));
     this.comment.get('playlist').setValue(this.playlist);
+    console.log(this.comment.value);
     this.playlistService.addComment(this.comment.value).subscribe(value => this.playlistService.shouldRefresh.next());
   }
 }
