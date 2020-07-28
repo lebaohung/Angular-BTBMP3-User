@@ -100,8 +100,6 @@ export class SongComponent implements OnInit {
     );
 
     this.songsService.getConment(this.songId).subscribe(value => this.commentSong = value);
-    console.log(this.songId);
-    console.log(this.commentSong);
 
     this.comment = new FormGroup({
       id: new FormControl(''),
@@ -110,7 +108,8 @@ export class SongComponent implements OnInit {
       song: new FormControl(''),
       user: new FormControl(''),
     });
-
+    this.songsService.getSongById(this.songId).subscribe(value => this.song = value);
+    console.log(this.song);
   }
 
   // lấy id playlist
@@ -125,6 +124,11 @@ export class SongComponent implements OnInit {
     this.playlistService.addSongInPlaylist(this.idplaylist, this.song).subscribe();
   }
 
-
+  addCommenttSong(): void {
+    this.comment.get('user').setValue(JSON.parse(localStorage.getItem('user')));
+    this.comment.get('song').setValue(this.song);
+    console.log(this.comment.value);
+    this.songsService.addCommetntSong(this.comment.value).subscribe(value => this.songsService.shouldRefresh.next());
+  }
 
 }

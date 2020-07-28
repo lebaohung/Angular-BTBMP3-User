@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Song} from '../../model/song';
 import {Observable, Subject} from 'rxjs';
 import {Iplaylist} from '../../playlists/create-playlist/playlist';
+import {ICommentSong} from '../../model/comment-song';
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +50,9 @@ export class SongsService {
 
   getConment(id: number): Observable<any> {
     return  this.httpClient.get(this.API_URL + '/showcomment/' + id);
+  }
+
+  addCommetntSong(comment: ICommentSong): Observable<ICommentSong>{
+    return this.httpClient.post<ICommentSong>(this.API_URL + '/savecommentSong', comment);
   }
 }
