@@ -42,9 +42,10 @@
                 <input formControlName="email" type="email" class="form-control rounded" id="exampleInputEmail1" placeholder="example@btbmp3.com">
                 <small style="color:red; font-style: italic" *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched">Email is invalid</small>
               </div>
-              <small style="color:red; font-style: italic" *ngIf="messageRespond">{{messageRespond}}</small>
+              <small style="color:red; font-styl: italic" *ngIf="messageRespond">{{messageRespond}}</small>
+              <br>
 
-              <button class="btn oneMusic-btn mt-30 rounded">Register</button>
+              <button class="btn oneMusic-btn mt-30 rounded" >Register</button>
             </form>
           </div>
         </div>
