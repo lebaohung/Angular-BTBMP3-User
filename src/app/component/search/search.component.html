@@ -1,0 +1,9 @@
+<div class="search">
+  <form action="#" class="search_form" id="search_form">
+    <div class="d-flex flex-md-row flex-column align-items-center justify-content-between">
+      <input type="text" class="search_input" (change)="display($event)" placeholder="Search..." required="required">
+      <button class="button contact_form_button" [routerLink]="['/search', searchInput]"><span>search</span></button>
+    </div>
+  </form>
+</div>
+
