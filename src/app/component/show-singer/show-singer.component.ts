@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Singer} from '../../model/singer';
+import {SingerService} from '../../service/singer/singer.service';
+import {ShowSinger} from '../../model/show-singer';
 
 @Component({
   selector: 'app-show-singer',
@@ -7,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowSingerComponent implements OnInit {
 
-  array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  constructor() { }
+  singerList: ShowSinger[];
+  constructor(private singerService: SingerService) { }
 
   ngOnInit(): void {
+    this.reloadData();
+  }
+
+  reloadData(): void {
+    this.singerService.getAllSinger().subscribe(
+      value => this.singerList = value,
+      error => {
+        alert('Cannot get data');
+      }
+    );
   }
 
 }
