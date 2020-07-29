@@ -50,7 +50,7 @@
         <!-- Song search result -->
         <div *ngIf="showSonglist" class="search-result">
           <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
-            <h2>Song <span class="glyphicon glyphicon-music"></span></h2>
+            <h2>Song <i class="fa fa-music" aria-hidden="true"></i></h2>
           </div>
           <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms"
                *ngFor="let item of singerAndSong" style="height: 100px">
@@ -67,7 +67,7 @@
         <!-- Singer search result -->
         <div *ngIf="showSingerList" class="search-result">
           <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
-            <h2>Singer <span class="glyphicon glyphicon-user"></span></h2>
+            <h2>Singer <i class="fa fa-microphone" aria-hidden="true"></i></h2>
           </div>
           <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms"
                *ngFor="let item of singerList" style="height: 100px">
@@ -83,7 +83,7 @@
         <!-- Playlist search result -->
         <div *ngIf="showPlaylist" class="search-result">
           <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
-            <h2>Playlist <span class="glyphicon glyphicon-user"></span></h2>
+            <h2>Playlist <i class="fa fa-list" aria-hidden="true"></i></h2>
           </div>
           <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms"
                *ngFor="let item of playlists" style="height: 100px">

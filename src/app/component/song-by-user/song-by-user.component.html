@@ -22,8 +22,16 @@
             <h6><a [routerLink]="['/song', item.song.id]">{{item.song.name}}</a></h6>
             <p>{{item.singer.name}}</p>
           </div>
-          <div class="list-group-item-action">
-            <button (click)="deleteSong(item.song.id)" class="button contact_form_button"><span>Delete</span></button>
+          <div class="play-song">
+            <audio src="{{item.song.songLink}}" controls></audio>
+          </div>
+          <div class="action">
+            <div class="list-group-item-action">
+              <button [routerLink]="['/edit', item.song.id]" class="button contact_form_button"><span>Update</span></button>
+            </div>
+            <div class="list-group-item-action" style="float: left">
+              <button (click)="deleteSong(item.song.id)" class="button contact_form_button"><span>Delete</span></button>
+            </div>
           </div>
         </div>
       </div>
