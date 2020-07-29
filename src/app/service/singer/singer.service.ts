@@ -22,4 +22,8 @@ export class SingerService {
   create(singer: Singer): Observable<Singer>{
     return this.httpClient.post<Singer>(this.API_URL + '/save', singer);
   }
+
+  playSong(id: number): Observable<any> {
+    return this.httpClient.get(this.API_URL + '/listSong/' + id);
+  }
 }

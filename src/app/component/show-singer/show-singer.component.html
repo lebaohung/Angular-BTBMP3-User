@@ -1,25 +1,65 @@
 <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(assets/img/bg-img/breadcumb3.jpg);">
+  <div class="bradcumbContent">
+    <p>See what’s new</p>
+    <h2>Singer List</h2>
+  </div>
 </section>
 
-<div class="container pt-3 pb-5">
-
-  <div class="row p-5">
-    <div class="col-md-4 pb-4" *ngFor="let singer of singerList">
-      <div class="card promoting-card">
-        <div class="view overlay">
-          <img class="card-img-top rounded-0" src='{{ singer.image }}'
-               alt="Card image cap">
-          <a href="#!">
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-        <div class="p-3">
-          <div >
-            <h5 class="card-text font-bold text-center" id="collapseContent">{{ singer.name }}</h5>
+<section class="events-area section-padding-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4" *ngFor="let singer of singerList">
+        <div class="single-event-area mb-30">
+          <div class="event-thumbnail">
+            <img src="{{singer.image}}" alt="">
+          </div>
+          <div class="event-text">
+            <h4>{{singer.name}}</h4>
+            <a [routerLink]="['/singer-song', singer.id]" class="btn see-more-btn">See Event</a>
           </div>
         </div>
       </div>
+
     </div>
+  </div>
+</section>
+
+<!--<section class="oneMusic-buy-now-area has-fluid  section-padding-100">-->
+<!--  <div class="container-fluid">-->
+<!--    <div class="createPlayList">-->
+<!--&lt;!&ndash;      <app-create-playlist></app-create-playlist>&ndash;&gt;-->
+<!--    </div>-->
+<!--    <div class="row">-->
+
+<!--      &lt;!&ndash; Single Album Area &ndash;&gt;-->
+<!--      <div class="col-12 col-sm-6 col-md-4 col-lg-2" *ngFor="let singer of singerList">-->
+<!--        <div class="single-album-area wow fadeInUp" data-wow-delay="100ms">-->
+
+<!--          <div class="album-thumb">-->
+<!--&lt;!&ndash;            <div class="album-price" style="position: absolute">&ndash;&gt;-->
+<!--&lt;!&ndash;              <button type="button" class="btn btn-primary"&ndash;&gt;-->
+<!--&lt;!&ndash;                      data-toggle="modal" data-target="#exampleModal1" (click)="delete(playlist.id)">&ndash;&gt;-->
+<!--&lt;!&ndash;                <i class="fa fa-trash" ></i>&ndash;&gt;-->
+<!--&lt;!&ndash;              </button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;              <button class="btn btn-primary" data-toggle="modal"&ndash;&gt;-->
+<!--&lt;!&ndash;                      data-target="#exampleModal" data-whatever="PlayList name" (click)="editPlaylist(playlist.id)">&ndash;&gt;-->
+<!--&lt;!&ndash;                <img class="iconEditPL" src="assets/img/edit.png">&ndash;&gt;-->
+<!--&lt;!&ndash;              </button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--            <img  src="{{singer.image}}" alt="">-->
+<!--          </div>-->
+<!--          <div class="album-info">-->
+<!--            <a [routerLink]="['/singer-song', singer.id]">-->
+<!--              <h5>{{singer.name}}</h5>-->
+<!--            </a>-->
+<!--          </div>-->
+<!--        </div>-->
 
 
-</div>
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </div>-->
+<!--</section>-->
+

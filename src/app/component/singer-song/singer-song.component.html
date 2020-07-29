@@ -1,0 +1,24 @@
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(assets/img/bg-img/bg-4.jpg);">
+  <!--  <div class="bradcumbContent">-->
+  <!--    <p>See what’s new</p>-->
+  <!--    <h2>Playlist</h2>-->
+  <!--  </div>-->
+</section>
+<section class="events-area">
+  <div class="container">
+    <table class="table" style="width: 70%; margin: 0 auto">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name Song</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let songlist of songList">
+        <th scope="row">1</th>
+        <td>{{songlist.name}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -103,7 +103,7 @@ export class SongComponent implements OnInit {
 
     this.comment = new FormGroup({
       id: new FormControl(''),
-      content: new FormControl('', [Validators.required, Validators.minLength(1)]),
+      content: new FormControl('', [Validators.minLength(3), Validators.requiredTrue]),
       date: new FormControl(''),
       song: new FormControl(''),
       user: new FormControl(''),

@@ -29,6 +29,7 @@ import { SingerComponent } from './component/singer/singer.component';
 import { SearchComponent } from './component/search/search.component';
 import { SearchResultComponent } from './component/search-result/search-result.component';
 import { ShowSingerComponent } from './component/show-singer/show-singer.component';
+import {SingerSongComponent} from './component/singer-song/singer-song.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { ShowSingerComponent } from './component/show-singer/show-singer.compone
     SearchComponent,
     SearchResultComponent,
     ShowSingerComponent,
+    SingerSongComponent
   ],
   imports: [
     BrowserModule,
