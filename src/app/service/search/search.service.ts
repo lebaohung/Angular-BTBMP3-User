@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
   private readonly API_URL = 'http://localhost:8080';
+  shouldRefresh = new Subject<any>();
   constructor(private httpClient: HttpClient) { }
 
   getSongByName(name: string): Observable<any>{

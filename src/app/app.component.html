@@ -48,13 +48,12 @@
                   </a>
                 </li>
               </ul>
-
               <!-- Login/Register & Cart Button -->
               <div class="login-register-cart-button d-flex align-items-center">
                 <!-- Login/Register -->
 
-                <div class="ogin-register-btn mr-50">
-                  <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="/user">{{ username }}</a>
+                <div class="login-register-btn mr-50">
+                  <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="/user">Hello, {{ username }}</a>
                 </div>
 
                 <div class="login-register-btn mr-50">
