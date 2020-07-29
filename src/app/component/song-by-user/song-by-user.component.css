@@ -84,4 +84,14 @@
 
 .list-group-item-action {
   width: auto;
+  float: left;
+  margin-right: 20px;
+}
+
+.action {
+  width: 30%;
+  float: right;
+}
+.play-song {
+  margin-right: 20px;
 }

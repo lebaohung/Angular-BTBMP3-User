@@ -33,6 +33,18 @@ export class SearchResultComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.searchService.shouldRefresh.subscribe(value => {
+      this.singerList.splice(0, this.singerList.length);
+      this.singerAndSong.splice(0, this.songList.length);
+      this.playlists.splice(0, this.playlists.length);
+      this.showPlaylist = false;
+      this.showSingerList = false;
+      this.showSonglist = false;
+      this.loadPlaylist();
+      this.loadSingerList();
+      this.loadSongList();
+    });
     this.loadPlaylist();
     this.loadSingerList();
     this.loadSongList();
@@ -40,7 +52,7 @@ export class SearchResultComponent implements OnInit {
 
   loadSongList(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.searchService.getSingerByName(params.id).subscribe(value => {
+      this.searchService.getSongByName(params.id).subscribe(value => {
         this.songList = value;
         if (this.songList.length > 0) {
           this.showSonglist = true;
@@ -75,10 +87,15 @@ export class SearchResultComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.searchService.getSingerByName(params.id).subscribe(value => {
         this.singerList = value;
+        console.log(this.singerList.length);
         if (this.singerList.length > 0) {
           this.showSingerList = true;
         }
       });
     });
+  }
+
+  refresh(): void {
+    this.searchService.shouldRefresh.next();
   }
 }

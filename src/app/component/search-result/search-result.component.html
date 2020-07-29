@@ -3,41 +3,99 @@
     <h2>Search Result</h2>
   </div>
 </section>
-<section class="miscellaneous-area section-padding-100-0">
+
+<div class="search-area">
+  <div class="search-bar" style="">
+    <app-search></app-search>
+  </div>
+  <div class="artists">
+    <div class="letters">
+      <ul class="d-flex flex-row align-items-start justify-content-center flex-wrap">
+        <li><a [routerLink]="['/search', 'a']" (click)="refresh()">a</a></li>
+        <li><a [routerLink]="['/search', 'b']" (click)="refresh()">b</a></li>
+        <li><a [routerLink]="['/search', 'c']" (click)="refresh()">c</a></li>
+        <li><a [routerLink]="['/search', 'd']" (click)="refresh()">d</a></li>
+        <li><a [routerLink]="['/search', 'e']" (click)="refresh()">e</a></li>
+        <li><a [routerLink]="['/search', 'f']" (click)="refresh()">f</a></li>
+        <li><a [routerLink]="['/search', 'g']" (click)="refresh()">g</a></li>
+        <li><a [routerLink]="['/search', 'h']" (click)="refresh()">h</a></li>
+        <li><a [routerLink]="['/search', 'i']" (click)="refresh()">i</a></li>
+        <li><a [routerLink]="['/search', 'j']" (click)="refresh()">j</a></li>
+        <li><a [routerLink]="['/search', 'k']" (click)="refresh()">k</a></li>
+        <li><a [routerLink]="['/search', 'l']" (click)="refresh()">l</a></li>
+        <li><a [routerLink]="['/search', 'm']" (click)="refresh()">m</a></li>
+        <li><a [routerLink]="['/search', 'n']" (click)="refresh()">n</a></li>
+        <li><a [routerLink]="['/search', 'o']" (click)="refresh()">o</a></li>
+        <li><a [routerLink]="['/search', 'p']" (click)="refresh()">p</a></li>
+        <li><a [routerLink]="['/search', 'q']" (click)="refresh()">q</a></li>
+        <li><a [routerLink]="['/search', 'r']" (click)="refresh()">r</a></li>
+        <li><a [routerLink]="['/search', 's']" (click)="refresh()">s</a></li>
+        <li><a [routerLink]="['/search', 't']" (click)="refresh()">t</a></li>
+        <li><a [routerLink]="['/search', 'u']" (click)="refresh()">u</a></li>
+        <li><a [routerLink]="['/search', 'v']" (click)="refresh()">v</a></li>
+        <li><a [routerLink]="['/search', 'w']" (click)="refresh()">w</a></li>
+        <li><a [routerLink]="['/search', 'x']" (click)="refresh()">x</a></li>
+        <li><a [routerLink]="['/search', 'y']" (click)="refresh()">y</a></li>
+        <li><a [routerLink]="['/search', 'z']" (click)="refresh()">z</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<section class="miscellaneous-area section-padding-100-0" style="padding-top: 20px">
   <div class="container">
     <div class="col-12">
       <div class="weeks-top-area mb-100" style="width: 100%; height: auto">
-        <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
-          <h2>Song <span class="glyphicon glyphicon-music"></span> </h2>
-        </div>
 
         <!-- Song search result -->
-        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms"
-             *ngFor="let item of singerAndSong" style="height: 100px">
-          <div class="thumbnail" style="display: inline-block; border-radius: 50%; overflow: hidden;">
-            <img style="width:100%; height:100%; object-fit: cover;" [src]="item.song.songImage" alt="No">
+        <div *ngIf="showSonglist" class="search-result">
+          <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
+            <h2>Song <i class="fa fa-music" aria-hidden="true"></i></h2>
           </div>
-          <div class="content-">
-            <h6><a [routerLink]="['/song', item.song.id]">{{item.song.name}}</a></h6>
-            <p>{{item.singer.name}}</p>
+          <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms"
+               *ngFor="let item of singerAndSong" style="height: 100px">
+            <div class="thumbnail" style="display: inline-block; border-radius: 50%; overflow: hidden;">
+              <img style="width:100%; height:100%; object-fit: cover;" [src]="item.song.songImage" alt="No">
+            </div>
+            <div class="content-">
+              <h6><a [routerLink]="['/song', item.song.id]">{{item.song.name}}</a></h6>
+              <p>{{item.singer.name}}</p>
+            </div>
           </div>
-        </div>
-
-        <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
-          <h2>Singer <span class="glyphicon glyphicon-user"></span> </h2>
         </div>
 
         <!-- Singer search result -->
-        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms"
-             *ngFor="let item of singerList" style="height: 100px">
-          <div class="thumbnail" style="display: inline-block; border-radius: 50%; overflow: hidden;">
-            <img style="width:100%; height:100%; object-fit: cover;" [src]="item.image" alt="No">
+        <div *ngIf="showSingerList" class="search-result">
+          <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
+            <h2>Singer <i class="fa fa-microphone" aria-hidden="true"></i></h2>
           </div>
-          <div class="content-">
-            <h6><a [routerLink]="['/song', item.song.id]">{{item.song.name}}</a></h6>
-            <p>{{item.singer.name}}</p>
+          <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms"
+               *ngFor="let item of singerList" style="height: 100px">
+            <div class="thumbnail" style="display: inline-block; border-radius: 50%; overflow: hidden;">
+              <img style="width:100%; height:100%; object-fit: cover;" [src]="item.image" alt="No">
+            </div>
+            <div class="content-">
+              <h6><a [routerLink]="['/song', item.id]">{{item.name}}</a></h6>
+            </div>
           </div>
         </div>
+
+        <!-- Playlist search result -->
+        <div *ngIf="showPlaylist" class="search-result">
+          <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
+            <h2>Playlist <i class="fa fa-list" aria-hidden="true"></i></h2>
+          </div>
+          <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms"
+               *ngFor="let item of playlists" style="height: 100px">
+            <div class="thumbnail" style="display: inline-block; border-radius: 50%; overflow: hidden;">
+              <img style="width:100%; height:100%; object-fit: cover;" [src]="item.image" alt="No">
+            </div>
+            <div class="content-">
+              <h6><a [routerLink]="['/playlist-song', item.id]">{{item.name}}</a></h6>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
