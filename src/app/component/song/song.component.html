@@ -88,6 +88,7 @@
         <form [formGroup]="comment"  (ngSubmit)="addCommenttSong()">
           <div>
             <textarea formControlName="content" style="width: 100%; height: 60px; border-radius: 10px"></textarea>
+            <p style="color:red;" *ngIf="comment.get('content').invalid && comment.get('content').touched">Tên bài hát cần có ít nhất 6 ký tự.</p>
           </div>
           <button type="submit" class="btnComment btn-secondary">Comment</button>
         </form>
