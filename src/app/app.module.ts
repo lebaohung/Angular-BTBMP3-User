@@ -27,6 +27,7 @@ import {PlaylistSongComponent} from './playlists/playlist-song/playlist-song.com
 import { SongByUserComponent } from './component/song-by-user/song-by-user.component';
 import { SingerComponent } from './component/singer/singer.component';
 import { ShowSingerComponent } from './component/show-singer/show-singer.component';
+import {SingerSongComponent} from './component/singer-song/singer-song.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { ShowSingerComponent } from './component/show-singer/show-singer.compone
     SongByUserComponent,
     SingerComponent,
     ShowSingerComponent,
+    SingerSongComponent
   ],
   imports: [
     BrowserModule,
