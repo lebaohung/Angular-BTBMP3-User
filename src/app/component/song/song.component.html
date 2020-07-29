@@ -6,7 +6,7 @@
 <section class="events-area">
   <div class="container">
     <div class="box-content" style="margin: 30px auto 20px auto">
-      <div class="box-left col-md-8" >
+      <div class="box-left col-md-8">
         <!--    <h5>Home / {{song.category.name}} / {{song.name}} </h5>-->
         <div class="song-info">
           <!--      <div class="song-name">-->
@@ -20,7 +20,7 @@
             </div>
             <div class="info-song">
               <img id="songAvatar" src="{{singer.image}}" alt="">
-<!--              <h2> {{song.name}} </h2>-->
+              <!--              <h2> {{song.name}} </h2>-->
               <h3> {{singer.name}} </h3>
             </div>
           </div>
@@ -34,52 +34,51 @@
 </section>
 
 <div class="container">
-<div class="song-views">
-  <button class= "btn btn-primary" data-toggle="modal"
-          data-target="#exampleModal" data-whatever="PlayList name">
-    <img class="iconEditPL" src="assets/img/add.png">
-  </button>
-  <img src="assets/img/eye.png" width="30"  alt="">
-  <h4>{{song.views}}</h4>
-</div>
-<table>
-  <tr>
-    <td>Tên bài hát</td>
-    <td>{{song.name}}</td>
-  </tr>
-  <tr>
-    <td>Tác giả</td>
-    <td>{{song.songAuthor}}</td>
-  </tr>
-  <tr>
-    <td>Ca sĩ</td>
-    <td>{{singer.name}}</td>
-  </tr>
-  <tr>
-    <td>Likes</td>
-    <td>{{song.likes}}</td>
-  </tr>
-  <tr>
-    <td>Views</td>
-    <td>{{song.views}}</td>
-  </tr>
-  <tr>
-    <td>Description</td>
-    <td>{{song.description}}</td>
-  </tr>
-  <tr>
-    <td>Nghe nhạc</td>
-    <td>
-      <!--<audio preload="auto" controls>
-        <source src="https://firebasestorage.googleapis.com/v0/b/project-module-5.appspot.com/o/uploads%2FBigcityboi-Binz-Touliver.mp3?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8">
-      </audio>-->
-      <!--      <audio src="{{song.songLink}}" controls></audio>-->
-    </td>
-  </tr>
-</table>
+  <div class="song-views">
+    <button class="btn btn-primary" data-toggle="modal"
+            data-target="#exampleModal" data-whatever="PlayList name">
+      <img class="iconEditPL" src="assets/img/add.png">
+    </button>
+    <img src="assets/img/eye.png" width="30" alt="">
+    <h4>{{song.views}}</h4>
+  </div>
+  <table>
+    <tr>
+      <td>Tên bài hát</td>
+      <td>{{song.name}}</td>
+    </tr>
+    <tr>
+      <td>Tác giả</td>
+      <td>{{song.songAuthor}}</td>
+    </tr>
+    <tr>
+      <td>Ca sĩ</td>
+      <td>{{singer.name}}</td>
+    </tr>
+    <tr>
+      <td>Likes</td>
+      <td>{{song.likes}}</td>
+    </tr>
+    <tr>
+      <td>Views</td>
+      <td>{{song.views}}</td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td>{{song.description}}</td>
+    </tr>
+    <tr>
+      <td>Nghe nhạc</td>
+      <td>
+        <!--<audio preload="auto" controls>
+          <source src="https://firebasestorage.googleapis.com/v0/b/project-module-5.appspot.com/o/uploads%2FBigcityboi-Binz-Touliver.mp3?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8">
+        </audio>-->
+        <!--      <audio src="{{song.songLink}}" controls></audio>-->
+      </td>
+    </tr>
+  </table>
 </div>
 <!--<audio id="player" src="{{song.songLink}}" controls></audio>-->
-
 
 <!--  Comment-->
 <section class="events-area">
@@ -89,10 +88,8 @@
       <form [formGroup]="comment" (ngSubmit)="addCommenttSong()">
         <div>
           <textarea formControlName="content" style="width: 100%; height: 60px; border-radius: 10px"></textarea>
-          <p style="color:red;" *ngIf="comment.get('content').invalid && comment.get('content').touched">Tên bài hát cần
-            có ít nhất 6 ký tự.</p>
         </div>
-        <button type="submit" class="btnComment btn-secondary">Comment</button>
+        <button type="submit" [disabled]="!comment.valid" class="btnComment btn-secondary">Comment</button>
       </form>
     </div>
   </div>

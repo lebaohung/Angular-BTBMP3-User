@@ -31,7 +31,7 @@ export class AppComponent implements OnInit{ // chua implement DoCheck
 
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
 
-      this.username = user.fullName;
+      this.username = user.username;
     }
   }
   logOut(): void {

@@ -42,27 +42,31 @@
                 <li><a routerLink="/playlist-song">News</a></li>
                 <li><a routerLink="/singers">Singer</a></li>
                 <li><a routerLink="/songs/user">SongByUser</a></li>
-                <li><a [routerLink]="['/edit', 1]">Sua</a></li>
                 <li>
                   <a routerLink="/newSong" class="btn btn-info btn-lg">
                     <i class="fa fa-upload" aria-hidden="true"></i> Upload
                   </a>
                 </li>
               </ul>
-
               <!-- Login/Register & Cart Button -->
               <div class="login-register-cart-button d-flex align-items-center">
                 <!-- Login/Register -->
 
-                <div class="login-register-btn mr-50">
-                  <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="/user">{{ username }}</a>
+                <div>
+                  <div class="login-register-btn mr-50 userMenu rounded">
+                    <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="/user">{{ username }}</a>
+                    <ul class="subUserMenu ">
+                      <li class="rounded-top text-center text-white login-register-btn "><a href="">Song</a></li>
+                      <li class=" text-center text-white login-register-btn "><a routerLink="/songs/user">SongByUser</a>
+                      </li>
+                      <li class="rounded-bottom text-center text-white login-register-btn "><a *ngIf="isLoggedIn"
+                                                                                               (click)="logOut()">Logout</a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
 
-                <div class="login-register-btn mr-50">
-                  <a *ngIf="isLoggedIn" (click)="logOut()">Logout</a>
-                </div>
-
-                <div class="login-register-btn mr-50">
+                <div class="login-register-btn mr-50 ">
                   <a *ngIf="!isLoggedIn" routerLink="/login" id="loginBtn">Login</a>
                 </div>
 

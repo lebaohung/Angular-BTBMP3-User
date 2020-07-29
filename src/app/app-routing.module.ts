@@ -14,6 +14,7 @@ import {SongComponent} from './component/song/song.component';
 import {SongByUserComponent} from './component/song-by-user/song-by-user.component';
 import {ShowSingerComponent} from './component/show-singer/show-singer.component';
 import {SingerSongComponent} from './component/singer-song/singer-song.component';
+import {SearchResultComponent} from './component/search-result/search-result.component';
 
 const routes: Routes = [
   {path: '', component: MainViewComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: 'songs/user', component: SongByUserComponent},
   {path: 'singers', component: ShowSingerComponent},
   {path: 'singer-song/:id', component: SingerSongComponent}
+  {path: 'search/:id', component: SearchResultComponent}
 ];
 
 @NgModule({
