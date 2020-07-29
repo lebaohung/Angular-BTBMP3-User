@@ -89,7 +89,7 @@
           <div>
             <textarea formControlName="content" style="width: 100%; height: 60px; border-radius: 10px"></textarea>
           </div>
-          <button type="submit" class="btnComment btn-secondary">Comment</button>
+          <button type="submit" [disabled]="!comment.valid" class="btnComment btn-secondary">Comment</button>
         </form>
       </div>
     </div>
