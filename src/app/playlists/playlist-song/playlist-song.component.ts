@@ -1,9 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component,  OnInit} from '@angular/core';
 import {PlaylistService} from '../../service/playlists/playlist.service';
 import {Song} from '../../model/song';
 import {ActivatedRoute} from '@angular/router';
 import {ICommentPlaylist} from '../../model/comment-playlist';
-import {Users} from '../../model/users';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Iplaylist} from '../create-playlist/playlist';
 
