@@ -58,6 +58,11 @@ export class NewSongComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.onload();
+    this.songsService.shouldRefresh.subscribe(value => this.onload());
+  }
+
+  onload(): void {
     this.createSongForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(6)]],
       category: ['', [Validators.required]],
@@ -70,7 +75,6 @@ export class NewSongComponent implements OnInit {
     this.singerService.getAllSinger().subscribe(value => this.singerList = value);
     this.categoryService.getAllCategory().subscribe(value => this.categoryList = value);
     this.user = JSON.parse(localStorage.getItem('user'));
-    console.log(this.user);
   }
 
   setDefaultValue(): void {

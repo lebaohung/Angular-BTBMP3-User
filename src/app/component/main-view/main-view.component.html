@@ -162,9 +162,9 @@
     <div class="row">
 
       <div class="col-12 col-md-6 col-lg-4" *ngFor="let playlist of playListTopView">
-        <div class="single-event-area mb-30 zoom" style="width: 350px; height: 476px">
+        <div class="single-event-area mb-30 zoom" style="width: 350px; height: 476px; cursor: pointer" >
           <div class="event-thumbnail" style="width: 350px; height: 350px">
-            <img style="height: 100%; width: 100%" src="{{playlist.image}}" alt="">
+            <img style="height: 100%; width: 100%" src="{{playlist.image}}" alt="" [routerLink]="['/playlist-song', playlist.id]">
           </div>
           <div class="event-text">
             <h4>{{playlist.name}}</h4>
@@ -191,9 +191,9 @@
     <div class="row">
 
       <div class="col-12 col-sm-6 col-md-4 col-lg-2" *ngFor="let playlist of playListTopDate">
-        <div class="single-event-area mb-30 zoom" data-wow-delay="200ms">
+        <div class="single-event-area mb-30 zoom" data-wow-delay="200ms" style="cursor: pointer">
           <div class="event-thumbnail">
-            <img src="{{playlist.image}}" alt="">
+            <img src="{{playlist.image}}" alt="" [routerLink]="['/playlist-song', playlist.id]">
           </div>
           <div class="event-text">
             <h5>{{playlist.name}}</h5>
@@ -256,6 +256,6 @@
 <!--</section>-->
 <script>
   $('#carouselExampleFade').carousel({
-    interval: 4000
+    interval: 2000
   });
 </script>

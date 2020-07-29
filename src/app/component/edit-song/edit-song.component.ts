@@ -65,7 +65,7 @@ export class EditSongComponent implements OnInit {
     this.editSongForm = this.fb.group({
       id: [''],
       name: ['', [Validators.required, Validators.minLength(6)]],
-      category: ['', [Validators.required]],
+      category: [''],
       songImage: [''],
       user: [''],
       likes: [''],
