@@ -81,6 +81,10 @@
 </div>
 <!--<audio id="player" src="{{song.songLink}}" controls></audio>-->
 
+<mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false"
+                           muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="msaapPageSizeOptions"
+                           [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true"></mat-advanced-audio-player>
+
 <!--  Comment-->
 <section class="events-area">
   <div class="container">
