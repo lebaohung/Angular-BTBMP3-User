@@ -56,8 +56,8 @@ export class PlaylistService {
     return this.httpClient.get(this.API_URL + '/playlistsong/' + id);
   }
 
-  deleteSongPlaylist(id: number): Observable<any> {
-    return this.httpClient.delete(this.API_URL + '/deleteSonginPlaylist/' + id);
+  deleteSongPlaylist(id1: number, id2: number): Observable<any> {
+    return this.httpClient.delete(this.API_URL + '/deleteSonginPlaylist/' + id1 + '/' + id2);
   }
 
   addSongInPlaylist(id: number, song: Song): Observable<any> {
@@ -71,4 +71,5 @@ export class PlaylistService {
   addComment(comment: ICommentPlaylist): Observable<ICommentPlaylist> {
     return this.httpClient.post<ICommentPlaylist>(this.API_URL + '/savecommentPlaylist/', comment);
   }
+
 }

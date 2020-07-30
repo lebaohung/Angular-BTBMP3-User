@@ -6,6 +6,7 @@ import {ICommentPlaylist} from '../../model/comment-playlist';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Iplaylist} from '../create-playlist/playlist';
 import {Track} from 'ngx-audio-player';
+import {ShowSinger} from '../../model/show-singer';
 
 @Component({
   selector: 'app-playlist-song',
@@ -14,7 +15,7 @@ import {Track} from 'ngx-audio-player';
 })
 export class PlaylistSongComponent implements OnInit {
   songList: Song[] = [];
-  idPlaylistSong: number;
+  IDPlaylistSong: number;
   title = 'Playlist';
   msaapDisplayTitle = true;
   msaapDisplayPlayList = true;
@@ -30,6 +31,40 @@ export class PlaylistSongComponent implements OnInit {
       link: ''
     }
   ];
+
+
+  song: Song = {
+    id: 0,
+    name: '',
+    category: {
+      id: 0,
+      name: ''
+    },
+    user: {
+      username: '',
+      email: '',
+      password: '',
+      roles: {
+        id: 0,
+        name: ''
+      }
+    },
+    likes: 0,
+    views: 0,
+    creatDate: '',
+    songImage: '',
+    status: 0,
+    description: '',
+    songLink: '',
+    songAuthor: ''
+  };
+
+  singer: ShowSinger = {
+    id: 0,
+    name: '',
+    create_date: '',
+    image: ''
+  };
 
   constructor(private playlistService: PlaylistService,
               private activatedRoute: ActivatedRoute) {
@@ -47,10 +82,7 @@ export class PlaylistSongComponent implements OnInit {
   }
 
   onload(): void {
-    this.playlistService.shouldRefresh.subscribe(value => {
-      this.activatedRoute.params.subscribe(result => this.idPlayList = result.id);
-      this.playlistService.playSong(this.idPlayList).subscribe(value1 => this.songList = value1);
-    } );
+
     this.activatedRoute.params.subscribe(result => this.idPlayList = result.id);
 
     this.playlistService.playSong(this.idPlayList).subscribe(value => {
@@ -80,12 +112,13 @@ export class PlaylistSongComponent implements OnInit {
   }
 
   delete(id: number): void {
-    this.idPlaylistSong = id;
-    console.log(this.idPlaylistSong);
+    this.IDPlaylistSong = id;
+    console.log(this.IDPlaylistSong);
   }
 
   deleteSong(): void {
-    this.playlistService.deleteSongPlaylist(this.idPlaylistSong).subscribe(value => {this.playlistService.shouldRefresh.next();});
+    this.playlistService.deleteSongPlaylist(this.idPlayList, this.IDPlaylistSong).subscribe(value => {
+      this.playlistService.shouldRefresh.next(); });
   }
 
 

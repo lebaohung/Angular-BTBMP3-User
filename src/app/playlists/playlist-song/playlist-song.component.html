@@ -1,72 +1,106 @@
 <!-- ##### Breadcumb Area Start ##### -->
 <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(assets/img/bg-img/breadcumb3.jpg);">
-<!--  <div class="bradcumbContent">-->
-<!--    <p>See what’s new</p>-->
-<!--    <h2>Playlist</h2>-->
-<!--  </div>-->
+  <div class="bradcumbContent">
+    <h2>Song Playlist</h2>
+  </div>
 </section>
+<div class="container-fluid">
+  <div class="box-left">
+    <div style="margin: 30px 0 20px 20%">
+      <div class="col-md-11" >
+        <div class="play-area" style="margin: 0 auto">
+          <div class="player-mp3">
+            <div class="avatar">
+              <img id="songImg" src="{{song.songImage}}" alt="">
+            </div>
+            <div class="info-song">
+              <div style="clear: both">
+                <div style="padding-top: 5%">
+                  <div>
+                    <h4 style="float: right; ">{{song.views}}</h4>
+                    <img src="assets/img/eye.png" style="margin: 0 10px 5px 0; float: right" width="30" alt="">
+                  </div>
+                </div>
+              </div>
+              <div style="padding-top: 6%;">
+                <div style="width: 100px; margin: 0 auto">
+                  <img id="songAvatar" src="{{singer.image}}" alt="">
+                </div>
+                <h3>Ca sĩ: {{singer.name}} </h3>
+                <h4>Tác giả: {{song.songAuthor}}</h4>
+              </div>
+            </div>
 
-<mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="true"
-                             muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="[msaapPageSizeOptions]"
-                             [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true">
-</mat-advanced-audio-player>
-
-<section class="events-area">
-  <div class="container">
-    <table class="table" style="width: 70%; margin: 0 auto">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name Song</th>
-        <th scope="col">Action</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let songlist of songList">
-        <th scope="row">1</th>
-        <td>{{songlist.name}}</td>
-        <td>
-          <div class="album-price">
-          <button type="button" class="btn btn-primary"
-                    data-toggle="modal" data-target="#exampleModal1" (click)="delete(songlist.id)">
-          <i class="fa fa-trash" ></i>
-        </button>
           </div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section class="events-area">
-  <div class="container">
-    <div style="width: 70%; margin: 30px auto 0 auto">
-      <h3 style="font-weight: bold">Comment:</h3>
-      <form [formGroup]="comment"  (ngSubmit)="addCommentPlaylist()">
-      <div >
-        <textarea formControlName="content" style="width: 100%; height: 60px; border-radius: 10px"></textarea>
+          <div class="control-bar">
+            <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="true"
+                                       muted="muted" [displayPlaylist]="msaapDisplayPlayList"
+                                       [pageSizeOptions]="[msaapPageSizeOptions]"
+                                       [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true">
+            </mat-advanced-audio-player>
+          </div>
+        </div>
       </div>
-      <button type="submit" [disabled]="!comment.valid" class="btnComment btn-secondary">Comment</button>
-      </form>
-  </div>
-  </div>
-</section>
-
-<section class="events-area">
-  <div class="container">
-    <div style="width: 70%; margin: 20px auto 0 auto" *ngFor="let comment of commentPlaylist">
-      <h5>{{comment.user.username}}</h5>
-      <p>{{comment.date}}</p>
-      <p>{{comment.content}}</p>
     </div>
 
+
+    <div class="col-md-11" style="clear: both; width: 74%; margin: 30% 0 20px 20%; ">
+      <table class="table" >
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name Song</th>
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let songlist of songList">
+          <th scope="row">1</th>
+          <td>{{songlist.name}}</td>
+          <td>
+            <div class="album-price">
+              <button type="button" class="btn btn-primary"
+                      data-toggle="modal" data-target="#exampleModal1" (click)="delete(songlist.id)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+      <div class="col-md-11" style="clear: both;width: 74%; margin: 30px 0 20px 20%; ">
+          <h3 style="font-weight: bold">Comment:</h3>
+          <form [formGroup]="comment" (ngSubmit)="addCommentPlaylist()">
+            <div>
+              <textarea formControlName="content" style="width: 100%; height: 60px; border-radius: 10px; padding: 1% 0  0 1%"></textarea>
+            </div>
+            <button type="submit" [disabled]="!comment.valid" class="btnComment btn-secondary">Comment</button>
+          </form>
+      </div>
+
+
+
+
+        <div class="col-md-11" style="clear: both;width: 74%; margin: 30px 0 20px 20%; " *ngFor="let comment of commentPlaylist">
+          <h5>{{comment.user.username}}</h5>
+          <p>{{comment.date}}</p>
+          <p>{{comment.content}}</p>
+        </div>
+
   </div>
-</section>
+
+  <div style="width: 40%; height: 100px; background: blue; float: right">
+
+  </div>
+</div>
 
 
-
-<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -80,7 +114,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button (click)="deleteSong()"  type="button" data-dismiss="modal" class="btn btn-primary">Delete</button>
+        <button (click)="deleteSong()" type="button" data-dismiss="modal" class="btn btn-primary">Delete</button>
       </div>
     </div>
   </div>
