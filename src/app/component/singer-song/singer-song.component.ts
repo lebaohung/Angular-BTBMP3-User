@@ -54,7 +54,7 @@ export class SingerSongComponent implements OnInit {
     songLink: '',
     songAuthor: ''
   };
-
+  singers: ShowSinger[];
   singer: ShowSinger = {
     id: 0,
     name: '',
@@ -83,6 +83,7 @@ export class SingerSongComponent implements OnInit {
       }
       console.log(this.msaapPlaylist);
     });
+    this.singerService.getAllSinger().subscribe(result => this.singers = result);
     // console.log(this.idSinger);
     // console.log(this.songList.values());
   }
