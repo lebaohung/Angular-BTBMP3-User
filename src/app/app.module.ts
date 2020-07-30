@@ -26,6 +26,8 @@ import { LogoutComponent } from './component/logout/logout.component';
 import {PlaylistSongComponent} from './playlists/playlist-song/playlist-song.component';
 import { SongByUserComponent } from './component/song-by-user/song-by-user.component';
 import { SingerComponent } from './component/singer/singer.component';
+import { SearchComponent } from './component/search/search.component';
+import { SearchResultComponent } from './component/search-result/search-result.component';
 import { ShowSingerComponent } from './component/show-singer/show-singer.component';
 import {SingerSongComponent} from './component/singer-song/singer-song.component';
 
@@ -47,6 +49,8 @@ import {SingerSongComponent} from './component/singer-song/singer-song.component
     PlaylistSongComponent,
     SongByUserComponent,
     SingerComponent,
+    SearchComponent,
+    SearchResultComponent,
     ShowSingerComponent,
     SingerSongComponent
   ],
