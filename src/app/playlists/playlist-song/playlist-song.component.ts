@@ -156,4 +156,8 @@ export class PlaylistSongComponent implements OnInit {
     console.log(this.comment.value);
     this.playlistService.addComment(this.comment.value).subscribe(value => this.playlistService.shouldRefresh.next());
   }
+
+  refresh(): void {
+    this.playlistService.shouldRefresh.next();
+  }
 }
