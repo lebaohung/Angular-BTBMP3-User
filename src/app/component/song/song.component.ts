@@ -13,6 +13,7 @@ import {ICommentSong} from '../../model/comment-song';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ShowSinger} from '../../model/show-singer';
 import {Track} from 'ngx-audio-player';
+import {SingerAndSong} from '../../model/singerAndSong';
 
 @Component({
   selector: 'app-song',
@@ -84,6 +85,15 @@ export class SongComponent implements OnInit {
   commentSong: ICommentSong[] = [];
   comment: FormGroup;
 
+  songsTopView: Song[] = [];
+  selectedSongTopViewId = 0;
+  selectedSingerTopView: Singer = {
+    id: 0,
+    name: '',
+    create_date: ''
+  };
+  singerAndSongTopView: SingerAndSong[] = [];
+
   constructor(private activatedRoute: ActivatedRoute,
               private songsService: SongsService,
               private playlistService: PlaylistService) {
@@ -126,6 +136,23 @@ export class SongComponent implements OnInit {
       user: new FormControl(''),
     });
     this.songsService.getSongById(this.songId).subscribe(value => this.song = value);
+
+    this.songsService.getTopView().subscribe((result) => {
+      this.songsTopView = result;
+      for (let i = 0; i < this.songsTopView.length; i++) {
+        this.selectedSongTopViewId = this.songsTopView[i].id;
+        this.songsService.getSingerOfThisSong(this.selectedSongTopViewId).subscribe(value => {
+          this.selectedSingerTopView = value;
+          this.singerAndSongTopView.push(
+            {
+              song: this.songsTopView[i],
+              singer: this.selectedSingerTopView
+            });
+        });
+      }
+    }, error => {
+      console.log(error);
+    });
   }
 
   // lấy id playlist

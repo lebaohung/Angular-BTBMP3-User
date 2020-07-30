@@ -128,3 +128,42 @@
   background-color: #042eff;
 }
 
+.weeks-top-area .single-top-item .thumbnail {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100px;
+  flex: 0 0 100px;
+  max-width: 100px;
+  width: 100px;
+  margin-right: 20px;
+}
+
+.content- {
+  width: 250px;
+}
+
+.content- h6 a {
+  font-size: 20px;
+}
+
+.content- {
+  font-size: 16px;
+}
+
+.list-group-item-action {
+  width: auto;
+  float: left;
+  margin-right: 20px;
+}
+
+.action {
+  width: 30%;
+  float: right;
+}
+.play-song {
+  margin-right: 20px;
+}
+
+.description {
+  border: 1px solid black;
+  height: 100px;
+}
