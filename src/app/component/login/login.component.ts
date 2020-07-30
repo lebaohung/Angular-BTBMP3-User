@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   userLoginFormData: FormData;
-  message: string;
+  message = 'Valid';
 
   constructor(private formBuilder: FormBuilder,
               private usersService: UsersService,

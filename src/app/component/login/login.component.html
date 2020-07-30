@@ -1,11 +1,12 @@
 <!-- ##### Breadcumb Area Start ##### -->
-<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(assets/img/bg-img/breadcumb.jpg); height: 18%">
+<section class="breadcumb-area bg-img bg-overlay"
+         style="background-image: url(assets/img/bg-img/breadcumb.jpg); height: 18%">
 
 </section>
 <!-- ##### Breadcumb Area End ##### -->
 
 <!-- ##### Login Area Start ##### -->
-<section class="login-area section-padding-100">
+<section class="login-area pt-4 pb-4">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-lg-8">
@@ -15,18 +16,30 @@
           <div class="login-form">
             <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
               <div class="form-group">
-                <p style="color:red;" *ngIf="message">{{message}}</p>
                 <label for="username">Username</label>
-                <input type="email" class="form-control rounded" id="username" placeholder="Enter username" formControlName="username">
-                <small style="color:red; font-style: italic" *ngIf="loginForm.get('username').invalid && loginForm.get('username').touched">Username is required</small>
-                <small id="emailHelp" class="form-text text-muted"><i class="fa fa-lock mr-2"></i>We'll never share your information with anyone else.</small>
+                <input type="email" class="form-control rounded" id="username" placeholder="Enter username"
+                       formControlName="username">
+                <small style="color:red; font-style: italic"
+                       *ngIf="loginForm.get('username').invalid && loginForm.get('username').touched">Username is
+                  required</small>
+                <small id="emailHelp" class="form-text text-muted"><i class="fa fa-lock mr-2"></i>We'll never share your
+                  information with anyone else.</small>
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control rounded" id="password" placeholder="Password" formControlName="password">
-                <small style="color:red; font-style: italic" *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">Password is required</small>
+                <input type="password" class="form-control rounded" id="password" placeholder="Password"
+                       formControlName="password">
+                <small style="color:red; font-style: italic"
+                       *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">Password is
+                  required</small>
               </div>
-              <button type="submit" class="btn oneMusic-btn mt-30 rounded">Login</button>
+              <div>
+                <p style="color:red; font-style: italic" [ngStyle]="(message == 'Valid') ? {'color': 'white'} : {'color': 'red'} ">{{message}}</p>
+              </div>
+              <br>
+              <button type="submit" class="btn oneMusic-btn mt-30 rounded" style="position: relative; bottom: 50px;" >
+                Login
+              </button>
             </form>
           </div>
         </div>
