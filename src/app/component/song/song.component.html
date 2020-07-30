@@ -14,9 +14,27 @@
               <img id="songImg" src="{{song.songImage}}" alt="">
             </div>
             <div class="info-song">
+              <div style="clear: both">
+                <div style="padding-top: 5%">
+                <div class="song-views">
+                  <button style="width: auto; padding: 0 10px" class="btn-add-playlist btn-primary" data-toggle="modal"
+                          data-target="#exampleModal" data-whatever="PlayList name">
+                    <img class="iconEditPL" src="assets/img/add.png">
+                  </button>
+                </div>
+                <div>
+                  <h4 style="float: right; ">{{song.views}}</h4>
+                  <img src="assets/img/eye.png" style="margin: 0 10px 5px 0; float: right" width="30" alt="">
+                </div>
+              </div>
+              </div>
+              <div style="padding-top: 6%;">
+                <div style="width: 100px; margin: 0 auto">
               <img id="songAvatar" src="{{singer.image}}" alt="">
+                </div>
               <h3>Ca sĩ: {{singer.name}} </h3>
               <h4>Tác giả: {{song.songAuthor}}</h4>
+              </div>
             </div>
 
           </div>
@@ -33,16 +51,7 @@
       </div>
     </div>
 
-<!--    <div style="clear: both">-->
-<!--      <div class="song-views">-->
-<!--        <button class="btn-add-playlist btn-primary" data-toggle="modal"-->
-<!--                data-target="#exampleModal" data-whatever="PlayList name">-->
-<!--          <img class="iconEditPL" src="assets/img/add.png">-->
-<!--        </button>-->
-<!--        <img src="assets/img/eye.png" width="30" alt="">-->
-<!--        <h4>{{song.views}}</h4>-->
-<!--      </div>-->
-<!--    </div>-->
+
 
     <div class="col-md-11" style="width: 74%; margin: 15% 0 0 20%;">
      <h2>Description</h2> <br/>
