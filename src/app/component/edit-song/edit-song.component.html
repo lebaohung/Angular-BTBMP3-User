@@ -35,15 +35,17 @@
               </div>
               <div class="form-group">
                 <label>Ca sĩ, diễn viên trình diễn:</label>
-                <select class="form-control rounded" #singerId (change)="changeSingerId(singerId.value)" style="width: 70%; float: left" >
-                  <option selected [value]="selectingSinger.id" >{{selectingSinger.name}}</option>
-                  <option *ngFor="let singer of singerList" [value]="singer.id">{{singer.name}}</option>
-                </select>
-                <div class="create-btn">
-                  <button class="button contact_form_button" data-toggle="modal"
-                          data-target="#exampleModal" data-whatever="createSinger" style="width: 25%; margin: 0 0 0 20px; height: 50px">
-                    <span>New Singer</span>
-                  </button>
+                <div>
+                  <select class="form-control rounded" #singerId (change)="changeSingerId(singerId.value)" style="width: 70%; float: left" >
+                    <option selected [value]="selectingSinger.id" >{{selectingSinger.name}}</option>
+                    <option *ngFor="let singer of singerList" [value]="singer.id">{{singer.name}}</option>
+                  </select>
+                  <div class="create-btn">
+                    <button class="button contact_form_button" data-toggle="modal"
+                            data-target="#exampleModal" data-whatever="createSinger" style="width: 25%; margin: 0 0 0 20px; height: 50px">
+                      <span>New Singer</span>
+                    </button>
+                  </div>
                 </div>
               </div>
               <div class="form-group">

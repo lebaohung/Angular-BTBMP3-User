@@ -13,9 +13,9 @@
   <!-- Navbar Area -->
   <div class="oneMusic-main-menu">
     <div class="classy-nav-container breakpoint-off">
-      <div class="container">
+      <div class="container" style="width: 100%; margin-left: 15%; margin-right: 15%">
         <!-- Menu -->
-        <nav class="classy-navbar justify-content-between" id="oneMusicNav">
+        <nav class="classy-navbar justify-content-between" id="oneMusicNav" style="width: 100%">
 
           <!-- Nav brand -->
           <a routerLink="/" class="nav-brand"><img src="assets/img/core-img/logoBTB1-trang.png" alt=""></a>
@@ -39,6 +39,8 @@
                 <li><a routerLink="/">Home</a></li>
                 <li><a routerLink="/playlist">Playlist</a></li>
                 <li><a routerLink="/singers">Singer</a></li>
+                <li (click)="showSearchBar()"><a style="cursor: pointer">Tìm kiếm <i class="fa fa-search" aria-hidden="true"></i></a>
+                </li>
               </ul>
               <!-- Login/Register & Cart Button -->
               <div class="login-register-cart-button d-flex align-items-center">
@@ -73,12 +75,16 @@
 
               </div>
             </div>
+
             <!-- Nav End -->
 
           </div>
         </nav>
       </div>
     </div>
+  </div>
+  <div *ngIf="searchBarStatus" style="width: 30%; margin-left: 35%">
+    <app-search-home></app-search-home>
   </div>
 </header>
 <!-- ##### Header Area End ##### -->

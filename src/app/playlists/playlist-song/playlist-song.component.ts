@@ -5,6 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ICommentPlaylist} from '../../model/comment-playlist';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Iplaylist} from '../create-playlist/playlist';
+import {Track} from 'ngx-audio-player';
 
 @Component({
   selector: 'app-playlist-song',
@@ -14,6 +15,21 @@ import {Iplaylist} from '../create-playlist/playlist';
 export class PlaylistSongComponent implements OnInit {
   songList: Song[] = [];
   idPlaylistSong: number;
+  title = 'Playlist';
+  msaapDisplayTitle = true;
+  msaapDisplayPlayList = true;
+  msaapPageSizeOptions = [10];
+  msaapDisplayVolumeControls = true;
+  track: Track = {
+    title: '',
+    link: ''
+  };
+  msaapPlaylist: Track[] = [
+    {
+      title: '',
+      link: ''
+    }
+  ];
 
   constructor(private playlistService: PlaylistService,
               private activatedRoute: ActivatedRoute) {
@@ -37,7 +53,18 @@ export class PlaylistSongComponent implements OnInit {
     } );
     this.activatedRoute.params.subscribe(result => this.idPlayList = result.id);
 
-    this.playlistService.playSong(this.idPlayList).subscribe(value => this.songList = value);
+    this.playlistService.playSong(this.idPlayList).subscribe(value => {
+      this.songList = value;
+      this.msaapPlaylist[0].title = this.songList[0].name;
+      this.msaapPlaylist[0].link = this.songList[0].songLink;
+      for (let i = 1; i < this.songList.length; i++) {
+        this.track.index = i;
+        this.track.title = this.songList[i].name;
+        this.track.link = this.songList[i].songLink;
+        this.msaapPlaylist.push(this.track);
+      }
+      console.log(this.msaapPlaylist);
+    });
 
     this.playlistService.getConment(this.idPlayList).subscribe(value => this.commentPlaylist = value);
 

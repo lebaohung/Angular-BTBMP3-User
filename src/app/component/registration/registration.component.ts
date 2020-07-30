@@ -42,8 +42,6 @@ export class RegistrationComponent implements OnInit {
     this.userJson.value.email = this.registrationForm.value.email;
     this.usersService.registration(this.userJson.value).subscribe(
       (result) => {
-        alert('OK');
-        console.log(result);
       },
       (error: HttpErrorResponse) => {
         this.messageRespond = error.error.message;
