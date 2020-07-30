@@ -1,0 +1,106 @@
+
+.box-content {
+  width: 100%;
+  float: left;
+}
+
+.box-left {
+  width: 60%;
+  float: left;
+}
+
+.right-menu {
+  float: left;
+  background-color: #1abc9c;
+}
+
+.song-info {
+  float: left;
+  width: 100%;
+}
+
+.song-name {
+  float: left;
+  width: 80%;
+}
+
+.song-views {
+  text-align: right;
+  width: auto;
+  float: right;
+}
+
+.play-area {
+  clear: left;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.player-mp3 {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar {
+  width: 40%;
+  height: 100%;
+  padding: 3px 5px 5px 5px;
+  float: left;
+}
+
+.info-song {
+  width: 60%;
+  float: left;
+  height: 100%;
+  text-align: center;
+  color: white;
+  padding-right: 3%;
+}
+
+#songImg {
+  width: 287px;
+  height: 240px;
+}
+
+#songAvatar {
+  width: 100px;
+  height: 100px;
+  margin: 10px 0;
+  border-radius: 50%;
+
+}
+
+.control-bar {
+  clear: both;
+  width: 100%;
+  height: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+
+
+.btn-add-playlist {
+  background-color: rgba(30, 144, 255, 0); /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+
+}
+
+/* Darker background on mouse-over */
+.btn-add-playlist:hover {
+  background-color: rgba(65, 105, 225, 0);
+}
+
+.iconEditPL {
+  width: 30px;
+  height: 30px;
+}
+
+
+
+
+
+
