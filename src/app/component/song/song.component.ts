@@ -20,7 +20,7 @@ import {Track} from 'ngx-audio-player';
   styleUrls: ['./song.component.css']
 })
 export class SongComponent implements OnInit {
-  title = 'testAngular';
+  title = '';
   msaapDisplayTitle = true;
   msaapDisplayPlayList = false;
   msaapPageSizeOptions = [2, 4, 6];
@@ -100,14 +100,12 @@ export class SongComponent implements OnInit {
       this.song = value;
       this.msaapPlaylist[0].title = this.song.name;
       this.msaapPlaylist[0].link = this.song.songLink;
-      console.log(this.msaapPlaylist);
     }, error => {
       console.log(error);
       this.song = null;
     });
     this.songsService.getSingerOfThisSong(this.songId).subscribe(value => {
       this.singer = value;
-      console.log(this.singer);
     }, error => {
       console.log(error);
       this.singer = null;
@@ -128,7 +126,6 @@ export class SongComponent implements OnInit {
       user: new FormControl(''),
     });
     this.songsService.getSongById(this.songId).subscribe(value => this.song = value);
-    // console.log(this.song);
   }
 
   // lấy id playlist

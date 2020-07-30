@@ -31,13 +31,10 @@ export class LoginComponent implements OnInit {
   onSubmitLogin(): void {
     const userLogin: UserLogin = this.loginForm.value;
     this.usersService.login(userLogin).subscribe(result => {
-      /*localStorage.setItem('access_token', result.access_token);*/
-     /* localStorage.setItem('access_token', result.token);*/
       localStorage.removeItem('token');
       localStorage.setItem('token', result.token);
       localStorage.removeItem('user');
       localStorage.setItem('user', JSON.stringify(result));
-      alert('Login Successfully! Welcome back, ' + userLogin.username);
       this.router.navigateByUrl('/');
     }, error => this.message = 'Wrong username or password!');
   }
