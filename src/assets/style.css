@@ -1668,6 +1668,7 @@ img {
 @media only screen and (max-width: 767px) {
   .footer-area {
     text-align: center;
+    clear: both;
   }
 }
 

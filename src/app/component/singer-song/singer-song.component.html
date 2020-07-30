@@ -1,30 +1,73 @@
-t<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(assets/img/bg-img/bg-4.jpg);">
-  <!--  <div class="bradcumbContent">-->
-  <!--    <p>See what’s new</p>-->
-  <!--    <h2>Playlist</h2>-->
-  <!--  </div>-->
-</section>
-
-<mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="true"
-                           muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="[msaapPageSizeOptions]"
-                           [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true">
-</mat-advanced-audio-player>
-
-<section class="events-area">
-  <div class="container">
-    <table class="table" style="width: 70%; margin: 0 auto">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name Song</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let songlist of songList">
-        <th scope="row">1</th>
-        <td>{{songlist.name}}</td>
-      </tr>
-      </tbody>
-    </table>
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(assets/img/bg-img/bg-4.jpg);">
+  <div class="bradcumbContent">
+    <h2>Singer and Song</h2>
   </div>
 </section>
+
+<div class="container-fluid">
+  <div class="box-left">
+    <div style="margin: 30px 0 20px 20%">
+      <div class="col-md-11">
+        <div class="play-area" style="margin: 0 auto">
+          <div class="player-mp3">
+
+            <div class="avatar">
+              <img id="songImg" src="{{song.songImage}}" alt="">
+            </div>
+
+            <div class="info-song">
+              <div style="clear: both">
+                <div style="padding-top: 5%">
+                  <div>
+                    <h4 style="float: right; ">{{song.views}}</h4>
+                    <img src="assets/img/eye.png" style="margin: 0 10px 5px 0; float: right" width="30" alt="">
+                  </div>
+                </div>
+              </div>
+
+              <div style="padding-top: 6%;">
+                <div style="width: 100px; margin: 0 auto">
+                  <img id="songAvatar" src="{{singer.image}}" alt="">
+                </div>
+                <h3>Ca sĩ: {{singer.name}} </h3>
+                <h4>Tác giả: {{song.songAuthor}}</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="control-bar">
+            <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="true"
+                                       muted="muted" [displayPlaylist]="msaapDisplayPlayList"
+                                       [pageSizeOptions]="[msaapPageSizeOptions]"
+                                       [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true">
+            </mat-advanced-audio-player>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="width: 40%; height: 100px; background: blue; float: right">
+
+  </div>
+</div>
+
+
+<!--<section class="events-area">-->
+<!--  <div class="container">-->
+<!--    <table class="table" style="width: 70%; margin: 0 auto">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th scope="col">#</th>-->
+<!--        <th scope="col">Name Song</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr *ngFor="let songlist of songList">-->
+<!--        <th scope="row">1</th>-->
+<!--        <td>{{songlist.name}}</td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+<!--</section>-->

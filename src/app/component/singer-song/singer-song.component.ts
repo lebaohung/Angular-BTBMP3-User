@@ -3,6 +3,7 @@ import {SingerService} from '../../service/singer/singer.service';
 import {Song} from '../../model/song';
 import {ActivatedRoute} from '@angular/router';
 import {Track} from 'ngx-audio-player';
+import {ShowSinger} from '../../model/show-singer';
 
 @Component({
   selector: 'app-singer-song',
@@ -27,6 +28,40 @@ export class SingerSongComponent implements OnInit {
       link: ''
     }
   ];
+
+  song: Song = {
+    id: 0,
+    name: '',
+    category: {
+      id: 0,
+      name: ''
+    },
+    user: {
+      username: '',
+      email: '',
+      password: '',
+      roles: {
+        id: 0,
+        name: ''
+      }
+    },
+    likes: 0,
+    views: 0,
+    creatDate: '',
+    songImage: '',
+    status: 0,
+    description: '',
+    songLink: '',
+    songAuthor: ''
+  };
+
+  singer: ShowSinger = {
+    id: 0,
+    name: '',
+    create_date: '',
+    image: ''
+  };
+
 
   constructor(private singerService: SingerService,
               private activatedRoute: ActivatedRoute) { }
