@@ -37,6 +37,7 @@ export class SearchResultComponent implements OnInit {
   ngOnInit(): void {
 
     this.searchService.shouldRefresh.subscribe(value => {
+      this.songList = [];
       this.singerList = [];
       this.singerAndSong = [];
       this.playlists = [];
@@ -47,6 +48,10 @@ export class SearchResultComponent implements OnInit {
       this.loadSingerList();
       this.loadSongList();
     });
+    this.songList = [];
+    this.singerList = [];
+    this.singerAndSong = [];
+    this.playlists = [];
     this.loadPlaylist();
     this.loadSingerList();
     this.loadSongList();

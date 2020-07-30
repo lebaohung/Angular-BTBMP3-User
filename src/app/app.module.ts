@@ -32,6 +32,7 @@ import { ShowSingerComponent } from './component/show-singer/show-singer.compone
 import {SingerSongComponent} from './component/singer-song/singer-song.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxAudioPlayerModule} from 'ngx-audio-player';
+import { SearchHomeComponent } from './component/search-home/search-home.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import {NgxAudioPlayerModule} from 'ngx-audio-player';
     SearchComponent,
     SearchResultComponent,
     ShowSingerComponent,
-    SingerSongComponent
+    SingerSongComponent,
+    SearchHomeComponent
   ],
   imports: [
     BrowserModule,

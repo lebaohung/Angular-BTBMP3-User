@@ -164,11 +164,11 @@
       <div class="col-12 col-md-6 col-lg-4" *ngFor="let playlist of playListTopView">
         <div class="single-event-area mb-30 zoom" style="width: 350px; height: 476px; cursor: pointer" >
           <div class="event-thumbnail" style="width: 350px; height: 350px">
-            <img style="height: 100%; width: 100%" src="{{playlist.image}}" alt="">
+            <img style="height: 100%; width: 100%" [routerLink]="['/playlist-song', playlist.id]" src="{{playlist.image}}" alt="">
           </div>
           <div class="event-text">
-            <h4>{{playlist.name}}</h4>
-            <a [routerLink]="['/playlist-song', playlist.id]" class="btn see-more-btn">See Event</a>
+            <h4 [routerLink]="['/playlist-song', playlist.id]">{{playlist.name}}</h4>
+            <a [routerLink]="['/playlist-song', playlist.id]" class="btn see-more-btn">See Playlist</a>
           </div>
         </div>
       </div>
@@ -196,16 +196,16 @@
             <img src="{{playlist.image}}" alt="" [routerLink]="['/playlist-song', playlist.id]">
           </div>
           <div class="event-text">
-            <h5>{{playlist.name}}</h5>
+            <h5 [routerLink]="['/playlist-song', playlist.id]">{{playlist.name}}</h5>
             <p style="color: white">{{playlist.user.username}}</p>
-            <a [routerLink]="['/playlist-song', playlist.id]" class="btn see-more-btn">See Event</a>
+            <a [routerLink]="['/playlist-song', playlist.id]" class="btn see-more-btn">See Playlist</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<app-search></app-search>
+<!--<app-search></app-search>-->
 
 <!-- ##### Contact Area Start ##### -->
 <!--<section class="contact-area section-padding-100 bg-img bg-overlay bg-fixed has-bg-img" style="background-image: url(../../../assets/img/bg-img/bg-2.jpg);">-->

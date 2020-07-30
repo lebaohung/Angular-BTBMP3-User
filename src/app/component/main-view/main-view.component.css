@@ -17,3 +17,13 @@
 .single-hero-slide::after {
   background-color: rgba(0, 0, 0, 0);
 }
+
+.hero-slides-content h2{
+  height: 60px;
+  padding-top: 20px;
+}
+
+.hero-slides-content span{
+  padding-top: 20px;
+  height: 60px;
+}
