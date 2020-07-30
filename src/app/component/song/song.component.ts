@@ -22,7 +22,7 @@ import {Track} from 'ngx-audio-player';
 export class SongComponent implements OnInit {
   title = 'testAngular';
   msaapDisplayTitle = true;
-  msaapDisplayPlayList = true;
+  msaapDisplayPlayList = false;
   msaapPageSizeOptions = [2, 4, 6];
   msaapDisplayVolumeControls = true;
 
@@ -122,7 +122,7 @@ export class SongComponent implements OnInit {
 
     this.comment = new FormGroup({
       id: new FormControl(''),
-      content: new FormControl('', [Validators.minLength(3), Validators.requiredTrue]),
+      content: new FormControl('', [Validators.minLength(2), Validators.required]),
       date: new FormControl(''),
       song: new FormControl(''),
       user: new FormControl(''),
@@ -146,7 +146,7 @@ export class SongComponent implements OnInit {
   addCommenttSong(): void {
     this.comment.get('user').setValue(JSON.parse(localStorage.getItem('user')));
     this.comment.get('song').setValue(this.song);
-    // console.log(this.comment.value);
+    console.log(this.comment.value);
     this.songsService.addCommetntSong(this.comment.value).subscribe(value => this.songsService.shouldRefresh.next());
   }
 
