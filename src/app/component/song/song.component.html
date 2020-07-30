@@ -1,18 +1,13 @@
 <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(assets/img/bg-img/breadcumb3.jpg);">
-  <!--  <div class="bradcumbContent">-->
-  <!--    <h2>Chill with #BTB</h2>-->
-  <!--  </div>-->
+  <div class="bradcumbContent">
+    <h2>Play Song</h2>
+  </div>
 </section>
-<section class="events-area">
-  <div class="container">
-    <div class="box-content" style="margin: 30px auto 20px auto">
-      <div class="box-left col-md-8">
-        <!--    <h5>Home / {{song.category.name}} / {{song.name}} </h5>-->
-        <div class="song-info">
-          <!--      <div class="song-name">-->
-          <!--        <h1>{{song.name}} - {{singer.name}}</h1>-->
-          <!--      </div>-->
-        </div>
+<div class="container-fluid">
+  <!--  <div style="float: left; height: 100px; width: 50%; background: red">-->
+  <div class="box-left">
+    <div style="margin: 30px 0 20px 20%">
+      <div class="col-md-11">
         <div class="play-area" style="margin: 0 auto">
           <div class="player-mp3">
             <div class="avatar">
@@ -20,74 +15,46 @@
             </div>
             <div class="info-song">
               <img id="songAvatar" src="{{singer.image}}" alt="">
-              <!--              <h2> {{song.name}} </h2>-->
-              <h3> {{singer.name}} </h3>
+              <h3>Ca sĩ: {{singer.name}} </h3>
+              <h4>Tác giả: {{song.songAuthor}}</h4>
             </div>
+
           </div>
           <div class="control-bar">
-            <audio src="{{song.songLink}}" controls style="width: 100%; background-color: #f1f3f4 "></audio>
+            <!--            <audio src="{{song.songLink}}" controls style="width: 100%; background-color: #f1f3f4 "></audio>-->
+            <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false"
+                                       muted="muted" [displayPlaylist]="msaapDisplayPlayList"
+                                       [pageSizeOptions]="msaapPageSizeOptions"
+                                       [displayVolumeControls]="msaapDisplayVolumeControls"
+                                       [expanded]="true"></mat-advanced-audio-player>
+
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<div class="container">
-  <div class="song-views">
-    <button class="btn btn-primary" data-toggle="modal"
-            data-target="#exampleModal" data-whatever="PlayList name">
-      <img class="iconEditPL" src="assets/img/add.png">
-    </button>
-    <img src="assets/img/eye.png" width="30" alt="">
-    <h4>{{song.views}}</h4>
-  </div>
-  <table>
-    <tr>
-      <td>Tên bài hát</td>
-      <td>{{song.name}}</td>
-    </tr>
-    <tr>
-      <td>Tác giả</td>
-      <td>{{song.songAuthor}}</td>
-    </tr>
-    <tr>
-      <td>Ca sĩ</td>
-      <td>{{singer.name}}</td>
-    </tr>
-    <tr>
-      <td>Likes</td>
-      <td>{{song.likes}}</td>
-    </tr>
-    <tr>
-      <td>Views</td>
-      <td>{{song.views}}</td>
-    </tr>
-    <tr>
-      <td>Description</td>
-      <td>{{song.description}}</td>
-    </tr>
-    <tr>
-      <td>Nghe nhạc</td>
-      <td>
-        <!--<audio preload="auto" controls>
-          <source src="https://firebasestorage.googleapis.com/v0/b/project-module-5.appspot.com/o/uploads%2FBigcityboi-Binz-Touliver.mp3?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8">
-        </audio>-->
-        <!--      <audio src="{{song.songLink}}" controls></audio>-->
-      </td>
-    </tr>
-  </table>
-</div>
-<!--<audio id="player" src="{{song.songLink}}" controls></audio>-->
+    <div style="clear: both">
+      <div class="song-views">
+        <button class="btn-add-playlist btn-primary" data-toggle="modal"
+                data-target="#exampleModal" data-whatever="PlayList name">
+          <img class="iconEditPL" src="assets/img/add.png">
+        </button>
+        <img src="assets/img/eye.png" width="30" alt="">
+        <h4>{{song.views}}</h4>
+      </div>
+    </div>
+
+    <div class="col-md-11" style="width: 74%; margin: 5% 0 0 20%;">
+     <h2>Description</h2> <br/>
+      {{song.description}}
+    </div>
+
 
 <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="true"
                            muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="msaapPageSizeOptions"
                            [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true"></mat-advanced-audio-player>
 
-<!--  Comment-->
-<section class="events-area">
-  <div class="container">
-    <div style="width: 70%; margin: 30px auto 0 auto">
+    <div class="col-md-11" style="clear: both;width: 74%; margin: 30px 0 20px 20%; ">
       <h3 style="font-weight: bold">Comment:</h3>
       <form [formGroup]="comment" (ngSubmit)="addCommenttSong()">
         <div>
@@ -96,19 +63,21 @@
         <button type="submit" [disabled]="!comment.valid" class="btnComment btn-secondary">Comment</button>
       </form>
     </div>
-  </div>
-</section>
 
-<section class="events-area">
-  <div class="container">
-    <div style="width: 70%; margin: 20px auto 0 auto" *ngFor="let comment of commentSong">
-      <h5>{{comment.user.username}}</h5>
-      <p>{{comment.date}}</p>
-      <p>{{comment.content}}</p>
-    </div>
+
+
+        <div class="col-md-11" style="width: 74%; margin: 15px 0 20px 20%;"
+             *ngFor="let comment of commentSong">
+          <h5>{{comment.user.username}}</h5>
+          <p>{{comment.date}}</p>
+          <p>{{comment.content}}</p>
+        </div>
+  </div>
+  <div style="width: 40%; height: 100px; background: blue; float: right">
 
   </div>
-</section>
+</div>
+
 
 <!--thêm 1 cài hát vào playlist-->
 <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog"

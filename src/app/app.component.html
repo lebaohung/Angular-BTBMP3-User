@@ -37,9 +37,7 @@
             <div class="classynav">
               <ul>
                 <li><a routerLink="/">Home</a></li>
-                <li><a routerLink="/myPlaylist">Albums</a></li>
                 <li><a routerLink="/playlist">Playlist</a></li>
-                <li><a routerLink="/playlist-song">News</a></li>
                 <li><a routerLink="/singers">Singer</a></li>
                 <li (click)="showSearchBar()"><a style="cursor: pointer">Tìm kiếm <i class="fa fa-search" aria-hidden="true"></i></a>
                 </li>
@@ -49,11 +47,16 @@
                 <!-- Login/Register -->
 
                 <div>
-                  <div class="login-register-btn mr-50 userMenu rounded">
+                  <div class="login-register-btn mr-50 userMenu rounded" style="width: 150px">
                     <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="/user">{{ username }}</a>
                     <ul class="subUserMenu ">
-                      <li class="rounded-top text-center text-white login-register-btn "><a href="">Song</a></li>
-                      <li class=" text-center text-white login-register-btn "><a routerLink="/songs/user">SongByUser</a>
+                      <li class="rounded-top text-center text-white login-register-btn">
+                        <a routerLink="/newSong" class="btn btn-lg">
+                          <i class="fa fa-upload" aria-hidden="true"></i> Upload
+                        </a>
+                      </li>
+                      <li class=" text-center text-white login-register-btn"><a routerLink="/songs/user">My Song</a></li>
+                      <li class=" text-center text-white login-register-btn "><a routerLink="/myPlaylist">My Playlist</a>
                       </li>
                       <li class="rounded-bottom text-center text-white login-register-btn "><a *ngIf="isLoggedIn"
                                                                                                (click)="logOut()">Logout</a>
@@ -89,7 +92,7 @@
 <router-outlet></router-outlet>
 
 <!-- ##### Footer Area Start ##### -->
-<footer class="footer-area">
+<footer class="footer-area" style="clear: both">
   <div class="container">
     <div class="row d-flex flex-wrap align-items-center">
       <div class="col-12 col-md-6">
