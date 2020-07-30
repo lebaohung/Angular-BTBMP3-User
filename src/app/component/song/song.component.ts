@@ -12,6 +12,7 @@ import {ICommentPlaylist} from '../../model/comment-playlist';
 import {ICommentSong} from '../../model/comment-song';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ShowSinger} from '../../model/show-singer';
+import {Track} from 'ngx-audio-player';
 
 @Component({
   selector: 'app-song',
@@ -19,6 +20,19 @@ import {ShowSinger} from '../../model/show-singer';
   styleUrls: ['./song.component.css']
 })
 export class SongComponent implements OnInit {
+  title = 'testAngular';
+  msaapDisplayTitle = true;
+  msaapDisplayPlayList = true;
+  msaapPageSizeOptions = [2, 4, 6];
+  msaapDisplayVolumeControls = true;
+
+  msaapPlaylist: Track[] = [
+    {
+      title: '',
+      link: ''
+    }
+  ];
+
   songId: number;
   song: Song = {
     id: 0,
@@ -84,7 +98,9 @@ export class SongComponent implements OnInit {
     this.songId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     this.songsService.getSongById(this.songId).subscribe(value => {
       this.song = value;
-      // console.log(this.song.songLink);
+      this.msaapPlaylist[0].title = this.song.name;
+      this.msaapPlaylist[0].link = this.song.songLink;
+      console.log(this.msaapPlaylist);
     }, error => {
       console.log(error);
       this.song = null;
