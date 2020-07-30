@@ -48,7 +48,7 @@
 
                 <div>
                   <div class="login-register-btn mr-50 userMenu rounded" style="width: 150px">
-                    <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="/user">{{ username }}</a>
+                    <a class="nav-link" *ngIf="isLoggedIn" routerLink="/user">Hello, {{ username }}</a>
                     <ul class="subUserMenu ">
                       <li class="rounded-top text-center text-white login-register-btn">
                         <a routerLink="/newSong" class="btn btn-lg">

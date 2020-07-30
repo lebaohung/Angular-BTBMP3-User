@@ -5,11 +5,8 @@
 </section>
 
 <div class="search-area">
-  <div class="search-bar" style="">
-    <app-search></app-search>
-  </div>
   <div class="artists">
-    <div class="letters">
+    <div class="letters" style="margin-top: 20px">
       <ul class="d-flex flex-row align-items-start justify-content-center flex-wrap">
         <li><a [routerLink]="['/search', 'a']" (click)="refresh()">a</a></li>
         <li><a [routerLink]="['/search', 'b']" (click)="refresh()">b</a></li>
@@ -55,7 +52,7 @@
           <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms"
                *ngFor="let item of singerAndSong" style="height: 100px">
             <div class="thumbnail" style="display: inline-block; border-radius: 50%; overflow: hidden;">
-              <img style="width:100%; height:100%; object-fit: cover;" [src]="item.song.songImage" alt="No">
+              <img style="width:100%; height:100%; object-fit: cover;" [src]="item.song.songImage" alt="">
             </div>
             <div class="content-">
               <h6><a [routerLink]="['/song', item.song.id]">{{item.song.name}}</a></h6>
@@ -72,7 +69,7 @@
           <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms"
                *ngFor="let item of singerList" style="height: 100px">
             <div class="thumbnail" style="display: inline-block; border-radius: 50%; overflow: hidden;">
-              <img style="width:100%; height:100%; object-fit: cover;" [src]="item.image" alt="No">
+              <img style="width:100%; height:100%; object-fit: cover;" [src]="item.image" alt="">
             </div>
             <div class="content-">
               <h6><a [routerLink]="['/singer-song', item.id]">{{item.name}}</a></h6>
@@ -88,7 +85,7 @@
           <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms"
                *ngFor="let item of playlists" style="height: 100px">
             <div class="thumbnail" style="display: inline-block; border-radius: 50%; overflow: hidden;">
-              <img style="width:100%; height:100%; object-fit: cover;" [src]="item.image" alt="No">
+              <img style="width:100%; height:100%; object-fit: cover;" [src]="item.image" alt="">
             </div>
             <div class="content-">
               <h6><a [routerLink]="['/playlist-song', item.id]">{{item.name}}</a></h6>

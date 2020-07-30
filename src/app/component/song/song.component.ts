@@ -143,7 +143,7 @@ export class SongComponent implements OnInit {
   addCommenttSong(): void {
     this.comment.get('user').setValue(JSON.parse(localStorage.getItem('user')));
     this.comment.get('song').setValue(this.song);
-    console.log(this.comment.value);
+    // console.log(this.comment.value);
     this.songsService.addCommetntSong(this.comment.value).subscribe(value => this.songsService.shouldRefresh.next());
   }
 

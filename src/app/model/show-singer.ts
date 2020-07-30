@@ -1,5 +1,3 @@
-import {Users} from './users';
-
 export interface ShowSinger {
   id: number;
   image: string;
