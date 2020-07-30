@@ -14,6 +14,7 @@ export class AppComponent implements OnInit{ // chua implement DoCheck
   showAdminBoard = false;
   username: string;
   userId: number;
+  searchBarStatus = false;
   constructor(private tokenStorageService: TokenStorageService, private router: Router) {
   }
   ngOnInit(): void {
@@ -36,5 +37,9 @@ export class AppComponent implements OnInit{ // chua implement DoCheck
   }
   logOut(): void {
     window.localStorage.clear();
+  }
+
+  showSearchBar(): void {
+    this.searchBarStatus = !this.searchBarStatus;
   }
 }
