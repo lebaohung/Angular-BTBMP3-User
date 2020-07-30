@@ -6,6 +6,7 @@ import {SearchService} from '../../service/search/search.service';
 import {ActivatedRoute} from '@angular/router';
 import {SingerAndSong} from '../../model/singerAndSong';
 import {SongsService} from '../../service/song/songs.service';
+import {ShowSinger} from '../../model/show-singer';
 
 @Component({
   selector: 'app-search-result',
@@ -13,17 +14,18 @@ import {SongsService} from '../../service/song/songs.service';
   styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent implements OnInit {
-  singerList: Singer[] = [];
+  singerList: ShowSinger[] = [];
   songList: Song[] = [];
   playlists: Iplaylist[] = [];
   showPlaylist = false;
   showSonglist = false;
   showSingerList = false;
   selectedSongId: number;
-  selectedSinger: Singer = {
+  selectedSinger: ShowSinger = {
     id: 0,
     name: '',
-    create_date: ''
+    create_date: '',
+    image: ''
   };
   singerAndSong: SingerAndSong[] = [];
 
@@ -35,9 +37,9 @@ export class SearchResultComponent implements OnInit {
   ngOnInit(): void {
 
     this.searchService.shouldRefresh.subscribe(value => {
-      this.singerList.splice(0, this.singerList.length);
-      this.singerAndSong.splice(0, this.songList.length);
-      this.playlists.splice(0, this.playlists.length);
+      this.singerList = [];
+      this.singerAndSong = [];
+      this.playlists = [];
       this.showPlaylist = false;
       this.showSingerList = false;
       this.showSonglist = false;

@@ -30,6 +30,8 @@ import { SearchComponent } from './component/search/search.component';
 import { SearchResultComponent } from './component/search-result/search-result.component';
 import { ShowSingerComponent } from './component/show-singer/show-singer.component';
 import {SingerSongComponent} from './component/singer-song/singer-song.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxAudioPlayerModule} from 'ngx-audio-player';
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import {SingerSongComponent} from './component/singer-song/singer-song.component
     CKEditorModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    BrowserAnimationsModule,
+    NgxAudioPlayerModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
