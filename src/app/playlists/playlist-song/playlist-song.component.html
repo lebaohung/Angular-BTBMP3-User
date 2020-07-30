@@ -59,7 +59,7 @@
           <td>{{songlist.name}}</td>
           <td>
             <div class="album-price">
-              <button type="button" class="btn btn-primary"
+              <button *ngIf="showAction" type="button" class="btn btn-primary"
                       data-toggle="modal" data-target="#exampleModal1" (click)="delete(songlist.id)">
                 <i class="fa fa-trash"></i>
               </button>
