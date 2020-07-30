@@ -18,7 +18,7 @@ export class PlaylistSongComponent implements OnInit {
   title = 'Playlist';
   msaapDisplayTitle = true;
   msaapDisplayPlayList = true;
-  msaapPageSizeOptions = [2, 4, 6];
+  msaapPageSizeOptions = [10];
   msaapDisplayVolumeControls = true;
   track: Track = {
     title: '',

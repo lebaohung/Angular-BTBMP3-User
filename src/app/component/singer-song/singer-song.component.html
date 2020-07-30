@@ -4,6 +4,12 @@ t<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(
   <!--    <h2>Playlist</h2>-->
   <!--  </div>-->
 </section>
+
+<mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="true"
+                           muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="[msaapPageSizeOptions]"
+                           [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="true">
+</mat-advanced-audio-player>
+
 <section class="events-area">
   <div class="container">
     <table class="table" style="width: 70%; margin: 0 auto">
