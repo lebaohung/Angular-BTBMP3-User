@@ -74,6 +74,7 @@ export class PlaylistSongComponent implements OnInit {
   commentPlaylist: ICommentPlaylist[] = [];
   comment: FormGroup;
   playlist: Iplaylist;
+  playlistTopDate: Iplaylist[];
 
   user: Users = {
     username: '',
@@ -129,6 +130,12 @@ export class PlaylistSongComponent implements OnInit {
       if (this.user.username === this.playlist.user.username) {
         this.showAction = true;
       }
+    });
+
+    this.playlistService.getTopDate().subscribe((result) => {
+      this.playlistTopDate = result;
+    }, error => {
+      console.log(error);
     });
   }
 
