@@ -1,16 +1,17 @@
 <!-- ##### Breadcumb Area Start ##### -->
-<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(../../../assets/img/bg-img/breadcumb3.jpg); height: 18%">
+<section class="breadcumb-area bg-img bg-overlay"
+         style="background-image: url(../../../assets/img/bg-img/breadcumb3.jpg); height: 18%">
 
 </section>
 <!-- ##### Breadcumb Area End ##### -->
 
 <!-- ##### Registration Area Start ##### -->
-<section class="login-area section-padding-100">
+<section class="login-area pt-4 pb-4">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-lg-8">
         <div class="login-content">
-          <h3>Welcome To BTBMp3</h3>
+          <h3>Register BTBMP3</h3>
           <!-- Login Form -->
           <div class="login-form">
             <form [formGroup]="registrationForm" (ngSubmit)="onSubmitRegister()">
@@ -18,32 +19,46 @@
               <div class="form-group">
                 <label for="exampleInputEmail1">Username</label>
                 <input formControlName="username" type="text" class="form-control rounded">
-                <small style="color:red; font-style: italic" *ngIf="registrationForm.get('username').invalid && registrationForm.get('username').touched">Username is required</small>
+                <small style="color:red; font-style: italic"
+                       *ngIf="registrationForm.get('username').invalid && registrationForm.get('username').touched">Username
+                  must include at least 6 character</small>
               </div>
 
               <ng-container formGroupName="pw">
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input formControlName="password" type="password" class="form-control rounded" id="password">
-                <small style="color:red; font-style: italic" *ngIf="registrationForm.get('pw').get('password').invalid && registrationForm.get('pw').get('password').touched">Password must include at least 6 character</small>
-              </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input formControlName="password" type="password" class="form-control rounded" id="password">
+                  <small style="color:red; font-style: italic"
+                         *ngIf="registrationForm.get('pw').get('password').invalid && registrationForm.get('pw').get('password').touched">Password
+                    must include at least 6 character</small>
+                </div>
 
-              <div class="form-group">
-                <label for="confirmPass">Confirm Password</label>
-                <input formControlName="confirmpassword" type="password" class="form-control rounded" id="confirmPass">
-                <small style="color:red; font-style: italic" *ngIf="registrationForm.hasError('passwordnotmatch', ['pw']) && registrationForm.get('pw').touched">Password not match</small>
-              </div>
+                <div class="form-group">
+                  <label for="confirmPass">Confirm Password</label>
+                  <input formControlName="confirmpassword" type="password" class="form-control rounded"
+                         id="confirmPass">
+                  <small style="color:red; font-style: italic"
+                         *ngIf="registrationForm.hasError('passwordnotmatch', ['pw']) && registrationForm.get('pw').touched">Password
+                    not match</small>
+                </div>
               </ng-container>
 
               <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input formControlName="email" type="email" class="form-control rounded" id="exampleInputEmail1" placeholder="example@btbmp3.com">
-                <small style="color:red; font-style: italic" *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched">Email is invalid</small>
+                <input formControlName="email" type="email" class="form-control rounded" id="exampleInputEmail1"
+                       placeholder="example@btbmp3.com">
+                <small style="color:red; font-style: italic"
+                       *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched">Email is
+                  invalid</small>
               </div>
-              <small style="color:red; font-styl: italic" *ngIf="messageRespond">{{messageRespond}}</small>
+              <div>
+                <h3 style=" font-style: italic" [ngStyle]="(messageRespond == 'Valid') ? {'color': 'white'} : {'color': 'red'} " >{{ messageRespond }}</h3>
+              </div>
               <br>
 
-              <button class="btn oneMusic-btn mt-30 rounded" data-toggle="modal" data-target="#registrationModal" >Register</button>
+              <button class="btn oneMusic-btn mt-30 mb-0 rounded" style="position: relative; bottom: 50px;" >
+                Register
+              </button>
             </form>
           </div>
         </div>
@@ -53,21 +68,21 @@
 </section>
 <!-- ##### Registration Area End ##### -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Congration</h5>
+        <h2 class="modal-title" id="exampleModalLabel">Congration</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        Your registration is confirmed!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="forwardLogin()">Login your account</button>
       </div>
     </div>
   </div>
