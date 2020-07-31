@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyDeiLsggijOo-ENtyQnujxQuaNF--EgD2s',
-    authDomain: 'project-module-5.firebaseapp.com',
-    databaseURL: 'https://project-module-5.firebaseio.com',
-    projectId: 'project-module-5',
-    storageBucket: 'project-module-5.appspot.com',
-    messagingSenderId: '1079811280883',
-    appId: '1:1079811280883:web:789d5d3c59b398621a0c86',
-    measurementId: 'G-S9BJJR7PLC'
+    apiKey: 'AIzaSyDhEI9W0usyFrB9NL8BtGhLQu9VUN_6oyM',
+    authDomain: 'btbmp3.firebaseapp.com',
+    databaseURL: 'https://btbmp3.firebaseio.com',
+    projectId: 'btbmp3',
+    storageBucket: 'btbmp3.appspot.com',
+    messagingSenderId: '85370383127',
+    appId: '1:85370383127:web:eefec94ba189852b3d6552',
+    measurementId: 'G-0E8QDWP07Z'
   }
 };
 

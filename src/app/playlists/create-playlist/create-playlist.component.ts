@@ -7,8 +7,8 @@ import {PlaylistService} from '../../service/playlists/playlist.service';
 import {Iplaylist} from './playlist';
 import {Users} from '../../model/users';
 
-const FRONT_LINK = 'https://firebasestorage.googleapis.com/v0/b/project-module-5.appspot.com/o/uploads%2F';
-const BACK_LINK = '?alt=media&token=fad94b03-0cbe-49a5-b06f-4c2284bc4bd8';
+const FRONT_LINK = 'https://firebasestorage.googleapis.com/v0/b/btbmp3.appspot.com/o/uploads%2F';
+const BACK_LINK = '?alt=media&token=8931cbe0-eac5-4071-986d-b99e417ca6fc';
 
 @Component({
   selector: 'app-create-playlist',
