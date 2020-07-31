@@ -194,7 +194,7 @@
       <div class="col-12 col-sm-6 col-md-4 col-lg-2" *ngFor="let playlist of playListTopDate">
         <div class="single-event-area mb-30 zoom" data-wow-delay="200ms" style="cursor: pointer">
           <div class="event-thumbnail">
-            <img src="{{playlist.image}}" alt="" [routerLink]="['/playlist-song', playlist.id]">
+            <img src="{{playlist.image}}" alt="" [routerLink]="['/playlist-song', playlist.id]" style="width: 255px; height: 255px">
           </div>
           <div class="event-text">
             <h5 [routerLink]="['/playlist-song', playlist.id]">{{playlist.name}}</h5>
