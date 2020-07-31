@@ -7,6 +7,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Iplaylist} from '../create-playlist/playlist';
 import {Track} from 'ngx-audio-player';
 import {ShowSinger} from '../../model/show-singer';
+import {Users} from '../../model/users';
 
 @Component({
   selector: 'app-playlist-song',
@@ -22,11 +23,13 @@ export class PlaylistSongComponent implements OnInit {
   msaapPageSizeOptions = [10];
   msaapDisplayVolumeControls = true;
   track: Track = {
+    index: 0,
     title: '',
     link: ''
   };
   msaapPlaylist: Track[] = [
     {
+      index: 0,
       title: '',
       link: ''
     }
@@ -66,15 +69,27 @@ export class PlaylistSongComponent implements OnInit {
     image: ''
   };
 
-  constructor(private playlistService: PlaylistService,
-              private activatedRoute: ActivatedRoute) {
-  }
-
   idPlayList: number;
 
   commentPlaylist: ICommentPlaylist[] = [];
   comment: FormGroup;
   playlist: Iplaylist;
+  playlistTopDate: Iplaylist[];
+
+  user: Users = {
+    username: '',
+    email: '',
+    password: '',
+    roles: {
+      id: 0,
+      name: ''
+    }
+  };
+  showAction = false;
+
+  constructor(private playlistService: PlaylistService,
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.onload();
@@ -87,10 +102,11 @@ export class PlaylistSongComponent implements OnInit {
 
     this.playlistService.playSong(this.idPlayList).subscribe(value => {
       this.songList = value;
+      this.msaapPlaylist[0].index = this.songList[0].id;
       this.msaapPlaylist[0].title = this.songList[0].name;
       this.msaapPlaylist[0].link = this.songList[0].songLink;
       for (let i = 1; i < this.songList.length; i++) {
-        this.track.index = i;
+        this.track.index = this.songList[i].id;
         this.track.title = this.songList[i].name;
         this.track.link = this.songList[i].songLink;
         this.msaapPlaylist.push(this.track);
@@ -108,7 +124,19 @@ export class PlaylistSongComponent implements OnInit {
       user: new FormControl(''),
     });
 
-    this.playlistService.getById(this.idPlayList).subscribe(value => this.playlist = value);
+    this.playlistService.getById(this.idPlayList).subscribe(value => {
+      this.playlist = value;
+      this.user = JSON.parse(localStorage.getItem('user'));
+      if (this.user.username === this.playlist.user.username) {
+        this.showAction = true;
+      }
+    });
+
+    this.playlistService.getTopDate().subscribe((result) => {
+      this.playlistTopDate = result;
+    }, error => {
+      console.log(error);
+    });
   }
 
   delete(id: number): void {
@@ -127,5 +155,9 @@ export class PlaylistSongComponent implements OnInit {
     this.comment.get('playlist').setValue(this.playlist);
     console.log(this.comment.value);
     this.playlistService.addComment(this.comment.value).subscribe(value => this.playlistService.shouldRefresh.next());
+  }
+
+  refresh(): void {
+    this.playlistService.shouldRefresh.next();
   }
 }

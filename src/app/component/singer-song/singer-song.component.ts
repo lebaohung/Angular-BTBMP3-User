@@ -54,7 +54,7 @@ export class SingerSongComponent implements OnInit {
     songLink: '',
     songAuthor: ''
   };
-
+  singers: ShowSinger[];
   singer: ShowSinger = {
     id: 0,
     name: '',
@@ -69,8 +69,13 @@ export class SingerSongComponent implements OnInit {
   idSinger: number;
 
   ngOnInit(): void {
+    this.onload();
+    this.singerService.shouldRefresh.subscribe(value => this.onload());
+  }
 
+  onload(): void {
     this.activatedRoute.params.subscribe(result => this.idSinger = result.id);
+    this.singerService.getSingerById(this.idSinger).subscribe(value => this.singer = value);
     this.singerService.playSong(this.idSinger).subscribe(value => {
       this.songList = value;
       this.msaapPlaylist[0].title = this.songList[0].name;
@@ -83,8 +88,12 @@ export class SingerSongComponent implements OnInit {
       }
       console.log(this.msaapPlaylist);
     });
+    this.singerService.getAllSinger().subscribe(result => this.singers = result);
     // console.log(this.idSinger);
     // console.log(this.songList.values());
   }
 
+  refresh(): void {
+    this.singerService.shouldRefresh.next();
+  }
 }
