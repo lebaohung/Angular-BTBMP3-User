@@ -18,10 +18,6 @@ export class SingerSongComponent implements OnInit {
   msaapDisplayPlayList = true;
   msaapPageSizeOptions = [10];
   msaapDisplayVolumeControls = true;
-  track: Track = {
-    title: '',
-    link: ''
-  };
   msaapPlaylist: Track[] = [
     {
       title: '',
@@ -81,10 +77,13 @@ export class SingerSongComponent implements OnInit {
       this.msaapPlaylist[0].title = this.songList[0].name;
       this.msaapPlaylist[0].link = this.songList[0].songLink;
       for (let i = 1; i < this.songList.length; i++) {
-        this.track.index = i;
-        this.track.title = this.songList[i].name;
-        this.track.link = this.songList[i].songLink;
-        this.msaapPlaylist.push(this.track);
+        const track: Track = {
+          title: '',
+          link: ''
+        };
+        track.title = this.songList[i].name;
+        track.link = this.songList[i].songLink;
+        this.msaapPlaylist.push(track);
       }
       console.log(this.msaapPlaylist);
     });
