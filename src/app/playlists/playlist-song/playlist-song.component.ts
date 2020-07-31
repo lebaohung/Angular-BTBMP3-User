@@ -22,14 +22,8 @@ export class PlaylistSongComponent implements OnInit {
   msaapDisplayPlayList = true;
   msaapPageSizeOptions = [10];
   msaapDisplayVolumeControls = true;
-  track: Track = {
-    index: 0,
-    title: '',
-    link: ''
-  };
   msaapPlaylist: Track[] = [
     {
-      index: 0,
       title: '',
       link: ''
     }
@@ -102,16 +96,17 @@ export class PlaylistSongComponent implements OnInit {
 
     this.playlistService.playSong(this.idPlayList).subscribe(value => {
       this.songList = value;
-      this.msaapPlaylist[0].index = this.songList[0].id;
       this.msaapPlaylist[0].title = this.songList[0].name;
       this.msaapPlaylist[0].link = this.songList[0].songLink;
       for (let i = 1; i < this.songList.length; i++) {
-        this.track.index = this.songList[i].id;
-        this.track.title = this.songList[i].name;
-        this.track.link = this.songList[i].songLink;
-        this.msaapPlaylist.push(this.track);
+        const track: Track = {
+          title: '',
+          link: ''
+        };
+        track.title = this.songList[i].name;
+        track.link = this.songList[i].songLink;
+        this.msaapPlaylist.push(track);
       }
-      console.log(this.msaapPlaylist);
     });
 
     this.playlistService.getConment(this.idPlayList).subscribe(value => this.commentPlaylist = value);
