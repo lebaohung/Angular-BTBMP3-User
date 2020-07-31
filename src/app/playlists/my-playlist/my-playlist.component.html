@@ -79,8 +79,8 @@
             <input type="file" id="image" (change)="displayImage($event)" >
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="button contact_form_button" data-dismiss="modal"><span>Close</span></button>
+            <button type="submit" class="button contact_form_button"><span>Save</span></button>
           </div>
         </form>
       </div>
@@ -103,8 +103,8 @@
         Are you sure you want to delete playlist?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button (click)="deletePlaylist(idPlaylist)"  type="button" data-dismiss="modal" class="btn btn-primary">Delete</button>
+        <button type="button" class="button contact_form_button" data-dismiss="modal"><span>Close</span></button>
+        <button (click)="deletePlaylist(idPlaylist)"  type="button" data-dismiss="modal" class="button contact_form_button"><span>Delete</span></button>
       </div>
     </div>
   </div>

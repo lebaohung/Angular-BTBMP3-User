@@ -10,13 +10,13 @@
 
 <section class="events-area section-padding-100">
   <div class="container">
-    <h3>TOP VIEW PLAYLIST</h3>
+    <h2>TOP VIEW PLAYLIST</h2>
     <div class="row">
 
       <div class="col-12 col-md-6 col-lg-4" *ngFor="let playlist of playListTopView">
         <div class="single-event-area mb-30">
           <div class="event-thumbnail">
-            <img src="{{playlist.image}}" alt="">
+            <img src="{{playlist.image}}" alt="" style="height: 350px; width: 350px">
           </div>
           <div class="event-text">
             <h4>{{playlist.name}}</h4>
@@ -31,14 +31,14 @@
 
 <section class="events-area ">
   <div class="container">
-    <h3>TOP LIKE PLAYLIST</h3>
+    <h2>TOP LIKE PLAYLIST</h2>
     <div class="row">
 
       <!-- Single Event Area -->
       <div class="col-12 col-md-6 col-lg-4" *ngFor="let playlist of playListTopLike">
         <div class="single-event-area mb-30">
           <div class="event-thumbnail">
-            <img src="{{playlist.image}}" alt="">
+            <img src="{{playlist.image}}" alt="" style="height: 350px; width: 350px">
           </div>
           <div class="event-text">
             <h4>{{playlist.name}}</h4>
@@ -46,7 +46,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
